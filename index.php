@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +9,6 @@
     <title>MoviePass TP 2020</title>
 </head>
 <body>
-    
+    <h3>Test</h2>
 </body>
 </html>
