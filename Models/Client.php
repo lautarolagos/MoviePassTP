@@ -1,15 +1,16 @@
 <?php
     namespace Models;
 
-    class Cliente
+    class Client
     {
         private $email;
         private $password;
     
-        function construct__($email, $nameGender)
+        function construct__($email, $password)
         {
             $this->email = $email;
             $this->password = $password;
+            // Luego metemos aca el atributo que seria una lista de las compras que realizo
             
         }
 
