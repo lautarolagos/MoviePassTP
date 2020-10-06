@@ -1,21 +1,23 @@
 <?php
     namespace Models;
 
-    class Cine
+    class Cinema
     {
         private $name;
         private $capacity;
         private $adress;
-        private $inputValue;
-        private $idCinemas;
+        private $ticketPrice;
+        private $id;
+        // Despues habría que agregar un arreglo de Salas, porque un cine tiene salas, despues lo pensamos bien
+        // al parecer en inglés "Sala" de cine se dice "Auditorium"
 
-        function construct__($name, $capacity, $adress, $inputValue, $idCinemas)
+        function construct__($name, $capacity, $adress, $ticketPrice, $id)
         {
             $this->name = $name;
             $this->capacity = $capacity;
             $this->adress = $adress;
-            $this->inputValue = $inputValue;
-            $this->idCinemas = $idCinemas;
+            $this->ticketPrice = $ticketPrice;
+            $this->id = $id;
         }
 
         public function getName()
@@ -48,29 +50,29 @@
             $this->adress = $adress;
         }
 
-        public function getInputValue()
+        public function getTicketPrice()
         {
-            return $this->inputValue;
+            return $this->ticketPrice;
         }
 
-        public function setInputValue($inputValue)
+        public function setTicketPrice($ticketPrice)
         {
-            $this->inputValue = $inputValue;
+            $this->ticketPrice = $ticketPrice;
         }
 
-        public function getIdCinemas()
+        public function getId()
         {
-            return $this->idCinemas;
+            return $this->id;
         }
 
-        public function setIdCinemas($idCinemas)
+        public function setId($id)
         {
-            $this->idCinemas = $idCinemas;
+            $this->id = $id;
         }
 
         public function __toString()
         {
-            return  " | Name: $this->name "."| Capacity: $this->capatity"."| Adress: $this->adress"."| Input Value: $this->inputValue"."| ID Cinemas: $this->idCinemas";
+            return  " | Name: $this->name "."| Capacity: $this->capatity"."| Adress: $this->adress"."| Ticket Price: $this->ticketPrice"."| ID Cinema: $this->id";
         }
     }
 ?>
