@@ -7,7 +7,7 @@
     </span>
     <ul>
         <li>
-            <a href="Billboard.php">Billboard</a>
+            <a href="<?php echo FRONT_ROOT ?>/Billboard">Billboard</a>
         </li>
         <li>
             <a href="LogoutController.php">Logout</a>

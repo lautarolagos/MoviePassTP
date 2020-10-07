@@ -1,6 +1,6 @@
 <?php
      namespace Views;
-  //include('header.php');
+     include('Header.php');
   // Aca hay algun error, si pones datos en el Login y le das a iniciar sesion, registra el usuario, quizas es porque falta hacer el login
   ?>
      <main class="">
@@ -20,11 +20,10 @@
                     <button class="" type="submit">Log In</button>
                </form>
           </div>
+          <?php
+               if(isset($message))
+                {
+                     echo $message;
+                }
+          ?>
      </main>
-
-<?php
-     if(isset($message))
-     {
-          echo "$message";
-     }
-?>
