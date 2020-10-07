@@ -6,7 +6,7 @@
         private $email;
         private $password;
     
-        function construct__($email, $password)
+        function construct__($email=NULL, $password=NULL)
         {
             $this->email = $email;
             $this->password = $password;

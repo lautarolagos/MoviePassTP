@@ -2,7 +2,7 @@
 
 define("ROOT", dirname(__DIR__) . "/");
 //Path to your project's root folder
-define("FRONT_ROOT", "/Trabajos/Visual Studio/TP2020MoviePass/");//cambio de carpeta
+define("FRONT_ROOT", "/TP2020MoviePass");//cambio de carpeta
 define("VIEWS_PATH", "Views/");
 define("CSS_PATH", FRONT_ROOT.VIEWS_PATH . "layout/styles/");
 define("JS_PATH", FRONT_ROOT.VIEWS_PATH . "js/");
