@@ -4,5 +4,6 @@
     require_once("Config/Autoload.php");
 
     use Models\Client as Client;
+    echo "Hola iniciaste sesion";
 
 ?>

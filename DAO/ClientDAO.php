@@ -51,9 +51,9 @@
                 {
                     $client = new Client();
                     $client->setEmail($valuesArray["email"]);
-                    $client->setPas($valuesArray["capacity"]);
+                    $client->setPassword($valuesArray["password"]);
 
-                    array_push($this->cinemaListings, $cinema);
+                    array_push($this->clientsList, $client);
                 }
             }
         }
