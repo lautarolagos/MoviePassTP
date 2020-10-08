@@ -7,7 +7,7 @@
         private $seatsAviable;
         
     
-        function construct__($maximumSeats=NULL, $seatsAviable=NULL)
+        function construct__($maximumSeats = NULL, $seatsAviable = NULL)
         {
             $this->maximumSeats = $maximumSeats;
             $this->password = $password; 

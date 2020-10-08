@@ -7,7 +7,7 @@
         private $number;
         private $QRcode;
 
-        function construct__($number=NULL, $QRcode=NULL)
+        function construct__($number = NULL, $QRcode = NULL)
         {
             $this->number = $number;
             $this->QRcode = $QRcode; 

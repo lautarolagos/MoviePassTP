@@ -5,7 +5,7 @@
     {
         private $idCompra;
         
-        function construct__($idCompra=NULL)
+        function construct__($idCompra = NULL)
         {
             $this->idCompra = $idCompra;
         }

@@ -9,7 +9,7 @@
         private $classification;
         
 
-        function construct__($name, $description, $duration, $classification)
+        function construct__($name = NULL, $description = NULL, $duration = NULL, $classification = NULL)
         {
             $this->name = $name;
             $this->description = $description;

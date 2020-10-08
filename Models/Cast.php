@@ -6,7 +6,7 @@
         private $actorList;
         private $directorList;
     
-        function construct__($actorList=NULL, $directorList=NULL)
+        function construct__($actorList = NULL, $directorList = NULL)
         {
             $this->actorList = $actorList;
             $this->directorList = $directorList;

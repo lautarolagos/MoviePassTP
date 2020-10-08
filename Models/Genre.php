@@ -6,7 +6,7 @@
         private $idGender;
         private $nameGender;
     
-        function construct__($idGender, $nameGender)
+        function construct__($idGender = NULL, $nameGender = NULL)
         {
             $this->idGender = $idGender;
             $this->nameGender = $nameGender;

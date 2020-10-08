@@ -11,7 +11,7 @@
         // Despues habría que agregar un arreglo de Salas, porque un cine tiene salas, despues lo pensamos bien
         // al parecer en inglés "Sala" de cine se dice "Auditorium"
 
-        function construct__($name, $capacity, $adress, $ticketPrice, $id)
+        function construct__($name = NULL, $capacity = NULL, $adress = NULL, $ticketPrice = NULL, $id = NULL)
         {
             $this->name = $name;
             $this->capacity = $capacity;

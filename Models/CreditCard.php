@@ -7,7 +7,7 @@
         private $code;
         private $expirationDate;
     
-        function construct__($cardNumber=NULL, $code=NULL, $expirationDate=NULL)
+        function construct__($cardNumber = NULL, $code = NULL, $expirationDate = NULL)
         {
             $this->cardNumber = $cardNumber;
             $this->code = $code;
