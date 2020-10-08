@@ -5,11 +5,13 @@
     {
         private $email;
         private $password;
+        private $isAdmin;
     
-        function construct__($email=NULL, $password=NULL)
+        function construct__($email=NULL, $password=NULL, $isAdmin=NULL)
         {
             $this->email = $email;
             $this->password = $password;
+            $this->isAdmin = $isAdmin;
             // Luego metemos aca el atributo que seria una lista de las compras que realizo
             
         }
@@ -34,19 +36,19 @@
             $this->password = $password;
         }
 
-        public function getPurchaseHistory()
+        public function getIsAdmin()
         {
-            return $this->purchaseHistory;
+            return $this->isAdmin;
         }
 
-        public function setPurchaseHistory($purchaseHistory)
+        public function setIsAdmin($isAdmin)
         {
-            $this->purchaseHistory = $purchaseHistory;
+            $this->isAdmin = $isAdmin;
         }
 
         public function __toString()
         {
-            return  " | Email: $this->email "."| Password: $this->password"."| Purchase History: $this->purchaseHistory";
+            return  " | Email: $this->email "."| Password: $this->password";
         }
     }
 ?>
