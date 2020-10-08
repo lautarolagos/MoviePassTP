@@ -11,7 +11,7 @@
         {
             $this->email = $email;
             $this->password = $password;
-            $this->isAdmin = $isAdmin;
+            $this->isAdmin = $isAdmin; // 0 NO  es admin, 1 ES admin
             // Luego metemos aca el atributo que seria una lista de las compras que realizo
             
         }

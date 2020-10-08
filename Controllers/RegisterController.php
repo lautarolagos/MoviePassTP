@@ -35,6 +35,7 @@
                         $emailExists=1;
                         $message="Email already registered";
                         $this->ShowAddView($message);
+                        break;
                     }  
                 }
             }
@@ -43,6 +44,7 @@
                 $newClient = new Client();
                 $newClient->setEmail($email);
                 $newClient->setPassword($password);
+                $newClient->setIsAdmin("0"); 
                 $this->clientDAO->Add($newClient);
                 $message = "Registration finished, please log in to continue";
                 $this->ShowAddView($message);

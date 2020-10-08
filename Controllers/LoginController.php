@@ -15,43 +15,50 @@
             $this->clientDAO = new ClientDAO();
         }
 
-        public function ShowAddView()
+        public function ShowClientView()
         {
-            require_once(VIEWS_PATH."Billboard.php");
+            require_once(VIEWS_PATH."ShowBillboard.php");
+        }
+        
+        public function ShowAdminView()
+        {
+            require_once(VIEWS_PATH."AddCinema.php");
+        }
+
+        public function ShowSigninView($message="")
+        {
+            require_once(VIEWS_PATH."Login.php");
         }
 
         public function Check($email, $password)
         {
             $clientsList = $this->clientDAO->GetAll();
-
+            $succesLogin=0;
             if($clientsList!=NULL)
             {
                 foreach($clientsList as $value)
                 {
-                    if($email==$value->getEmail())
+                    if(($email==$value->getEmail()) && ($password==$value->getPassword()))
                     {
-                        if($password==$value->getPassword());
+                        if($value->getIsAdmin()==0)
                         {
-                            if($value->getIsAdmin() == 0)
-                            {
-                                $this->ShowAddView();
-                            }
-                            else 
-                            {
-                                require_once(VIEWS_PATH."AddCinema.php");
-                            }
-                            
+                            $succesLogin=1;
+                            $this->ShowClientView();
+                            break;
                         }
-                    }
-                    else
-                    {
-                        echo "|no se encontro";
+                        else if($value->getIsAdmin()==1)
+                        {
+                            $succesLogin=1;
+                            $this->ShowAdminView();
+                            break;
+                        }
                     }
                 }
             }
-            else
+            if($succesLogin==0)
             {
-                echo "no hay nada";
+                $message="Incorrect email/password";
+                $this->ShowSigninView($message);
             }
         }
     }

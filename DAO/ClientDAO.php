@@ -33,6 +33,7 @@
             {
                 $valuesArray["email"]=$client->getEmail();
                 $valuesArray["password"]=$client->getPassword();
+                $valuesArray["isAdmin"]=$client->getIsAdmin();
                 array_push($arrayToEncode, $valuesArray);
             }
             $jsonContent=json_encode($arrayToEncode, JSON_PRETTY_PRINT);
@@ -52,6 +53,7 @@
                     $client = new Client();
                     $client->setEmail($valuesArray["email"]);
                     $client->setPassword($valuesArray["password"]);
+                    $client->setIsAdmin($valuesArray["isAdmin"]);
 
                     array_push($this->clientsList, $client);
                 }

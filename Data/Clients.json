@@ -1,6 +1,12 @@
 [
     {
-        "email": "admin@utn.com",
-        "password": "123456"
+        "email": "admin@admin.com",
+        "password": "admin",
+        "isAdmin": "1"
+    },
+    {
+        "email": "client@client.com",
+        "password": "client",
+        "isAdmin": "0"
     }
 ]

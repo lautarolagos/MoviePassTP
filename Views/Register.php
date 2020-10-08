@@ -1,6 +1,6 @@
 <?php
      namespace Views;
-     //require_once("Nav.php");
+     require_once("Header.php");
   ?>
      <main class="">
           <div class="">
@@ -16,7 +16,7 @@
                          <label for="password">Password</label>
                          <input type="password" name="password" class="" placeholder="Password" required>
                     </div>
-                    <button class="" type="submit">Create New Acount</button>
+                    <button class="" type="submit">Create Account</button>
                </form>
           </div>
      </main>
