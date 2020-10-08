@@ -7,7 +7,7 @@
                <header class="">
                     <h2>Register</h2>
                </header>
-               <form action="<?php echo FRONT_ROOT ?>/Register/Add" method="POST" class="">
+               <form action="<?php echo FRONT_ROOT ?>/Register/AddClient" method="POST" class="">
                     <div class="">
                          <label for="email">Email</label>
                          <input type="email" name="email" class="" placeholder="Email" required>

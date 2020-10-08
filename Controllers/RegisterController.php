@@ -1,5 +1,6 @@
 <?php
     namespace Controllers;
+
     use DAO\ClientDAO as ClientDAO;
     use Models\Client as Client;
     require_once("Config/Autoload.php");
@@ -19,7 +20,7 @@
             require_once(VIEWS_PATH."Login.php");
         }
 
-        public function Add($email, $password)
+        public function AddClient($email, $password)
         {
             $emailExists=0; // Creo una variable para verificar si el email enviado ya está registrado, 0 significa NO, 1 Significa SI
 

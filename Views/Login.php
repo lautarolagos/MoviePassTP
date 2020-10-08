@@ -8,7 +8,7 @@
                <header class="">
                     <h2>Log In</h2>
                </header>
-               <form action="<?php echo FRONT_ROOT ?>/Login" method="POST"  class="">
+               <form action="<?php echo FRONT_ROOT ?>/Login/Check" method="POST"  class="">
                     <div class="">
                          <label for="email">Email</label>
                          <input type="text" name="email" class="" placeholder="Email">
