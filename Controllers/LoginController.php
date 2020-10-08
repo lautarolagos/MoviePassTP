@@ -26,13 +26,21 @@
 
             if($clientsList!=NULL)
             {
-                foreach($clientsList as $key)
+                foreach($clientsList as $value)
                 {
-                    if($email==$key->getEmail())
+                    if($email==$value->getEmail())
                     {
-                        if($password==$key->getPassword());
+                        if($password==$value->getPassword());
                         {
-                            $this->ShowAddView();
+                            if($value->getIsAdmin() == 0)
+                            {
+                                $this->ShowAddView();
+                            }
+                            else 
+                            {
+                                require_once(VIEWS_PATH."AddCinema.php");
+                            }
+                            
                         }
                     }
                     else
