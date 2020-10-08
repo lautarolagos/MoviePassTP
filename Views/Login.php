@@ -1,14 +1,17 @@
 <?php
      namespace Views;
-     include('Header.php');
-  // Aca hay algun error, si pones datos en el Login y le das a iniciar sesion, registra el usuario, quizas es porque falta hacer el login
+  //include('Header.php');
   ?>
      <main class="">
           <div class="">
                <header class="">
                     <h2>Log In</h2>
                </header>
+<<<<<<< HEAD
                <form action="<?php echo FRONT_ROOT ?>/Login/Check" method="POST"  class="">
+=======
+               <form action="LoginController.php" method="POST"  class="">
+>>>>>>> 53b7736510a34aa2198212057f441c86d89919aa
                     <div class="">
                          <label for="email">Email</label>
                          <input type="text" name="email" class="" placeholder="Email">
@@ -18,12 +21,11 @@
                          <input type="password" name="password" class="" placeholder="Password">
                     </div>
                     <button class="" type="submit">Log In</button>
+                    <button class="" href="Register.php">Create New Acount</button>
                </form>
           </div>
-          <?php
-               if(isset($message))
-                {
-                     echo $message;
-                }
-          ?>
      </main>
+
+<?php
+ //include('footer.php')
+?>
