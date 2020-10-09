@@ -19,8 +19,7 @@
                     </div>
                     <button class="" type="submit">Log In</button>
                </form>
-               <!-- lo de abajo no anda bien, cuidado -->
-               <form action="<?php echo VIEWS_PATH ?>Register.php" method="POST" class="">
+               <form action="<?php echo FRONT_ROOT ?>/Register" method="POST" class="">
                <button class="" type="submit">Register</button>
                </form>
           </div>
