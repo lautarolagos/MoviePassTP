@@ -22,7 +22,7 @@
 
         public function getName()
         {
-            return $this->userName;
+            return $this->name;
         }
 
         public function setName($name)
