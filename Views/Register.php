@@ -1,26 +1,26 @@
 <?php
      namespace Views;
-     //include('header.php');
+     require_once("Header.php");
   ?>
      <main class="">
           <div class="">
                <header class="">
                     <h2>Register</h2>
                </header>
-               <form action="RegisterController.php" method="POST"  class="">
+               <form action="<?php echo FRONT_ROOT ?>/Register/AddClient" method="POST" class="">
                     <div class="">
                          <label for="email">Email</label>
-                         <input type="text" name="email" class="" placeholder="Email">
+                         <input type="email" name="email" class="" placeholder="Email" required>
                     </div>
                     <div class="">
                          <label for="password">Password</label>
-                         <input type="password" name="password" class="" placeholder="Password">
+                         <input type="password" name="password" class="" placeholder="Password" required>
                     </div>
-                    <button class="" type="submit">Create New Acount</button>
+                    <button class="" type="submit">Create Account</button>
                </form>
           </div>
      </main>
 
 <?php
- include('footer.php')
+// include('Footer.php')
 ?>
