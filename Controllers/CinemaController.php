@@ -54,7 +54,7 @@
                 $newCinema->setTicketPrice($ticketPrice);
                 $newCinema->setId($listCounter+1);
                 $this->cinemaDAO->Add($newCinema);
-                $this->ShowCinemaList();  // cambiar esto
+                $this->ShowCinemaList();
             }
         }
     }

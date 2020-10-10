@@ -19,7 +19,7 @@
                     </div>
                     <button class="" type="submit">Log In</button>
                </form>
-               <form action="<?php echo FRONT_ROOT ?>/Register" method="POST" class="">
+               <form action="<?php echo FRONT_ROOT ?>/Register/ShowRegisterView" method="POST" class="">
                <button class="" type="submit">Register</button>
                </form>
           </div>
