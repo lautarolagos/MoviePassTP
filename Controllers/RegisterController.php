@@ -20,6 +20,11 @@
             require_once(VIEWS_PATH."Login.php");
         }
 
+        public function ShowRegisterView()
+        {
+            require_once(VIEWS_PATH."Register.php");
+        }
+        
         public function AddClient($email, $password)
         {
             $emailExists=0; // Creo una variable para verificar si el email enviado ya está registrado, 0 significa NO, 1 Significa SI

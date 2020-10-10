@@ -13,5 +13,8 @@
         <li>
             <a href="<?php echo FRONT_ROOT ?>/Logout">Logout</a>
         </li>
+        <li>
+            <a class="nav-link" href="<?php echo FRONT_ROOT ?>/Cinema/ShowCinemaList">Cinema Listings</a>
+        </li>
     </ul>
 </nav>

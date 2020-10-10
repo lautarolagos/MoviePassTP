@@ -8,9 +8,9 @@
         private $cinemaListings = array();
         private $fileName;
 
-        public function __constrcut()
+        public function __construct()
         {
-            $this->fileName = dirname(__DIR__)."/Data/Cinemas.json";
+            $this->fileName=dirname(__DIR__)."/Data/Cinemas.json";
         }
 
         public function Add(Cinema $cinema)
@@ -20,7 +20,6 @@
             $this->SaveData();
         }
 
-        // ($name, $capacity, $adress, $ticketPrice, $id)
         public function GetAll()
         {
             $this->RetrieveData();

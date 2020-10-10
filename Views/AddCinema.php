@@ -2,13 +2,13 @@
     namespace Views;
     //include('Header.php');
     include('Nav.php');
+         
 ?>
 <main class="">
      <section id="" class="">
           <div class="">
                <h2 class=""></h2>
-
-               <form action="Cinema/AddCinema" method="POST" class="">
+               <form action="<?php echo FRONT_ROOT ?>/Cinema/AddCinema" method="POST" class="">
                     <div class="">
                          <div class="">
                               <div class="">
@@ -34,12 +34,17 @@
                                    </div>
                               </div>
                          </div>
-                         
                     </div>
                     <button type="submit" name="button" class="">Add</button>
                </form>
           </div>
      </section>
 </main>
+
+<?php if(isset($message))
+                    {
+                         echo $message;
+                    }
+                    ?>
 
 <?php include('Footer.php') ?>

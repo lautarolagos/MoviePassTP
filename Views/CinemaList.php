@@ -1,17 +1,17 @@
 <?php
 
-require_once("Config/Autoload.php");
-include('Header.php');
-include('Nav.php');
+     require_once("Config/Autoload.php");
+     include('Header.php');
+     include('Nav.php');
 
-use Models\Cinema as Cinema;
+     use Models\Cinema as Cinema;
+     use DAO\CinemaDAO as CinemaDAO;
 
-  if(isset($_SESSION['cinemaList'])) {
-   $billList = unserialize($_SESSION['cinemaList']);
-  }
+     $cinemaRepository = new CinemaDAO();
+     $cinemasList = $cinemaRepository->GetAll();
+
 ?>
-<main class="">
-     
+<main class="">     
      <section id="listado" class="">
           <div class="">
                <h2 class="">Cinema List</h2>
@@ -21,28 +21,23 @@ use Models\Cinema as Cinema;
                          <th>Capacity</th>
                          <th>Adress</th>
                          <th>Ticket Price</th>
+                         <th>ID</th>
                     </thead>
                     <tbody>
                     <?php
-                           if(isset($cinemaList))
-                            {
-                                foreach($cinemaList as $cinema)
+                           foreach($cinemasList as $cinema)
                                 {
                                     ?>
                                         <tr>
-                                            <td><?php echo $cinema->getName() ?></td> 
-                                            <td><?php echo $cinema->getCapacity() ?></td> 
-                                            <td><?php echo $cinema->getAdress() ?></td> 
-                                            <td><?php echo $cinema->getTicketPrice() ?></td> 
+                                            <td><?php echo $cinema->getName(); ?></td> 
+                                            <td><?php echo $cinema->getCapacity(); ?></td> 
+                                            <td><?php echo $cinema->getAdress(); ?></td> 
+                                            <td><?php echo $cinema->getTicketPrice(); ?></td> 
+                                            <td><?php echo $cinema->getId(); ?></td>
                                         </tr>
-                                    <?php
-                                }
-                            }
-                        ?>
+                          <?php } ?>
                     </tbody>
                </table>
           </div>
      </section>
 </main>
-
-<?php include('footer.php') ?>

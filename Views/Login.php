@@ -38,9 +38,14 @@
                     </div>
                     <button class="btn-submit" type="submit">Log In</button>
                </form>
+<<<<<<< HEAD
                <!-- lo de abajo no anda bien, cuidado -->
                <form class="form" action="<?php echo VIEWS_PATH ?>Register.php" method="POST">
                <button  class="btn-submit" type="submit">Register</button>
+=======
+               <form action="<?php echo FRONT_ROOT ?>/Register/ShowRegisterView" method="POST" class="">
+               <button class="" type="submit">Register</button>
+>>>>>>> ab00ea37df027eca6eff9dd093dd07eeea074050
                </form>
           </div>
      <?php if(isset($message))

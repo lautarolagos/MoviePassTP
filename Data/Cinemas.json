@@ -1,0 +1,30 @@
+[
+    {
+        "name": "el ambasador",
+        "capacity": "2",
+        "adress": "dff",
+        "ticketPrice": "3",
+        "id": 0
+    },
+    {
+        "name": "a",
+        "capacity": "2",
+        "adress": "aaa",
+        "ticketPrice": "4",
+        "id": 1
+    },
+    {
+        "name": "asda",
+        "capacity": "11",
+        "adress": "sfsdf",
+        "ticketPrice": "3",
+        "id": 2
+    },
+    {
+        "name": "111",
+        "capacity": "1111",
+        "adress": "111",
+        "ticketPrice": "111",
+        "id": 3
+    }
+]
