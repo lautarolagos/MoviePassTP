@@ -89,6 +89,39 @@ h1 span{
 
 .nav-link{
     background-color: #212529;
-    padding: 150px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     font-family: 'Roboto Condensed', sans-serif;
 }
+
+#menu{
+    background: rgba(0,0,0,.6);
+}
+
+#menu ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#menu ul li{
+    display: inline-block;
+}
+
+#menu ul li a{
+    color: #FFF;
+    display: block;
+    margin: left;
+    padding: 20px;
+    text-decoration: none;
+    border-bottom: 2px solid#e03131;
+}
+
+#menu ul li a:hover{
+    background-color: #212529;
+}
+
+.item-r{
+    float: right;
+}
+
