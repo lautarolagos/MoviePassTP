@@ -2,8 +2,8 @@
     namespace Views;
     include('Header.php');
     include('Nav.php');
-         
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,12 +42,14 @@
                </form>
           </div>
      </section>
-
-<?php if(isset($message))
-                    {
-                         echo $message;
-                    }
-                    ?>
+     <?php
+          if(isset($message)) // Modifica el Label o lo que sea a tu gusto, vos sabes como hacerlo
+          { ?>
+               <label for=""><?php echo $message; ?></label>
+          <?php
+          }
+     ?>     
+     
 </body>
 </html>
 <?php include('Footer.php') ?>

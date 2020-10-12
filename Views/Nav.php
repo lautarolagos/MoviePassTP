@@ -11,7 +11,7 @@
     <div id="menu">
         <ul class="item-r">
             <li>
-               <!-- <a "><?php session_start(); echo $_SESSION['email']?></a>-->
+           <a>Hola <strong><?php echo $_SESSION['email']?></strong></a> 
             </li>
             <li>
                 <a  href="<?php echo FRONT_ROOT ?>/Billboard">Billboard</a>
@@ -20,7 +20,7 @@
                 <a   href="<?php echo FRONT_ROOT ?>/Cinema/ShowCinemaList">Cinema Listings</a>
             </li>
             <li>
-                <a  href="<?php echo FRONT_ROOT ?>/Logout">Logout</a>
+                <a  href="<?php echo FRONT_ROOT ?>/Session/Logout">Logout</a>
             </li>
         </ul>
     </div>

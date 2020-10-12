@@ -49,11 +49,13 @@
                          </tbody>
                     </table>
                </div>
-               <?php if(isset($message)) // Esto como es el login, va a tirar mensajes dependiendo la accion, ya sea un cine nuevo o borrado
-                    {
-                         echo $message;
-                    }
-                    ?>
+     <?php
+          if(isset($message)) // Aca lo mismo que en el Login, hay que modificar el Label para que quede fachero
+          { ?>
+               <label for=""><?php echo $message; ?></label>
+          <?php
+          }
+     ?>
           </body>
      </html>
 

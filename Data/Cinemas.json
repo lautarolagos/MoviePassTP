@@ -1,12 +1,5 @@
 [
     {
-        "name": "Ambassador",
-        "capacity": "1000",
-        "adress": "callefalsa123",
-        "ticketPrice": "400",
-        "id": 0
-    },
-    {
         "name": "Aldrey",
         "capacity": "700",
         "adress": "Shopping Aldrey",

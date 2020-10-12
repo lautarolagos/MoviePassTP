@@ -43,18 +43,25 @@
                         if($value->getIsAdmin()==0)
                         {
                             $succesLogin=1;
+                            $loggedUser = $value;
+                            $_SESSION['loggedUser'] = $loggedUser;
+                            $_SESSION['email'] = $email;
                             $this->ShowClientView();
                             break;
                         }
                         else if($value->getIsAdmin()==1)
                         {
                             $succesLogin=1;
+                            $loggedUser = $value;
+                            $_SESSION['loggedUser'] = $loggedUser;
+                            $_SESSION['email'] = $email;
                             $this->ShowAdminView();
                             break;
                         }
                     }
                 }
             }
+
             if($succesLogin==0)
             {
                 $message="Incorrect email/password";
