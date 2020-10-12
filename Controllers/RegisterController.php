@@ -5,7 +5,6 @@
     use Models\Client as Client;
     require_once("Config/Autoload.php");
 
-
     class RegisterController
     {
         private $clientDAO;

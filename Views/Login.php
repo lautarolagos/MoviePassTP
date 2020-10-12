@@ -1,12 +1,13 @@
 <?php
      namespace Views;
-     include('Header.php');
+     include_once('Header.php');
   ?>
   <!DOCTYPE html>
   <html lang="en">
   <head>
        <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Sign in - MoviePass</title>
        <style>
             body{
                background-image: url(Img/MoviePass.jpg);
@@ -17,7 +18,6 @@
                background-attachment: fixed;
                }
        </style>
-       <title>Movie Pass®</title>
   </head>
   <body>
        <div>
@@ -26,20 +26,18 @@
           <div class="cont-form">
                <form class="form" action="<?php echo FRONT_ROOT ?>/Login/Check" method="POST">
                     <div>
-                         <h2 class="form-title">Log In</h2>
+                         <h2 class="form-title">Welcome</h2>
                     </div>
                     <div >
-                         <label class ="form-label" for="email">Email</label>
                          <input class="form-input"  type="text" name="email"  placeholder="Email">
                     </div>
                     <div >
-                         <label class ="form-label" for="password">Password</label>
                          <input class="form-input" type="password" name="password"  placeholder="Password">
                     </div>
                     <button class="btn-submit" type="submit">Log In</button>
                </form>
-               <form action="<?php echo FRONT_ROOT ?>/Register/ShowRegisterView" method="POST" class="">
-               <button class="" type="submit">Register</button>
+               <form class="form" action="<?php echo FRONT_ROOT ?>/Register/ShowRegisterView" method="POST">
+               <button class="btn-submit" type="submit">Register</button>
                </form>
           </div>
      <?php if(isset($message))

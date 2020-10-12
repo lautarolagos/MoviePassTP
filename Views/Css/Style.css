@@ -6,6 +6,13 @@
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    
+    background-image: url(Img/MoviePass.jpg);
+    background-repeat: no-repeat;
+    background-size: 1920px 1080px;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 h1{
