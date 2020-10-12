@@ -15,7 +15,7 @@
             $this->cinemaDAO = new cinemaDAO();
         }
 
-        public function ShowCinemaList()
+        public function ShowCinemaList($message="")
         {
             $cinemasList = $this->cinemaDAO->GetAll();
             require_once(VIEWS_PATH."CinemaList.php");
@@ -39,7 +39,7 @@
                     if($adress == $cinema->getName())
                     {
                         $adressExist=1;
-                        $message= "Adress already registered, please enter a new address";
+                        $message= "There is already a cinema in that adress, please enter another one";
                         $this->ShowAddView($message);
                     }
                     $listCounter++;
@@ -54,8 +54,16 @@
                 $newCinema->setTicketPrice($ticketPrice);
                 $newCinema->setId($listCounter+1);
                 $this->cinemaDAO->Add($newCinema);
-                $this->ShowCinemaList();
+                $message="Cinema added succesfully";
+                $this->ShowCinemaList($message);
             }
+        }
+
+        public function Delete($cinemaId) // Recibe la ID del cinema a borrar
+        {
+            $this->cinemaDAO->DeleteCinema($cinemaId);
+            $message="Cinema deleted";
+            $this->ShowCinemaList($message); // Retorna un mensaje diciendo que se logro borrar el cine
         }
     }
 ?>

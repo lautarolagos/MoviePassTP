@@ -1,16 +1,16 @@
 [
     {
-        "name": "Ambasador",
-        "capacity": "300",
-        "adress": "San Juan 2532",
-        "ticketPrice": "300",
+        "name": "Ambassador",
+        "capacity": "1000",
+        "adress": "callefalsa123",
+        "ticketPrice": "400",
         "id": 0
     },
     {
-        "name": "Paseo Aldrey",
-        "capacity": "500",
-        "adress": "Belgica 722",
-        "ticketPrice": "350",
+        "name": "Aldrey",
+        "capacity": "700",
+        "adress": "Shopping Aldrey",
+        "ticketPrice": "500",
         "id": 1
     }
 ]

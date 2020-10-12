@@ -20,6 +20,20 @@
             $this->SaveData();
         }
 
+        public function DeleteCinema($id)
+        {
+            $this->RetrieveData();
+            foreach($this->cinemaListings as $cinema)
+            {
+                if($cinema->getId()==$id)
+                {
+                    $pos = array_search($cinema, $this->cinemaListings); // con array search obtengo la posicion del arreglo del cinea eliminar
+                    unset($this->cinemaListings[$pos]); // con esto borro el cine de la lista
+                }
+            }
+            $this->SaveData(); // guardo los cambios
+        }
+
         public function GetAll()
         {
             $this->RetrieveData();

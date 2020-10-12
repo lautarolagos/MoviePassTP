@@ -40,10 +40,29 @@
                                                   <td><?php echo $cinema->getAdress(); ?></td>
                                                   <td><?php echo $cinema->getTicketPrice(); ?></td>
                                                   <td><?php echo $cinema->getId(); ?></td>
+                                                  <td>
+                                                  <form class="form" action="<?php echo FRONT_ROOT ?>/Cinema/Delete" method="POST">
+                                                  <button type="submit" name="cinemaId" value="<?php echo $cinema->getId();?>">Delete</button>
+                                                  </td>
                                              </tr>
                               <?php } ?>
                          </tbody>
                     </table>
                </div>
+               <?php if(isset($message)) // Esto como es el login, va a tirar mensajes dependiendo la accion, ya sea un cine nuevo o borrado
+                    {
+                         echo $message;
+                    }
+                    ?>
           </body>
      </html>
+
+<?php 
+/*
+Este boton es para editar, hacer despues, iria antes del "Delete"
+<td>
+<form class="form" action="<?php echo FRONT_ROOT ?>/Cinema/Edit" method="POST" class="">
+<button type="submit" class="btn-submit">Edit</button>
+</td>
+*/
+?>
