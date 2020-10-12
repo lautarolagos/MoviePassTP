@@ -9,14 +9,15 @@
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <title>Sign in - MoviePass</title>
        <style>
-            body{
-               background-image: url(Img/MoviePass.jpg);
+          body 
+          {
+               background-image: url(https://cdn.pixabay.com/photo/2017/11/24/10/43/admission-2974645_960_720.jpg);
                background-repeat: no-repeat;
                background-size: 1920px 1080px;
                -webkit-background-size: cover;
                background-size: cover;
                background-attachment: fixed;
-               }
+          }
        </style>
   </head>
   <body>
@@ -40,10 +41,13 @@
                <button class="btn-submit" type="submit">Register</button>
                </form>
           </div>
+     <label for="" class="form-title">
      <?php if(isset($message))
                     {
                          echo $message;
+                         
                     }
                     ?>
+                    </label>
   </body>
   </html>
