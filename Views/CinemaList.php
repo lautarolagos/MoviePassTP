@@ -1,7 +1,7 @@
 <?php
 
      require_once("Config/Autoload.php");
-     include('Header.php');
+     //require 'Header.php';
      include('Nav.php');
 
      use Models\Cinema as Cinema;
@@ -14,6 +14,7 @@
 <main class="">     
      <section id="listado" class="">
           <div class="">
+          <title>Cinema Listings - MoviePass</title>
                <h2 class="">Cinema List</h2>
                <table class="">
                     <thead>

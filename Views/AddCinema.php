@@ -1,10 +1,11 @@
 <?php
     namespace Views;
-    //include('Header.php');
-    include('Nav.php');
+    require_once('Header.php');
+    require_once('Nav.php');
          
 ?>
 <main class="">
+<title>Add Cinema - MoviePass</title>
      <section id="" class="">
           <div class="">
                <h2 class=""></h2>
