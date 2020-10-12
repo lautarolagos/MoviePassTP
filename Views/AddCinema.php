@@ -1,51 +1,53 @@
 <?php
     namespace Views;
-    require_once('Header.php');
-    require_once('Nav.php');
+    include('Header.php');
+    include('Nav.php');
          
 ?>
-<main class="">
-<title>Add Cinema - MoviePass</title>
-     <section id="" class="">
-          <div class="">
-               <h2 class=""></h2>
-               <form action="<?php echo FRONT_ROOT ?>/Cinema/AddCinema" method="POST" class="">
-                    <div class="">
-                         <div class="">
-                              <div class="">
-                                   <div class="">
-                                        <div class="">
-                                             <label for="">Name</label>
-                                             <input type="Text" name="name" value="" class="">
-                                        </div>
-                                        <div class="">
-                                             <label for="">Capacity</label>
-                                             <input type="number" name="capacity" value="" class="">
-                                        </div>
-                                   </div>
-                                   <div class="">
-                                        <div class="">
-                                             <label for="">Adress</label>
-                                             <input type="Text" name="adress" value="" class="">
-                                        </div>
-                                        <div class="">
-                                             <label for="">Ticket Price</label>
-                                             <input type="number" name="ticketprice" value="" class="">
-                                        </div>
-                                   </div>
-                              </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Add Cinema</title>
+</head>
+<body>
+     <section  class="">
+         <div class="cont-form">
+              <h2 class="form-title">Add Cinema</h2>
+                   <form  class="form" action="<?php echo FRONT_ROOT ?>/Cinema/AddCinema" method="POST" class="">
+                    <div>
+                         <div>
+                              <label class ="form-label" for="name">Name</label>
+                              <input class="form-input" type="Text" name="name" value="" class="">
+                         </div>
+                         <div>
+                              <label class ="form-label" for="capacity">Capacity</label>
+                              <input class="form-input" type="number" name="capacity" value="" class="">
                          </div>
                     </div>
-                    <button type="submit" name="button" class="">Add</button>
+                    <div>
+                         <div>
+                              <label class ="form-label" for="adress">Adress</label>
+                              <input class="form-input" type="Text" name="adress" value="" class="">
+                         </div>
+                         <div>
+                              <label class ="form-label" for="ticketPrice">Ticket Price</label>
+                              <input class="form-input" type="number" name="ticketPrice" value="" class="">
+                         </div>
+                    </div>
+                    <div>
+                         <button type="submit" class="btn-submit">Add</button>
+                    </div>
                </form>
           </div>
      </section>
-</main>
 
 <?php if(isset($message))
                     {
                          echo $message;
                     }
                     ?>
-
+</body>
+</html>
 <?php include('Footer.php') ?>
