@@ -8,16 +8,18 @@
         private $adress;
         private $ticketPrice;
         private $id;
+        private $eliminated;
         // Despues habría que agregar un arreglo de Salas, porque un cine tiene salas, despues lo pensamos bien
         // al parecer en inglés "Sala" de cine se dice "Auditorium"
 
-        function construct__($name = NULL, $capacity = NULL, $adress = NULL, $ticketPrice = NULL, $id = NULL)
+        function construct__($name = NULL, $capacity = NULL, $adress = NULL, $ticketPrice = NULL, $id = NULL, $eliminated = NULL)
         {
             $this->name = $name;
             $this->capacity = $capacity;
             $this->adress = $adress;
             $this->ticketPrice = $ticketPrice;
             $this->id = $id;
+            $this->eliminated = $eliminated;
         }
 
         public function getName()
@@ -68,6 +70,16 @@
         public function setId($id)
         {
             $this->id = $id;
+        }
+
+        public function setEliminated($eliminated)
+        {
+            $this->eliminated=$eliminated;
+        }
+
+        public function getEliminated()
+        {
+            return $this->eliminated;
         }
 
         public function __toString()

@@ -6,6 +6,6 @@
     {
         function Add(Cinema $cinema);
         function GetAll();
-        // Funciton Delete() falta hacer
+        function Delete($id);
     }
 ?>

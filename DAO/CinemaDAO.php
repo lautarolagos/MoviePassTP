@@ -20,18 +20,17 @@
             $this->SaveData();
         }
 
-        public function DeleteCinema($id)
+        public function Delete($id)
         {
             $this->RetrieveData();
             foreach($this->cinemaListings as $cinema)
             {
                 if($cinema->getId()==$id)
                 {
-                    $pos = array_search($cinema, $this->cinemaListings); // con array search obtengo la posicion del arreglo del cinea eliminar
-                    unset($this->cinemaListings[$pos]); // con esto borro el cine de la lista
+                    $cinema->setEliminated("1");
                 }
             }
-            $this->SaveData(); // guardo los cambios
+            $this->SaveData();
         }
 
         public function GetAll()
@@ -50,6 +49,7 @@
                 $valuesArray["adress"]=$cinema->getAdress();
                 $valuesArray["ticketPrice"]=$cinema->getTicketPrice();
                 $valuesArray["id"]=$cinema->getId();
+                $valuesArray["eliminated"]=$cinema->getEliminated();
 
                 array_push($arrayToEncode, $valuesArray);
             }
@@ -73,6 +73,7 @@
                     $cinema->setAdress($valuesArray["adress"]);
                     $cinema->setTicketPrice($valuesArray["ticketPrice"]);
                     $cinema->setId($valuesArray["id"]);
+                    $cinema->setEliminated($valuesArray["eliminated"]);
 
                     array_push($this->cinemaListings, $cinema);
                 }

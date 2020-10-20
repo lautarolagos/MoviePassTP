@@ -17,7 +17,7 @@
 
         public function ShowClientView()
         {
-            require_once(VIEWS_PATH."ShowBillboard.php");
+            require_once(VIEWS_PATH."CinemaList.php");
         }
         
         public function ShowAdminView()
@@ -45,6 +45,7 @@
                             $succesLogin=1;
                             $loggedUser = $value;
                             $_SESSION['loggedUser'] = $loggedUser;
+                            $_SESSION['isAdmin'] = $value->getIsAdmin();
                             $_SESSION['email'] = $email;
                             $this->ShowClientView();
                             break;
@@ -54,7 +55,9 @@
                             $succesLogin=1;
                             $loggedUser = $value;
                             $_SESSION['loggedUser'] = $loggedUser;
+                            $_SESSION['isAdmin'] = $value->getIsAdmin();
                             $_SESSION['email'] = $email;
+                            
                             $this->ShowAdminView();
                             break;
                         }

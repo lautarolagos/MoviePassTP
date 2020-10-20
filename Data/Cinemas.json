@@ -1,9 +1,10 @@
 [
     {
-        "name": "Aldrey",
-        "capacity": "700",
-        "adress": "Shopping Aldrey",
-        "ticketPrice": "500",
-        "id": 1
+        "name": "el ambasador",
+        "capacity": "100",
+        "adress": "hola",
+        "ticketPrice": "100",
+        "id": 0,
+        "eliminated": "0"
     }
 ]

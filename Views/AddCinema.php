@@ -19,21 +19,21 @@
                     <div>
                          <div>
                               <label class ="form-label" for="name">Name</label>
-                              <input class="form-input" type="Text" name="name" value="" class="">
+                              <input class="form-input" type="Text" name="name" value="" class="" required>
                          </div>
                          <div>
                               <label class ="form-label" for="capacity">Capacity</label>
-                              <input class="form-input" type="number" name="capacity" value="" class="">
+                              <input class="form-input" type="number" name="capacity" value="" class="" required>
                          </div>
                     </div>
                     <div>
                          <div>
                               <label class ="form-label" for="adress">Adress</label>
-                              <input class="form-input" type="Text" name="adress" value="" class="">
+                              <input class="form-input" type="Text" name="adress" value="" class="" required>
                          </div>
                          <div>
                               <label class ="form-label" for="ticketPrice">Ticket Price</label>
-                              <input class="form-input" type="number" name="ticketPrice" value="" class="">
+                              <input class="form-input" type="number" name="ticketPrice" value="" class="" required>
                          </div>
                     </div>
                     <div>
