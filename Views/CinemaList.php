@@ -44,21 +44,21 @@
                                                   <td><?php echo $cinema->getTicketPrice(); ?></td>
                                                   <td><?php echo $cinema->getId(); ?></td>
                                                   <td>
+                                                  <?php if($_SESSION['isAdmin']=="1"){
+                                                  ?>
                                                   <form class="form" action="<?php echo FRONT_ROOT ?>/Cinema/DeleteCinema" method="POST">
                                                   <button type="submit" name="cinemaId" value="<?php echo $cinema->getId();?>">Delete</button>
                                                   </td>
+                                                  <?php }?>
                                              </tr>     
                               <?php     }
                                    } ?>
                          </tbody>
                     </table>
                </div>
-     <?php
-          if(isset($message)) // Aca lo mismo que en el Login, hay que modificar el Label para que quede fachero
-          { ?>
-               <label for=""><?php echo $message; ?></label>
-          <?php
-          }
-     ?>
+               <?php if(isset($message)){
+                    ?>
+                    <p><?php echo $message; ?></p>
+               <?php }?>
           </body>
      </html>

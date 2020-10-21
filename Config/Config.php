@@ -6,7 +6,7 @@ define("ROOT", dirname(__DIR__) . "/");
 define("FRONT_ROOT","/TP2020MoviePass"); //lakes leiva
 define("VIEWS_PATH", "Views/");
 define("CSS_PATH", FRONT_ROOT. "/Views/CSS/"); 
-define("JS_PATH", FRONT_ROOT.VIEWS_PATH . "js/");
+define("JS_PATH", FRONT_ROOT. "/Views/JS/");
 define("IMG_PATH", VIEWS_PATH . "img/");
 
 ?>

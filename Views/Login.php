@@ -30,15 +30,11 @@
                <button class="btn-submit" type="submit">Register</button>
                </form>
           </div>
-          
-          <label for="" class="form-title">
-     <?php if(isset($message))
-                    {
-                         echo $message;
-                         
-                    }
-                    ?>
-                    </label>
 
+          <?php if(isset($message)){
+                    ?>
+                    <p><?php echo $message; ?></p>
+               <?php }?>
+          
   </body>
   </html>

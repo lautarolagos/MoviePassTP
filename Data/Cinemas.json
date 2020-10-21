@@ -5,6 +5,62 @@
         "adress": "hola",
         "ticketPrice": "100",
         "id": 0,
-        "eliminated": "0"
+        "eliminated": "1"
+    },
+    {
+        "name": "holanda",
+        "capacity": "500",
+        "adress": "holanda 123",
+        "ticketPrice": "200",
+        "id": 1,
+        "eliminated": "1"
+    },
+    {
+        "name": "sdfsd",
+        "capacity": "100",
+        "adress": "tttt",
+        "ticketPrice": "100",
+        "id": 1,
+        "eliminated": "1"
+    },
+    {
+        "name": "qqq",
+        "capacity": "100",
+        "adress": "wtwt",
+        "ticketPrice": "50",
+        "id": 2,
+        "eliminated": "1"
+    },
+    {
+        "name": "wertwe",
+        "capacity": "100",
+        "adress": "dfsdf",
+        "ticketPrice": "50",
+        "id": 3,
+        "eliminated": "1"
+    },
+    {
+        "name": "10",
+        "capacity": "10",
+        "adress": "10",
+        "ticketPrice": "10",
+        "id": 4,
+        "eliminated": "1"
+    },
+    {
+        "name": "idk",
+        "capacity": "100",
+        "adress": "holanda 123",
+        "ticketPrice": "5000",
+        "id": 0,
+        "eliminated": "1"
+    },
+    {
+        "name": "adsasd",
+        "capacity": "10",
+        "adress": "10",
+        "ticketPrice": "10",
+        "id": 0,
+        "eliminated": "1"
     }
 ]
