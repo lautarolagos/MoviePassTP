@@ -15,12 +15,12 @@
             $this->clientDAO = new ClientDAO();
         }
 
-        public function ShowClientView()
+        public function ShowCinemaView()
         {
-            require_once(VIEWS_PATH."ShowBillboard.php");
+            require_once(VIEWS_PATH."CinemaList.php");
         }
         
-        public function ShowAdminView()
+        public function ShowAddView()
         {
             require_once(VIEWS_PATH."AddCinema.php");
         }
@@ -43,18 +43,28 @@
                         if($value->getIsAdmin()==0)
                         {
                             $succesLogin=1;
-                            $this->ShowClientView();
+                            $loggedUser = $value;
+                            $_SESSION['loggedUser'] = $loggedUser;
+                            $_SESSION['isAdmin'] = $value->getIsAdmin();
+                            $_SESSION['email'] = $email;
+                            $this->ShowCinemaView();
                             break;
                         }
                         else if($value->getIsAdmin()==1)
                         {
                             $succesLogin=1;
-                            $this->ShowAdminView();
+                            $loggedUser = $value;
+                            $_SESSION['loggedUser'] = $loggedUser;
+                            $_SESSION['isAdmin'] = $value->getIsAdmin();
+                            $_SESSION['email'] = $email;
+                            
+                            $this->ShowCinemaView();
                             break;
                         }
                     }
                 }
             }
+
             if($succesLogin==0)
             {
                 $message="Incorrect email/password";

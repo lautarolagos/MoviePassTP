@@ -19,10 +19,10 @@
                          <h2 class="form-title">Welcome</h2>
                     </div>
                     <div >
-                         <input class="form-input"  type="text" name="email"  placeholder="Email">
+                         <input class="form-input"  type="text" name="email"  placeholder="Email" required>
                     </div>
                     <div >
-                         <input class="form-input" type="password" name="password"  placeholder="Password">
+                         <input class="form-input" type="password" name="password"  placeholder="Password" required>
                     </div>
                     <button class="btn-submit" type="submit">Log In</button>
                </form>
@@ -30,13 +30,11 @@
                <button class="btn-submit" type="submit">Register</button>
                </form>
           </div>
-     <label for="" class="form-title">
-     <?php if(isset($message))
-                    {
-                         echo $message;
-                         
-                    }
+
+          <?php if(isset($message)){
                     ?>
-                    </label>
+                    <p><?php echo $message; ?></p>
+               <?php }?>
+          
   </body>
   </html>

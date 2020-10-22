@@ -2,8 +2,8 @@
     namespace Views;
     include('Header.php');
     include('Nav.php');
-         
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,21 +19,17 @@
                     <div>
                          <div>
                               <label class ="form-label" for="name">Name</label>
-                              <input class="form-input" type="Text" name="name" value="" class="">
+                              <input class="form-input" type="Text" name="name" value="" class="" required>
                          </div>
                          <div>
-                              <label class ="form-label" for="capacity">Capacity</label>
-                              <input class="form-input" type="number" name="capacity" value="" class="">
+                              <label class ="form-label" for="capacity">Total Capacity</label>
+                              <input class="form-input" type="number" name="capacity" value="" class="" required>
                          </div>
                     </div>
                     <div>
                          <div>
                               <label class ="form-label" for="adress">Adress</label>
-                              <input class="form-input" type="Text" name="adress" value="" class="">
-                         </div>
-                         <div>
-                              <label class ="form-label" for="ticketPrice">Ticket Price</label>
-                              <input class="form-input" type="number" name="ticketPrice" value="" class="">
+                              <input class="form-input" type="Text" name="adress" value="" class="" required>
                          </div>
                     </div>
                     <div>
@@ -42,12 +38,14 @@
                </form>
           </div>
      </section>
-
-<?php if(isset($message))
-                    {
-                         echo $message;
-                    }
-                    ?>
+     <?php
+          if(isset($message)) // Modifica el Label o lo que sea a tu gusto, vos sabes como hacerlo
+          { ?>
+               <label for=""><?php echo $message; ?></label>
+          <?php
+          }
+     ?>     
+     
 </body>
 </html>
 <?php include('Footer.php') ?>

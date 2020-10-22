@@ -73,10 +73,5 @@
         {
             $this->idTicket = $idTicket;
         }
-
-        public function __toString()
-        {
-            return  " | Id Buy: $this->idBuy "."| Movie Selected: $this->movieSelected"."| Ticket Quantity: $this->ticketQuantity"."| Total purchase: $this->totalPurchase"."| ID Ticket: $this->idTicket";
-        }
     }
 ?>

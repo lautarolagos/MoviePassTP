@@ -1,0 +1,34 @@
+[
+    {
+        "amountOfSeats": "1",
+        "idCinemaFK": "2",
+        "idAuditorium": 0,
+        "ticketPrice": "1",
+        "nameAuditorium": "primeraSala",
+        "active": "1"
+    },
+    {
+        "amountOfSeats": "1",
+        "idCinemaFK": "3",
+        "idAuditorium": 0,
+        "ticketPrice": "1",
+        "nameAuditorium": "primeraSala",
+        "active": "1"
+    },
+    {
+        "amountOfSeats": "2",
+        "idCinemaFK": "2",
+        "idAuditorium": 1,
+        "ticketPrice": "2",
+        "nameAuditorium": "segundaSala",
+        "active": "1"
+    },
+    {
+        "amountOfSeats": "50",
+        "idCinemaFK": "3",
+        "idAuditorium": 1,
+        "ticketPrice": "50",
+        "nameAuditorium": "segundaSala",
+        "active": "1"
+    }
+]

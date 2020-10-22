@@ -10,13 +10,8 @@
         "isAdmin": "0"
     },
     {
-        "email": "dsfsdf@sdafsd.com",
-        "password": "5555555",
-        "isAdmin": "0"
-    },
-    {
-        "email": "admin@utn.com",
-        "password": "wvByt99wkXW6eBA",
+        "email": "prueba@prueba.com",
+        "password": "123",
         "isAdmin": "0"
     }
 ]

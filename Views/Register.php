@@ -18,13 +18,11 @@
                          <div>
                               <h2 class="form-title">Register</h2>
                          </div>
-                         <div class="">
-                              <label class ="form-label" for="email">Enter your email</label>
-                              <input class="form-input"type="email" name="email" class="" placeholder="Email" required>
+                         <div >
+                              <input class="form-input"type="email" name="email" class="" placeholder="Enter your email" required>
                          </div>
-                         <div class="">
-                              <label class ="form-label" for="password">Enter a password</label>
-                              <input class="form-input"type="password" name="password" class="" placeholder="Password" required>
+                         <div >
+                              <input class="form-input"type="password" name="password" class="" placeholder="Enter a password" required>
                          </div>
                          <button class="btn-submit" type="submit">Create Account</button>
                     </form>

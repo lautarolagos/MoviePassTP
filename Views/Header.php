@@ -7,6 +7,7 @@
     <link href="<?php echo CSS_PATH;?>Style.css" rel="stylesheet" type="text/css" media="all">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 </body>

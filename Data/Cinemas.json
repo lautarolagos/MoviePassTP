@@ -1,0 +1,30 @@
+[
+    {
+        "name": "holita",
+        "capacity": "100",
+        "adress": "123",
+        "id": 0,
+        "eliminated": "1"
+    },
+    {
+        "name": "olii",
+        "capacity": "500",
+        "adress": "165146",
+        "id": 1,
+        "eliminated": "1"
+    },
+    {
+        "name": "dfsdf",
+        "capacity": "100",
+        "adress": "fsdfsdf",
+        "id": 2,
+        "eliminated": "0"
+    },
+    {
+        "name": "cine de luis",
+        "capacity": "1000",
+        "adress": "3500",
+        "id": 3,
+        "eliminated": "0"
+    }
+]
