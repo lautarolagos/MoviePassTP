@@ -6,6 +6,7 @@
     {
         private $number;
         private $QRcode;
+        // Creo que habria que agregar una variable que sea Fecha de la funcion
 
         function construct__($number = NULL, $QRcode = NULL)
         {
@@ -31,11 +32,6 @@
         public function setQRCode($QRcode)
         {
             $this->QRcode = $QRcode;
-        }
-
-        public function __toString()
-        {
-            return  " | Number: $this->number "."| QRCode: $this->QRcode";
         }
     }
 ?>

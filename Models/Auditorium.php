@@ -1,41 +1,74 @@
 <?php
     namespace Models;
-
+    
     class Auditorium
     {
-        private $maximumSeats;
-        private $seatsAviable;
-        
+        private $amountOfSeats;
+        private $idCinemaFK; // el ID del cine al que pertenece la sala
+        private $idAuditorium;
+        private $ticketPrice;
+        private $nameAuditorium;
+        private $active;
     
-        function construct__($maximumSeats = NULL, $seatsAviable = NULL)
+        function construct__($amountOfSeats, $idCinemaFK, $idAuditorium, $ticketPrice, $nameAuditorium, $active)
         {
-            $this->maximumSeats = $maximumSeats;
-            $this->password = $password; 
+            $this->amountOfSeats=$amountOfSeats;   
+            $this->idCinemaFK=$idCinemaFK;
+            $this->idAuditorium=$idAuditorium;
+            $this->ticketPrice=$ticketPrice;
+            $this->nameAuditorium=$nameAuditorium;
+            $this->active=$active;
         }
 
-        public function getMaximumSeats()
+        public function getAmountOfSeats()
         {
-            return $this->maximumSeats;
+            return $this->amountOfSeats;
+        }
+        public function getIdCinemaFK()
+        {
+            return $this->idCinemaFK;
+        }
+        public function getIdAuditorium()
+        {
+            return $this->idAuditorium;
+        }
+        public function getTicketPrice()
+        {
+            return $this->ticketPrice;
+        }
+        public function getNameAuditorium()
+        {
+            return $this->nameAuditorium;
+        }
+        public function getActive()
+        {
+            return $this->active;
         }
 
-        public function setMaximumSeats($maximumSeats)
-        {
-            $this->maximumSeats = $maximumSeats;
-        }
 
-        public function getSeatsAviable()
+        public function setAmountOfSeats($amountOfSeats)
         {
-            return $this->seatsAviable;
+            $this->amountOfSeats = $amountOfSeats;
         }
-
-        public function setSeatsAviable($seatsAviable)
+        public function setIdCinemaFK($idCinemaFK)
         {
-            $this->seatsAviable = $seatsAviable;
+            $this->idCinemaFK=$idCinemaFK;
         }
-
-        public function __toString()
+        public function setIdAuditorium($idAuditorium)
         {
-            return  " | Maximum Seats: $this->maximumSeats "."| Seats Aviable: $this->seatsAviable";
+            $this->idAuditorium=$idAuditorium;
+        }
+        public function setTicketPrice($ticketPrice)
+        {
+            $this->ticketPrice=$ticketPrice;
+        }
+        public function setNameAuditorium($nameAuditorium)
+        {
+            $this->nameAuditorium=$nameAuditorium;
+        }
+        public function setActive($active)
+        {
+            $this->active=$active;
         }
     }
 ?>

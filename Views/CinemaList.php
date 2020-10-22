@@ -9,6 +9,7 @@
 
      $cinemaRepository = new CinemaDAO();
      $cinemasList = $cinemaRepository->GetAll();
+     
 ?>
      <!DOCTYPE html>
      <html lang="en">
@@ -23,11 +24,12 @@
                     <h2 class="table-title">Cinema List</h2>
                     <table>
                          <thead>
+                              <?php if($_SESSION['isAdmin']=="1"){?>
+                              <th>ID</th>
+                              <?php }?>
                               <th>Name</th>
                               <th>Capacity</th>
                               <th>Adress</th>
-                              <th>Ticket Price</th>
-                              <th>ID</th>
                          </thead>
                          <tbody>
                          <?php
@@ -38,18 +40,28 @@
 
                                         ?>
                                              <tr>
+                                                  <?php if($_SESSION['isAdmin']=="1"){?>
+                                                  <td><?php echo $cinema->getId(); ?></td>
+                                                  <?php }?>
                                                   <td><?php echo $cinema->getName(); ?></td>
                                                   <td><?php echo $cinema->getCapacity(); ?></td>
                                                   <td><?php echo $cinema->getAdress(); ?></td>
-                                                  <td><?php echo $cinema->getTicketPrice(); ?></td>
-                                                  <td><?php echo $cinema->getId(); ?></td>
-                                                  <td>
+                                                  
+                                                  <!-- Boton de Delete -->
                                                   <?php if($_SESSION['isAdmin']=="1"){
                                                   ?>
+                                                  <td>
                                                   <form class="form" action="<?php echo FRONT_ROOT ?>/Cinema/DeleteCinema" method="POST">
                                                   <button type="submit" name="cinemaId" value="<?php echo $cinema->getId();?>">Delete</button>
-                                                  </td>
                                                   <?php }?>
+                                                  </form>
+                                                  </td>
+                                                  <!-- Boton de Ver Salas -->
+                                                  <td>
+                                                  <form class="form" action="<?php echo FRONT_ROOT ?>/Auditorium/ShowAuditoriums" method="POST">
+                                                  <button type="submit" name="cinemaId" value="<?php echo $cinema->getId();?>">See Auditoriums</button>
+                                                  </form>
+                                                  </td>
                                              </tr>     
                               <?php     }
                                    } ?>

@@ -15,12 +15,12 @@
             $this->clientDAO = new ClientDAO();
         }
 
-        public function ShowClientView()
+        public function ShowCinemaView()
         {
             require_once(VIEWS_PATH."CinemaList.php");
         }
         
-        public function ShowAdminView()
+        public function ShowAddView()
         {
             require_once(VIEWS_PATH."AddCinema.php");
         }
@@ -47,7 +47,7 @@
                             $_SESSION['loggedUser'] = $loggedUser;
                             $_SESSION['isAdmin'] = $value->getIsAdmin();
                             $_SESSION['email'] = $email;
-                            $this->ShowClientView();
+                            $this->ShowCinemaView();
                             break;
                         }
                         else if($value->getIsAdmin()==1)
@@ -58,7 +58,7 @@
                             $_SESSION['isAdmin'] = $value->getIsAdmin();
                             $_SESSION['email'] = $email;
                             
-                            $this->ShowAdminView();
+                            $this->ShowCinemaView();
                             break;
                         }
                     }

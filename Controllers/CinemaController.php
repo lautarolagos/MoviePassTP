@@ -20,13 +20,13 @@
             $cinemasList = $this->cinemaDAO->GetAll();
             require_once(VIEWS_PATH."CinemaList.php");
         }
-
+        
         public function ShowAddView($message="")
         {
             require_once(VIEWS_PATH."AddCinema.php");
         }
 
-        public function AddCinema($name, $capacity, $adress, $ticketPrice)
+        public function AddCinema($name, $capacity, $adress)
         {
             $adressExist=0; // Creo una variable para verificar si la direccion enviada ya está registrada, 0 significa NO, 1 Significa SI
             $listCounter=-1; // Esto sirve para ir contando cuantos cines ya hay agregados y poder saber que id asignarle al nuevo cine
@@ -54,7 +54,6 @@
                 $newCinema->setName($name);
                 $newCinema->setCapacity($capacity);
                 $newCinema->setAdress($adress);
-                $newCinema->setTicketPrice($ticketPrice);
                 $newCinema->setId($listCounter+1);
                 $newCinema->setEliminated("0");
                 $this->cinemaDAO->Add($newCinema);

@@ -22,7 +22,7 @@
                               <input class="form-input" type="Text" name="name" value="" class="" required>
                          </div>
                          <div>
-                              <label class ="form-label" for="capacity">Capacity</label>
+                              <label class ="form-label" for="capacity">Total Capacity</label>
                               <input class="form-input" type="number" name="capacity" value="" class="" required>
                          </div>
                     </div>
@@ -30,10 +30,6 @@
                          <div>
                               <label class ="form-label" for="adress">Adress</label>
                               <input class="form-input" type="Text" name="adress" value="" class="" required>
-                         </div>
-                         <div>
-                              <label class ="form-label" for="ticketPrice">Ticket Price</label>
-                              <input class="form-input" type="number" name="ticketPrice" value="" class="" required>
                          </div>
                     </div>
                     <div>

@@ -47,7 +47,6 @@
                 $valuesArray["name"]=$cinema->getName();
                 $valuesArray["capacity"]=$cinema->getCapacity();
                 $valuesArray["adress"]=$cinema->getAdress();
-                $valuesArray["ticketPrice"]=$cinema->getTicketPrice();
                 $valuesArray["id"]=$cinema->getId();
                 $valuesArray["eliminated"]=$cinema->getEliminated();
 
@@ -71,7 +70,6 @@
                     $cinema->setName($valuesArray["name"]);
                     $cinema->setCapacity($valuesArray["capacity"]);
                     $cinema->setAdress($valuesArray["adress"]);
-                    $cinema->setTicketPrice($valuesArray["ticketPrice"]);
                     $cinema->setId($valuesArray["id"]);
                     $cinema->setEliminated($valuesArray["eliminated"]);
 
