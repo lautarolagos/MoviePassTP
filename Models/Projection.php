@@ -15,7 +15,7 @@
         private $id;
         
 
-        function construct__($idBuy = NULL, $movieSelected = NULL, $ticketQuantity = NULL, $totalPurchase = NULL, $idTicket = NULL)
+        function __construct($idBuy = NULL, $movieSelected = NULL, $ticketQuantity = NULL, $totalPurchase = NULL, $idTicket = NULL)
         {
             $this->idBuy = $idBuy;
             $this->movieSelected = $movieSelected;

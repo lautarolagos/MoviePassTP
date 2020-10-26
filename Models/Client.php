@@ -7,7 +7,7 @@
         private $password;
         private $isAdmin;
     
-        function construct__($email = NULL , $password = NULL, $isAdmin = NULL)
+        function __construct($email = NULL , $password = NULL, $isAdmin = NULL)
         {
             $this->email = $email;
             $this->password = $password;

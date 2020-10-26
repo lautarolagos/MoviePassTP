@@ -8,14 +8,16 @@
         private $adress;
         private $id;
         private $eliminated;
+        private $auditoriums;
 
-        function construct__($name = NULL, $capacity = NULL, $adress = NULL, $id = NULL, $eliminated = NULL)
+        function __construct($name = NULL, $capacity = NULL, $adress = NULL, $id = NULL, $eliminated = NULL, $auditoriums = NULL)
         {
             $this->name = $name;
             $this->capacity = $capacity;
             $this->adress = $adress;
             $this->id = $id;
             $this->eliminated = $eliminated;
+            $this->auditoriums = $auditoriums;
         }
 
         public function getName()
@@ -66,6 +68,16 @@
         public function getEliminated()
         {
             return $this->eliminated;
+        }
+
+        public function setAuditoriums($auditoriums)
+        {
+            $this->auditoriums=$auditoriums;
+        }
+
+        public function getAuditoriums()
+        {
+            return $this->auditoriums;
         }
     }
 ?>

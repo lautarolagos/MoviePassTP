@@ -14,7 +14,7 @@
                  <h1>M<span>OVIE</span> P<span>ASS</span></h1>
           </div>
           <div class="cont-form">
-                    <form class="form" action="<?php echo FRONT_ROOT ?>/Register/AddClient" method="POST">
+                    <form class="form" action="<?php echo FRONT_ROOT ?>Register/AddClient" method="POST">
                          <div>
                               <h2 class="form-title">Register</h2>
                          </div>

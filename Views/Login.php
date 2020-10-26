@@ -14,7 +14,7 @@
             <h1>M<span>OVIE</span> P<span>ASS</span></h1>
        </div>
           <div class="cont-form">
-               <form class="form" action="<?php echo FRONT_ROOT ?>/Login/Check" method="POST">
+               <form class="form" action="<?php echo FRONT_ROOT ?>Login/Check" method="POST">
                     <div>
                          <h2 class="form-title">Welcome</h2>
                     </div>
@@ -26,7 +26,7 @@
                     </div>
                     <button class="btn-submit" type="submit">Log In</button>
                </form>
-               <form class="form" action="<?php echo FRONT_ROOT ?>/Register/ShowRegisterView" method="POST">
+               <form class="form" action="<?php echo FRONT_ROOT ?>Register/ShowRegisterView" method="POST">
                <button class="btn-submit" type="submit">Register</button>
                </form>
           </div>

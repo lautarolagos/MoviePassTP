@@ -8,7 +8,7 @@
         private $QRcode;
         // Creo que habria que agregar una variable que sea Fecha de la funcion
 
-        function construct__($number = NULL, $QRcode = NULL)
+        function __construct($number = NULL, $QRcode = NULL)
         {
             $this->number = $number;
             $this->QRcode = $QRcode; 
