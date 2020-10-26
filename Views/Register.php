@@ -14,15 +14,21 @@
                  <h1>M<span>OVIE</span> P<span>ASS</span></h1>
           </div>
           <div class="cont-form">
-                    <form class="form" action="<?php echo FRONT_ROOT ?>Register/AddClient" method="POST">
+                    <form class="form" action="<?php echo FRONT_ROOT ?>Register/Add" method="POST">
                          <div>
                               <h2 class="form-title">Register</h2>
                          </div>
-                         <div >
-                              <input class="form-input"type="email" name="email" class="" placeholder="Enter your email" required>
+                         <div>
+                              <input class="form-input"type="text" name="firstName" class="" placeholder="First Name" required>
+                         </div>
+                         <div>
+                              <input class="form-input"type="text" name="lastName" class="" placeholder="Last Name" required>
+                         </div>
+                         <div>
+                              <input class="form-input"type="email" name="email" class="" placeholder="Email" required>
                          </div>
                          <div >
-                              <input class="form-input"type="password" name="password" class="" placeholder="Enter a password" required>
+                              <input class="form-input"type="password" name="password" class="" placeholder="Password" required>
                          </div>
                          <button class="btn-submit" type="submit">Create Account</button>
                     </form>

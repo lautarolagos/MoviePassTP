@@ -1,5 +1,5 @@
 <?php
-    namespace DAO;
+    namespace Interfaces;
     use Models\Cinema as Cinema;
 
     interface ICinemaDAO
