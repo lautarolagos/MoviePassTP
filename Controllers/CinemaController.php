@@ -26,6 +26,11 @@
             require_once(VIEWS_PATH."AddCinema.php");
         }
 
+        public function ShowCinemaEdit($cinemaId)
+        {
+            require_once(VIEWS_PATH."EditCinema.php");
+        }
+
         public function AddCinema($name, $capacity, $adress)
         {
             $adressExist=0; // Creo una variable para verificar si la direccion enviada ya está registrada, 0 significa NO, 1 Significa SI

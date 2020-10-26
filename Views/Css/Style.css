@@ -126,10 +126,13 @@ h1 span{
     background-color: #212529;
 }
 
+.item-l{
+    margin-right: 1100px;
+}
 /*-------------------- DISEÑO DE CINEMA LIST-------------------------*/
 
 .table-list{
-    width:1500px;
+    width:1300px;
     margin: 150px auto;
     border-radius: 5px;
 }
@@ -140,7 +143,56 @@ h1 span{
     font-size: 60px;
     margin-bottom: 20px;
     color: #FFF;
+    font-family: 'Roboto Condensed', sans-serif;
 }
+
+.table-list .button-edit{
+    border-radius: 5px;
+    padding: 5px 20px;
+    color: #FFF;
+    background: green;
+    cursor: pointer;
+    border: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin-right:  -60px;
+    margin-left: -10px;
+}
+
+.table-list .button-edit:hover{
+ background: rgb(11, 39, 11);
+}
+
+.table-list .button-delete{
+    border-radius: 5px;
+    padding: 5px 20px;
+    color: #FFF;
+    background: red;
+    cursor: pointer;
+    border: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin-left: 20px;
+    margin-right: -80px;
+}
+
+.table-list .button-delete:hover{
+    background: rgb(48, 8, 8);
+}    
+
+.table-list .button-auditoriums{
+    border-radius: 5px;
+    padding: 5px 20px;
+    color: #FFF;
+    background: blue;
+    cursor: pointer;
+    border: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin-left: -60px;
+    margin-right: -60px;
+}
+
+.table-list .button-auditoriums:hover{
+    background: rgb(14, 14, 56);
+}    
 
 table{
     background: rgba(0,0,0,.6);
@@ -169,69 +221,19 @@ tr:hover td{
     background-color: #491515;
 }
 
-/*-------------------- CINEMA LIST DE PRUEBA-------------------------*/
+/*--------------------AUDITORIUM LIST-------------------------*/
 
-/*Iconos*/
+.button-add{
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px;
+    background: #e03131;
+    color: #FFF;
+    margin: 4px;
+    cursor: pointer;
+    border: none;
+}
 
-@font-face {
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
-    src: local('Material Icons'),
-      local('MaterialIcons-Regular'),
-      url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
-      url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
-      url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
-  }
-
-  .material-icons {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;  /* Preferred icon size */
-    display: inline-block;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-    direction: ltr;
-  
-    /* Support for all WebKit browsers. */
-    -webkit-font-smoothing: antialiased;
-    /* Support for Safari and Chrome. */
-    text-rendering: optimizeLegibility;
-  
-    /* Support for Firefox. */
-    -moz-osx-font-smoothing: grayscale;
-  
-    /* Support for IE. */
-    font-feature-settings: 'liga';
-  }
-
-  :root{
-      --primary-color: #fff;
-      --secondary-color: rgb(61, 68, 73);
-      --highlight-color: #3282b8;
-
-      --dt-padding: 12px;
-      --dt-padding-s: 6px;
-      --dt-padding-xs: 2px;
-
-      --dt-border-radius: 3px;
-  }
-
-  .material-icons{
-      font-size: 16px;
-  }
-
-  .datatable-container{
-      font-family: 'Roboto', sans-serif;
-      background-color: var(--dt-background-color-container);
-      border-radius: var(--dt-border-radius);
-      color: var(--dt-text-color);
-      width: 600px;
-      margin: 0 auto;
-      font-size: 12px;
-  }
+.button-add:hover{
+    background: #fa5252;
+}

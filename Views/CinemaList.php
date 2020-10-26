@@ -30,6 +30,9 @@
                               <th>Name</th>
                               <th>Capacity</th>
                               <th>Adress</th>
+                              <th></th>
+                              <th>Options</th>
+                              <th></th>
                          </thead>
                          <tbody>
                          <?php
@@ -47,19 +50,29 @@
                                                   <td><?php echo $cinema->getCapacity(); ?></td>
                                                   <td><?php echo $cinema->getAdress(); ?></td>
                                                   
+                                                  <!-- Boton de Edit -->
+                                                  <?php if($_SESSION['isAdmin']=="1"){
+                                                   ?>
+                                                   <td>
+                                                   <form action="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaEdit" method="POST">
+                                                   <button class="button-edit" type="submit" name="cinemaId" value="<?php echo $cinema->getId(); ?>">EDIT</button>
+                                                   <?php }?>
+                                                   </form>
+                                                   </td>    
+
                                                   <!-- Boton de Delete -->
                                                   <?php if($_SESSION['isAdmin']=="1"){
                                                   ?>
                                                   <td>
-                                                  <form class="form" action="<?php echo FRONT_ROOT ?>Cinema/DeleteCinema" method="POST">
-                                                  <button type="submit" name="cinemaId" value="<?php echo $cinema->getId();?>">Delete</button>
+                                                  <form action="<?php echo FRONT_ROOT ?>Cinema/DeleteCinema" method="POST">
+                                                  <button class="button-delete" type="submit" name="cinemaId" value="<?php echo $cinema->getId();?>">DELETE</button>
                                                   <?php }?>
                                                   </form>
                                                   </td>
                                                   <!-- Boton de Ver Salas -->
                                                   <td>
-                                                  <!-- <form class="form" action="#" method="">
-                                                  <button type="submit" name="cinemaId" value="<?php echo $cinema->getId();?>">See Auditoriums</button> -->
+                                                  <!--<form action="<?php echo FRONT_ROOT ?>Auditorium/ShowAuditoriums" method="POST">-->
+                                                  <button class="button-auditoriums" type="submit" name="cinemaId" value="<?php echo $cinema->getId();?>">SEE AUDITORIUMS</button>
                                                   </form>
                                                   </td>
                                              </tr>     

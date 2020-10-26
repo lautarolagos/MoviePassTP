@@ -26,7 +26,7 @@
                     <?php if($_SESSION['isAdmin']=="1"){
                     ?>
                     <form class="form" action="<?php echo FRONT_ROOT ?>/Auditorium/ShowAddView" method="post">
-                    <center><button type="submit" name="cinemaId" value="<?php echo $cinemaID;?>">Add Auditorium</button></center>
+                    <center><button  class="button-add" type="submit" name="cinemaId" value="<?php echo $cinemaID;?>">Add Auditorium</button></center>
                     </form>
                     <?php }?>
                     <table>
