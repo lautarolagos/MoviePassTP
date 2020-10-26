@@ -20,16 +20,16 @@
             {
             ?>
             <li>
-                <a   href="<?php echo FRONT_ROOT ?>/Cinema/ShowAddView">Add Cinema</a>
+                <a   href="<?php echo FRONT_ROOT ?>Cinema/ShowAddView">Add Cinema</a>
             </li>
             <?php 
             }
             ?>
             <li>
-                <a   href="<?php echo FRONT_ROOT ?>/Cinema/ShowCinemaList">Cinema Listings</a>
+                <a   href="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaList">Cinema Listings</a>
             </li>
             <li>
-                <a  href="<?php echo FRONT_ROOT ?>/Session/Logout">Logout</a>
+                <a  href="<?php echo FRONT_ROOT ?>Session/Logout">Logout</a>
             </li>
         </ul>
     </div>

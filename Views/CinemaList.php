@@ -51,15 +51,15 @@
                                                   <?php if($_SESSION['isAdmin']=="1"){
                                                   ?>
                                                   <td>
-                                                  <form class="form" action="<?php echo FRONT_ROOT ?>/Cinema/DeleteCinema" method="POST">
+                                                  <form class="form" action="<?php echo FRONT_ROOT ?>Cinema/DeleteCinema" method="POST">
                                                   <button type="submit" name="cinemaId" value="<?php echo $cinema->getId();?>">Delete</button>
                                                   <?php }?>
                                                   </form>
                                                   </td>
                                                   <!-- Boton de Ver Salas -->
                                                   <td>
-                                                  <form class="form" action="<?php echo FRONT_ROOT ?>/Auditorium/ShowAuditoriums" method="POST">
-                                                  <button type="submit" name="cinemaId" value="<?php echo $cinema->getId();?>">See Auditoriums</button>
+                                                  <!-- <form class="form" action="#" method="">
+                                                  <button type="submit" name="cinemaId" value="<?php echo $cinema->getId();?>">See Auditoriums</button> -->
                                                   </form>
                                                   </td>
                                              </tr>     

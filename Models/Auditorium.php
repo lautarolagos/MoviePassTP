@@ -4,16 +4,14 @@
     class Auditorium
     {
         private $amountOfSeats;
-        private $idCinemaFK; // el ID del cine al que pertenece la sala
         private $idAuditorium;
         private $ticketPrice;
         private $nameAuditorium;
         private $active;
     
-        function construct__($amountOfSeats, $idCinemaFK, $idAuditorium, $ticketPrice, $nameAuditorium, $active)
+        function construct__($amountOfSeats, $idAuditorium, $ticketPrice, $nameAuditorium, $active)
         {
             $this->amountOfSeats=$amountOfSeats;   
-            $this->idCinemaFK=$idCinemaFK;
             $this->idAuditorium=$idAuditorium;
             $this->ticketPrice=$ticketPrice;
             $this->nameAuditorium=$nameAuditorium;
@@ -23,10 +21,6 @@
         public function getAmountOfSeats()
         {
             return $this->amountOfSeats;
-        }
-        public function getIdCinemaFK()
-        {
-            return $this->idCinemaFK;
         }
         public function getIdAuditorium()
         {
@@ -49,10 +43,6 @@
         public function setAmountOfSeats($amountOfSeats)
         {
             $this->amountOfSeats = $amountOfSeats;
-        }
-        public function setIdCinemaFK($idCinemaFK)
-        {
-            $this->idCinemaFK=$idCinemaFK;
         }
         public function setIdAuditorium($idAuditorium)
         {
