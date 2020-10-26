@@ -29,6 +29,11 @@
                <form class="form" action="<?php echo FRONT_ROOT ?>Register/ShowRegisterView" method="POST">
                <button class="btn-submit" type="submit">Register</button>
                </form>
+
+               <form class="form" action="" method="POST">
+                    <button  class="btn-submit-fc" type="submit" >Continue with Facebook</button>
+
+               </form>
           </div>
 
           <?php if(isset($message)){
