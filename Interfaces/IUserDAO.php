@@ -10,5 +10,6 @@
         function Add(User $user);
         function GetAll();
         function Read($email, $password);
+        function Search($email);
     }
 ?>

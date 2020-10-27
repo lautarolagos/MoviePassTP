@@ -1,15 +1,13 @@
 <?php
-
      require_once("Config/Autoload.php");
      include('Header.php');
      include('Nav.php');
-
-     use Models\Cinema as Cinema;
-     use DAO\CinemaDAO as CinemaDAO;
-
-     $cinemaRepository = new CinemaDAO();
-     $cinemasList = $cinemaRepository->GetAll();
      
+     //use DAO\CinemaDAOJSON as CinemaDAOJSON;
+     use DAO\CinemaDAOMySQL as CinemaDAOMySQL;
+     //$cinemaDAO = new CinemaDAOJSON();
+     $cinemaDAO = new CinemaDAOMySQL();
+     $cinemasList = $cinemaDAO->GetAll();
 ?>
      <!DOCTYPE html>
      <html lang="en">
@@ -38,7 +36,7 @@
                          <?php
                               foreach($cinemasList as $cinema)
                                    {
-                                        if($cinema->getEliminated()==0)
+                                        if($cinema->getActive()=="1")
                                         {
 
                                         ?>

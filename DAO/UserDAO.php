@@ -64,12 +64,33 @@
             }
         }
 
-        public function Read($email, $password)
+        public function Read($email, $password) // Busca un usuario en la BDD donde coincida mail y contraseña, es para el Login Check
         {
             $sql = "SELECT * FROM ".$this->tableName . " WHERE (email = :email) AND password = :password";
             
             $parameters['email'] = $email;
             $parameters['password'] = $password;
+
+            try
+            {
+                $this->connection = Connection::getInstance();
+                $resultSet = $this->connection->Execute($sql, $parameters, QueryType::Query);
+            } catch(Exception $ex)
+            {
+                throw $ex;
+            }
+
+            if(!empty($resultSet))
+                return $this->mapear($resultSet);
+            else
+                return false;
+        }
+
+        public function Search($email) // Busca un usuario en la BDD, solo necesita el email, se utiliza en el Register
+        {
+            $sql = "SELECT * FROM ".$this->tableName . " WHERE (email = :email)";
+
+            $parameters['email'] = $email;
 
             try
             {

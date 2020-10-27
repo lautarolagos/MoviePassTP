@@ -15,7 +15,7 @@
      <section  class="">
          <div class="cont-form">
               <h2 class="form-title">Add Cinema</h2>
-                   <form  class="form" action="<?php echo FRONT_ROOT ?>/Cinema/AddCinema" method="POST" class="">
+                   <form  class="form" action="<?php echo FRONT_ROOT ?>Cinema/AddCinema" method="POST" class="">
                     <div>
                          <div>
                               <label class ="form-label" for="name">Name</label>

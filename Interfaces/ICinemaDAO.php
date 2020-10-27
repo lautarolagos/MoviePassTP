@@ -6,6 +6,8 @@
     {
         function Add(Cinema $cinema);
         function GetAll();
+        function ReadAll();
+        function Search($adress);
         function Delete($id);
     }
 ?>

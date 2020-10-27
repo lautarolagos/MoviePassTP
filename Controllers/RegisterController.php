@@ -14,7 +14,7 @@
             $this->userDAO = new UserDAO();
         }
 
-        public function ShowAddView($message = "")
+        public function ShowLoginView($message = "")
         {
             require_once(VIEWS_PATH."Login.php");
         }
@@ -24,18 +24,30 @@
             require_once(VIEWS_PATH."Register.php");
         }
         
-        public function Add($name, $lastName, $email, $password)
+        public function Add($firstName, $lastName, $email, $password)
         {
-            $user = new User();
-            $user->setFirstName($firstName);
-            $user->setLastName($lastName);
-            $user->setEmail($email);
-            $user->setPassword($password);
+            $userDAO = new UserDAO();
 
-            $this->userDAO->Add($user);
+            $exists = $userDAO->Search($email); // Busca si ya hay un usuarios registrado con el mail recibido
 
-            // aca falta meter el mensaje
-            $this->ShowAddView($message);
+            if($exists==false) // Si retorna false es porque no lo encontro y continua con el registro
+            {
+                $user = new User();
+                $user->setFirstName($firstName);
+                $user->setLastName($lastName);
+                $user->setEmail($email);
+                $user->setPassword($password);
+    
+                $this->userDAO->Add($user);
+                $message="Registration finished, please sign in to continue";
+                $this->ShowLoginView($message);
+            }
+            else // Aca entra si retorno algo y el usuario ya esta registrado
+            {
+                $message="Email already registered!";
+                $this->ShowRegisterView($message);
+            }
+            
         }
     }
      

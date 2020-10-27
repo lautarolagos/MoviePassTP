@@ -1,7 +1,8 @@
 <?php
     namespace Controllers;
 
-    use DAO\CinemaDAO AS CinemaDAO;
+    use DAO\CinemaDAOJSON as CinemaDAOJSON;
+    use DAO\CinemaDAOMySQL as CinemaDAOMySQL;
     use Models\Cinema as Cinema;
 
     require_once("Config/Autoload.php");
@@ -12,7 +13,9 @@
 
         public function __construct()
         {
-            $this->cinemaDAO = new cinemaDAO();
+            // aca los profes dijeron que habia que hacer esto, cosa que si queremos cambiar entre usar JSON y MySql solo hay que comentar una linea
+            //$this->cinemaDAO = new CinemaDAOJSON();
+            $this->cinemaDAO = new CinemaDAOMySQL();   
         }
 
         public function ShowCinemaList($message="")
@@ -31,7 +34,33 @@
             require_once(VIEWS_PATH."EditCinema.php");
         }
 
+
         public function AddCinema($name, $capacity, $adress)
+        {
+            $cinemaDAO = new CinemaDAOMySQL;
+
+            $exists = $cinemaDAO->Search($adress);
+
+            if($exists==false)
+            {
+                $newCinema = new Cinema();
+                $newCinema->setName($name);
+                $newCinema->setCapacity($capacity);
+                $newCinema->setAdress($adress);
+                $newCinema->setAuditoriums(NULL);
+
+                $this->cinemaDAO->Add($newCinema);
+                $message="Cinema added succesfully";
+                $this->ShowCinemaList($message);
+            }
+            else
+            {
+                $message= "There is already a cinema in that adress, please enter another one";
+                $this->ShowAddView($message);
+            }
+        }
+
+        public function Add($name, $capacity, $adress) // esto es con json
         {
             $adressExist=0; // Creo una variable para verificar si la direccion enviada ya está registrada, 0 significa NO, 1 Significa SI
             $listCounter=-1; // Esto sirve para ir contando cuantos cines ya hay agregados y poder saber que id asignarle al nuevo cine
@@ -41,7 +70,7 @@
             {
                 foreach($cinemaList as $cinema)
                 {
-                    if($cinema->getEliminated()==0) // Compara solamente los cines que esten activos.
+                    if($cinema->getActive()==1) // Compara solamente los cines que esten activos.
                     {
                         if($adress == $cinema->getAdress())
                         {
@@ -60,14 +89,33 @@
                 $newCinema->setCapacity($capacity);
                 $newCinema->setAdress($adress);
                 $newCinema->setId($listCounter+1);
-                $newCinema->setEliminated("0");
+                $newCinema->setActive("1");
+                $newCinema->setAuditoriums(NULL); // Por defecto se crea un cine sin auditoriums
                 $this->cinemaDAO->Add($newCinema);
                 $message="Cinema added succesfully";
                 $this->ShowCinemaList($message);
             }
         }
 
-        public function DeleteCinema($cinemaId) // Recibe la ID del cinema a borrar
+        public function DeleteCinema($cinemaId) // ESTA ES CON MYSQL
+        {
+            $cinemaDAO = new CinemaDAOMySQL;
+
+            $supr = $cinemaDAO->Delete($cinemaId);
+
+            if($supr!=NULL)
+            {
+                $message="Cinema deleted";
+                $this->ShowCinemaList($message);
+            }
+            else
+            {
+                $message="Cinema not found";
+                $this->ShowCinemaList($message);
+            }
+        } 
+        
+        public function Delete($cinemaId) // Recibe la ID del cinema a borrar ESTA ES CON JSON
         {
             $this->cinemaDAO->Delete($cinemaId);
             $message="Cinema deleted";

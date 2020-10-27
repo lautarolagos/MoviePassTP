@@ -32,6 +32,8 @@
                          </div>
                          <button class="btn-submit" type="submit">Create Account</button>
                     </form>
+                    <form class="form" action="<?php echo FRONT_ROOT ?>Login/ShowSigninView" method="POST">
+                    <button class="btn-submit" type="submit">Go Back</button>
                </div>
           </body>
      </html>

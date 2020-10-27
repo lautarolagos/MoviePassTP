@@ -30,19 +30,11 @@
             require_once(VIEWS_PATH."Login.php");
         }
 
-        public function ShowConecto()
-        {
-            require_once(VIEWS_PATH."Conecto.php");
-        }
-
-        public function ShowNoConecto()
-        {
-            require_once(VIEWS_PATH."NoConecto.php");
-        }
-
         public function setSession($user)
         {
             $_SESSION['userLogedIn'] = $user;
+            $_SESSION['firstName'] = $user->getFirstName();
+            $_SESSION['isAdmin'] = $user->getIsAdmin();
         }
 
 
@@ -57,13 +49,14 @@
                 if($user->getPassword() == $password)
                 {
                     $this->setSession($user);
-                    $this->ShowConecto();
+                    $this->ShowCinemaView();
                     return $user;
                 }
             }
             else
             {
-                $this->ShowNoConecto();
+                $message="Incorrect email / password";
+                $this->ShowSigninView($message);
                 return false;
             }
             

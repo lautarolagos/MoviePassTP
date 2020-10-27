@@ -11,7 +11,7 @@
     <div id="menu">
     <ul>
         <li class="item-l">
-                <a>Hola <strong><?php echo $_SESSION['email']?></strong></a> 
+                <a>Welcome, <strong><?php echo $_SESSION['firstName']?> !</strong></a> 
             </li>
             <li>
                 <a  href="#">Billboard</a>
