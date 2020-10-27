@@ -58,7 +58,6 @@ h1 span{
     font-family: 'Staatliches', cursive;
     display: block;
     font-size: 16px;
-    position: relative;
     margin-top: 10px;
     margin-bottom: 5px;
 }
@@ -115,42 +114,69 @@ h1 span{
 
 /*-------------------- DISEÑO DE NAV-------------------------*/
 
-#menu{
+#menu header{
+    width: 100%;
+    background-color: #212529;
+}
+
+#btn-menu{
     display: none;
-    background: rgba(0,0,0,.6);
+}
+
+#menu header label{
+    display: none;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border-right: solid 3px #e03131;
     margin: 10px;
-    border-radius: 5px;
-    
-    font-family: 'Staatliches', cursive;
+}
+
+#menu header label:hover{
+    cursor: pointer;
+    background-color: #212529;
+}
+
+#menu .menu ul{
+    margin: 0;
+    list-style: none;
+    padding: 0;
     display: flex;
     justify-content: flex-end;
 }
 
-#menu ul{
-    list-style: none;
-    padding-bottom: -30px;
-    position: relative;
+#menu .menu li:hover{
+    background-color: #464747;
 }
 
-#menu ul li{
-    display: inline-block;
-}
-
-#menu ul li a{
-    color: #FFF;
+#menu .menu li a{
     display: block;
-    padding: 20px;
+    padding: 10px 20px;
+    color: #FFF;
     text-decoration: none;
-    border-bottom: 2px solid#e03131;
-    border-radius: 2px;
+    border-bottom: solid 3px #e03131;
 }
 
-#menu ul li a:hover{
-    background-color: #212529;
-}
+@media (max-width:768px){
+    #menu header label{
+        display: block;
+    }
 
-.item-l{
-    margin-right: 1100px;
+    #menu .menu{
+        position: absolute;
+        background-color: #212529;
+        width: 70%;
+        margin-left: -70%;
+        transition: all 0.5s;
+    }
+
+    #menu .menu ul{
+        flex-direction: column;
+    }
+
+    #btn-menu:checked ~ .menu{
+        margin: 0;
+    }
 }
 /*-------------------- DISEÑO DE CINEMA LIST-------------------------*/
 
@@ -247,13 +273,6 @@ tr:hover td{
     background-color: #491515;
 }
 
-@media ( max-width: 30em){ /*30 x 16px = 480px */
-.table-list{
-    display: flex;
-    flex-direction: column;
-    overflow-x: auto;
-}    
-}
 /*--------------------AUDITORIUM LIST-------------------------*/
 
 .button-add{
