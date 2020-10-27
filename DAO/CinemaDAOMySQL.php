@@ -122,14 +122,14 @@
             try
             {
                 $this->connection = Connection::GetInstance();
-                $resultSet = $this->connection->Execute($sql, $parameters, QueryType::Query);
+                $resultSet = $this->connection->ExecuteNonQuery($sql, $parameters, QueryType::Query);
             } catch(Exception $ex)
             {
                 throw $ex;
             }
 
             if(!empty($resultSet))
-                return $this->mapear($resultSet);
+                return true;
             else
                 return false;
         }

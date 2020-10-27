@@ -97,13 +97,13 @@
             }
         }
 
-        public function DeleteCinema($cinemaId) // ESTA ES CON MYSQL
+        public function DeleteCinema($cinemaId) // ESTE ES CON MYSQL
         {
             $cinemaDAO = new CinemaDAOMySQL;
 
             $supr = $cinemaDAO->Delete($cinemaId);
 
-            if($supr!=NULL)
+            if($supr==true)
             {
                 $message="Cinema deleted";
                 $this->ShowCinemaList($message);
@@ -115,7 +115,7 @@
             }
         } 
         
-        public function Delete($cinemaId) // Recibe la ID del cinema a borrar ESTA ES CON JSON
+        public function Delete($cinemaId) // ESTE ES CON JSON
         {
             $this->cinemaDAO->Delete($cinemaId);
             $message="Cinema deleted";
