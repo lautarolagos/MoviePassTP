@@ -7,15 +7,13 @@
         private $idAuditorium;
         private $ticketPrice;
         private $nameAuditorium;
-        private $active;
     
-        function construct__($amountOfSeats, $idAuditorium, $ticketPrice, $nameAuditorium, $active)
+        function construct__($amountOfSeats, $idAuditorium, $ticketPrice, $nameAuditorium)
         {
             $this->amountOfSeats=$amountOfSeats;   
             $this->idAuditorium=$idAuditorium;
             $this->ticketPrice=$ticketPrice;
             $this->nameAuditorium=$nameAuditorium;
-            $this->active=$active;
         }
 
         public function getAmountOfSeats()
@@ -34,10 +32,6 @@
         {
             return $this->nameAuditorium;
         }
-        public function getActive()
-        {
-            return $this->active;
-        }
 
 
         public function setAmountOfSeats($amountOfSeats)
@@ -55,10 +49,6 @@
         public function setNameAuditorium($nameAuditorium)
         {
             $this->nameAuditorium=$nameAuditorium;
-        }
-        public function setActive($active)
-        {
-            $this->active=$active;
         }
     }
 ?>

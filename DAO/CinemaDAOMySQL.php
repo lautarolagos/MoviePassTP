@@ -35,7 +35,7 @@
             {
                 $cinemasList = array();
 
-                $query = "SELECT * FROM ".$this->tableName;
+                $query = "SELECT * FROM ".$this->tableName; " WHERE active = '1'";
 
                 $this->connection = Connection::GetInstance();
 
@@ -47,9 +47,8 @@
                     $cinema->setName($row["name"]);
                     $cinema->setCapacity($row["capacity"]);
                     $cinema->setAdress($row["adress"]);
-                    $cinema->setId($row['idCinema']);
-                    $cinema->setActive($row['active']);
-                    $cinema->setAuditoriums(NULL);
+                    $cinema->setIdCinema($row['idCinema']);
+                    //$cinema->setAuditoriums(NULL);
 
                     array_push($cinemasList, $cinema);
                 }
@@ -65,7 +64,7 @@
 
         public function ReadAll()
         {
-            $sql = "SELECT * FROM ".$this->tableName;
+            $sql = "SELECT * FROM ".$this->tableName; " WHERE active = '1'";
 
             try
             {
@@ -84,7 +83,7 @@
 
         public function Search($adress) // Busca un cine en la BDD con la direccion pasada
         {
-            $sql = "SELECT * FROM ".$this->tableName . " WHERE (adress = :adress)";
+            $sql = "SELECT * FROM ".$this->tableName . " WHERE (adress = :adress) and active = '1'";
 
             $parameters['adress'] = $adress;
 
@@ -108,7 +107,7 @@
             $value = is_array($value) ? $value : [];
 
             $resp = array_map( function($p){
-                return new Cinema($p['name'], $p['capacity'], $p['adress'], $p['idCinema'], $p['active'], $p['auditoriums']);
+                return new Cinema($p['name'], $p['capacity'], $p['adress'], $p['idCinema']);
             }, $value);
             
             return count($resp) > 1 ? $resp : $resp['0'];

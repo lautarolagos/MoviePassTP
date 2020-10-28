@@ -3,7 +3,9 @@
 
     use DAO\CinemaDAOJSON as CinemaDAOJSON;
     use DAO\CinemaDAOMySQL as CinemaDAOMySQL;
+    use DAO\AuditoriumDAO as AuditoriumDAO;
     use Models\Cinema as Cinema;
+    use Models\Auditorium as Auditorium;
 
     require_once("Config/Autoload.php");
 
@@ -18,16 +20,19 @@
             $this->cinemaDAO = new CinemaDAOMySQL();   
         }
 
+
         public function ShowCinemaList($message="")
         {
             $cinemasList = $this->cinemaDAO->GetAll();
             require_once(VIEWS_PATH."CinemaList.php");
         }
+   
         
         public function ShowAddView($message="")
         {
             require_once(VIEWS_PATH."AddCinema.php");
         }
+
 
         public function ShowCinemaEdit($cinemaId)
         {
@@ -35,7 +40,7 @@
         }
 
 
-        public function AddCinema($name, $capacity, $adress)
+        public function AddCinema($name, $capacity, $adress) // este es con MySQL
         {
             $cinemaDAO = new CinemaDAOMySQL;
 
@@ -60,7 +65,37 @@
             }
         }
 
-        public function Add($name, $capacity, $adress) // esto es con json
+
+        public function DeleteCinema($idCinema) // ESTE ES CON MYSQL
+        {
+            $cinemaDAO = new CinemaDAOMySQL;
+
+            $supr = $cinemaDAO->Delete($idCinema);
+
+            if($supr==true)
+            {
+                $message="Cinema deleted";
+                $this->ShowCinemaList($message);
+            }
+            else
+            {
+                $message="Cinema not found";
+                $this->ShowCinemaList($message);
+            }
+        } 
+        
+
+        public function ShowAuditoriums($cinema)
+        {
+            $auditoriumDAO = new AuditoriumDAO;
+            // Lo que hago es setear en el objeto cinema, el array de Auditoriums que me llega de la base de datos
+            // Lo hice de esta manera porque Fernando dijo que un Cine tiene que tener un array de Salas
+            $cinema->setAuditoriums($auditoriumDAO->GetById($cinema->getIdCinema()));
+            require_once(VIEWS_PATH."AuditoriumList.php");
+        }
+
+
+        /*public function Add($name, $capacity, $adress) // esto es con json
         {
             $adressExist=0; // Creo una variable para verificar si la direccion enviada ya está registrada, 0 significa NO, 1 Significa SI
             $listCounter=-1; // Esto sirve para ir contando cuantos cines ya hay agregados y poder saber que id asignarle al nuevo cine
@@ -88,38 +123,20 @@
                 $newCinema->setName($name);
                 $newCinema->setCapacity($capacity);
                 $newCinema->setAdress($adress);
-                $newCinema->setId($listCounter+1);
-                $newCinema->setActive("1");
+                $newCinema->setIdCinema($listCounter+1);
                 $newCinema->setAuditoriums(NULL); // Por defecto se crea un cine sin auditoriums
                 $this->cinemaDAO->Add($newCinema);
                 $message="Cinema added succesfully";
                 $this->ShowCinemaList($message);
             }
-        }
+        }*/
 
-        public function DeleteCinema($cinemaId) // ESTE ES CON MYSQL
+
+        /*public function Delete($idCinema) // ESTE ES CON JSON
         {
-            $cinemaDAO = new CinemaDAOMySQL;
-
-            $supr = $cinemaDAO->Delete($cinemaId);
-
-            if($supr==true)
-            {
-                $message="Cinema deleted";
-                $this->ShowCinemaList($message);
-            }
-            else
-            {
-                $message="Cinema not found";
-                $this->ShowCinemaList($message);
-            }
-        } 
-        
-        public function Delete($cinemaId) // ESTE ES CON JSON
-        {
-            $this->cinemaDAO->Delete($cinemaId);
+            $this->cinemaDAO->Delete($idCinema);
             $message="Cinema deleted";
             $this->ShowCinemaList($message); // Retorna un mensaje diciendo que se logro borrar el cine
-        }
+        }*/
     }
 ?>

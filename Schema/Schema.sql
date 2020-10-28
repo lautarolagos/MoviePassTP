@@ -28,6 +28,7 @@ amountOfSeats int not null,
 idAuditorium int not null auto_increment,
 idCinema int not null,
 ticketPrice int not null,
+nameAuditorium varchar(30) not null,
 active boolean default(1),
 constraint `PK-idAuditorium` primary key (idAuditorium),
 constraint `FK-idCinema` foreign key (idCinema) references cinemas(idCinema)

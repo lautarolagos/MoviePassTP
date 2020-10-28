@@ -3,11 +3,12 @@
      include('Header.php');
      include('Nav.php');
      
-     //use DAO\CinemaDAOJSON as CinemaDAOJSON;
      use DAO\CinemaDAOMySQL as CinemaDAOMySQL;
-     //$cinemaDAO = new CinemaDAOJSON();
+     use Models\Cinema as Cinema;
      $cinemaDAO = new CinemaDAOMySQL();
      $cinemasList = $cinemaDAO->GetAll();
+    // Se supone que aca no es necesario hacer todo esto, ya que en CinemaController/ShowCinemaList se pasa la lista de cines, pero por algun motivo
+    // Aca llega vacio el array
 ?>
      <!DOCTYPE html>
      <html lang="en">
@@ -35,14 +36,10 @@
                          <tbody>
                          <?php
                               foreach($cinemasList as $cinema)
-                                   {
-                                        if($cinema->getActive()=="1")
-                                        {
-
-                                        ?>
+                                   {?>
                                              <tr>
                                                   <?php if($_SESSION['isAdmin']=="1"){?>
-                                                  <td><?php echo $cinema->getId(); ?></td>
+                                                  <td><?php echo $cinema->getIdCinema(); ?></td>
                                                   <?php }?>
                                                   <td><?php echo $cinema->getName(); ?></td>
                                                   <td><?php echo $cinema->getCapacity(); ?></td>
@@ -53,7 +50,7 @@
                                                    ?>
                                                    <td>
                                                    <form action="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaEdit" method="POST">
-                                                   <button class="button-edit" type="submit" name="cinemaId" value="<?php echo $cinema->getId(); ?>">EDIT</button>
+                                                   <button class="button-edit" type="submit" name="idCinema" value="<?php echo $cinema->getIdCinema(); ?>">EDIT</button>
                                                    <?php }?>
                                                    </form>
                                                    </td>    
@@ -63,19 +60,18 @@
                                                   ?>
                                                   <td>
                                                   <form action="<?php echo FRONT_ROOT ?>Cinema/DeleteCinema" method="POST">
-                                                  <button class="button-delete" type="submit" name="cinemaId" value="<?php echo $cinema->getId();?>">DELETE</button>
+                                                  <button class="button-delete" type="submit" name="idCinema" value="<?php echo $cinema->getIdCinema();?>">DELETE</button>
                                                   <?php }?>
                                                   </form>
                                                   </td>
                                                   <!-- Boton de Ver Salas -->
                                                   <td>
-                                                  <!--<form action="<?php echo FRONT_ROOT ?>Auditorium/ShowAuditoriums" method="POST">-->
-                                                  <button class="button-auditoriums" type="submit" name="cinemaId" value="<?php echo $cinema->getId();?>">SEE AUDITORIUMS</button>
+                                                  <form action="<?php echo FRONT_ROOT ?>Cinema/ShowAuditoriums" method="POST">
+                                                  <button class="button-auditoriums" type="submit" name="idCinema" value="<?php echo $cinema;?>">SEE AUDITORIUMS</button>
                                                   </form>
                                                   </td>
                                              </tr>     
-                              <?php     }
-                                   } ?>
+                              <?php     } ?>
                          </tbody>
                     </table>
                </div>
