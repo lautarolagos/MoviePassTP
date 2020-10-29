@@ -126,10 +126,9 @@ h1 span{
 #menu header label{
     display: none;
     width: 50px;
-    height: 50px;
+    height: 46px;
     padding: 10px;
     border-right: solid 3px #e03131;
-    margin: 10px;
 }
 
 #menu header label:hover{
@@ -232,7 +231,7 @@ h1 span{
     border-radius: 5px;
     padding: 5px 20px;
     color: #FFF;
-    background: blue;
+    background: rgb(70, 68, 68);
     cursor: pointer;
     border: none;
     font-family: 'Staatliches', cursive;

@@ -14,7 +14,7 @@
         <label for="btn-menu"> <img src="boton-nav.png" alt=""></label>
             <nav class="menu">
                 <ul>
-                    <li>
+                    <li style="background-color: red;">
                         <a>Welcome <strong><?php echo $_SESSION['email']?></strong></a>
                     </li>
                     <li>

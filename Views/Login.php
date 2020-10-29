@@ -31,7 +31,7 @@
                </form>
 
                <form class="form" action="" method="POST">
-                    <button  class="btn-submit-fc" type="submit" >Continue with Facebook</button>
+                    <button  class="btn-submit-fc" type="submit" ><span>Continue with </span>Facebook</button>
 
                </form>
           </div>
