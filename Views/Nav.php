@@ -9,9 +9,9 @@
 </head>
 <body >
     <div id="menu">
-        <ul class="item-r">
-            <li>
-           <a>Hola <strong><?php echo $_SESSION['email']?></strong></a> 
+    <ul>
+        <li class="item-l">
+                <a>Welcome, <strong><?php echo $_SESSION['firstName']?> !</strong></a> 
             </li>
             <li>
                 <a  href="#">Billboard</a>

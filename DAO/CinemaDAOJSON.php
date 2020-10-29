@@ -1,9 +1,9 @@
 <?php
     namespace DAO;
-    use DAO\ICinemaDAO as ICinemaDAO;
+    use Interfaces\ICinemaDAO as ICinemaDAO;
     use Models\Cinema as Cinema;
 
-    class CinemaDAO implements ICinemaDAO
+    class CinemaDAOJSON implements ICinemaDAO
     {
         private $cinemaListings = array();
         private $fileName;
@@ -27,7 +27,7 @@
             {
                 if($cinema->getId()==$id)
                 {
-                    $cinema->setEliminated("1");
+                    $cinema->setActive("0"); // Setea el cine como inactivo con un 0
                 }
             }
             $this->SaveData();
@@ -48,7 +48,8 @@
                 $valuesArray["capacity"]=$cinema->getCapacity();
                 $valuesArray["adress"]=$cinema->getAdress();
                 $valuesArray["id"]=$cinema->getId();
-                $valuesArray["eliminated"]=$cinema->getEliminated();
+                $valuesArray["active"]=$cinema->getActive();
+                $valuesArray["auditoriums"]=$cinema->getAuditoriums(); // Esto no creo que este bien, porque deberia ser un array
 
                 array_push($arrayToEncode, $valuesArray);
             }
@@ -71,7 +72,8 @@
                     $cinema->setCapacity($valuesArray["capacity"]);
                     $cinema->setAdress($valuesArray["adress"]);
                     $cinema->setId($valuesArray["id"]);
-                    $cinema->setEliminated($valuesArray["eliminated"]);
+                    $cinema->setActive($valuesArray["active"]);
+                    $cinema->setAuditoriums($valuesArray["auditoriums"]); // Esto no creo que este bien, porque deberia ser un array
 
                     array_push($this->cinemaListings, $cinema);
                 }

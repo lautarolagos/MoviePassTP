@@ -1,90 +1,120 @@
 <?php
     namespace DAO;
-    use DAO\IAuditoriumDAO as IAuditoriumDAO;
-    use Models\Auditorium as Auditorium;
 
+    use \Exception as Exception;
+    use Interfaces\IUserDAO as IUserDAO;
+    use Models\Auditorium as Auditorium;  
+    use DAO\Connection as Connection;
+    use Interfaces\IAuditoriumDAO as IAuditoriumDAO;
+
+    
     class AuditoriumDAO implements IAuditoriumDAO
     {
-        private $auditoriumList = array();
-        private $fileName;
+        private $connection;
+        private $tableName = "auditoriums";
 
-        public function __construct()
+        public function Add(Auditorium $auditorium, $idCinema)
         {
-            $this->fileName=dirname(__DIR__)."/Data/Auditoriums.json";
-        }
-
-
-        public function Add(Auditorium $auditorium)
-        {
-            $this->RetrieveData();
-            array_push($this->auditoriumList, $auditorium);
-            $this->SaveData();
-        }
-
-        public function GetAll()
-        {
-            $this->RetrieveData();
-            return $this->auditoriumList;
-        }
-
-
-        public function GetAuditoriumByCinema($cinemaID) // id del cine al que se deben buscar las salas pertenecientes
-        {
-            $this->RetrieveData();
-            $auditoriumList = array(); // Array que contiene todos los datos
-            $auditoriumById = array(); // Array filtrado
-
-            foreach($this->auditoriumList as $auditorium)
+            try
             {
-                if($cinemaID == $auditorium->getIdCinemaFK()) // Busco las salas donde coincida la FK con la ID del cine
+                $query = "INSERT INTO ".$this->tableName."(amountOfSeats, idCinema, ticketPrice, nameAuditorium) VALUES (:amountOfSeats, :idCinema, :ticketPrice, :nameAuditorium);";
+                $parameters['amountOfSeats'] = $auditorium->getAmountOfSeats();
+                $parameters['idCinema'] = $idCinema;
+                $parameters['ticketPrice'] = $auditorium->getTicketPrice();
+                $parameters['nameAuditorium'] = $auditorium->getNameAuditorium();
+
+                $this->connection = Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query, $parameters);
+            }
+            catch(Exception $ex)
+            {
+                throw $ex;
+            }
+        }
+
+        public function GetById($idCinema) // Metodo para obtener la lista de salas pertenecientes a un cine pasado por ID
+        {
+            try 
+            {
+                $auditoriumsList = array();
+                $query = "SELECT * FROM " . $this->tableName ." WHERE idCinema = ".$idCinema;
+
+                $this->connection = Connection::GetInstance();
+                $result = $this->connection->Execute($query);
+                foreach ($result as $row) 
                 {
-                    array_push($auditoriumById, $auditorium); // Meto las salas en un Array y lo retorno
+                    $auditorium = new Auditorium();
+                    $auditorium->setAmountOfSeats($row["amountOfSeats"]);
+                    $auditorium->setIdAuditorium($row["idAuditorium"]);
+                    $auditorium->setTicketPrice($row["ticketPrice"]);
+                    $auditorium->setNameAuditorium($row["nameAuditorium"]);
+                 
+
+                    array_push($auditoriumsList, $auditorium);
                 }
+                return $auditoriumsList;
             }
-            return $auditoriumById;
+            catch (Exception $ex) 
+            {
+                return null;
+            }
         }
 
-
-        public function SaveData()
+        protected function mapear($value)
         {
-            $arrayToEncode = array();
-            foreach($this->auditoriumList as $auditorium)
-            {
-                $valuesArray["amountOfSeats"]=$auditorium->getAmountOfSeats();
-                $valuesArray["idCinemaFK"]=$auditorium->getIdCinemaFK();
-                $valuesArray["idAuditorium"]=$auditorium->getIdAuditorium();
-                $valuesArray["ticketPrice"]=$auditorium->getTicketPrice();
-                $valuesArray["nameAuditorium"]=$auditorium->getNameAuditorium();
-                $valuesArray["active"]=$auditorium->getActive();
+            $value = is_array($value) ? $value : [];
 
-                array_push($arrayToEncode, $valuesArray);
+            $resp = array_map( function($p){
+                return new Auditorium($p['amountOfSeats'], $p['idAuditorium'], $p['ticketPrice'], $p['nameAuditorium']);
+            }, $value);
+            
+            return count($resp) > 1 ? $resp : $resp['0'];
+        }
+
+        public function Delete($idCinema, $idAuditorium)
+        {
+            $sql = "UPDATE ".$this->tableName . " SET active = '0' WHERE idCinema = :idCinema AND idAuditorium = :idAuditorium";
+            
+            $parameters['idCinema'] = $idCinema;
+            $parameters['idAuditorium'] = $idAuditorium;
+
+            try
+            {
+                $this->connection = Connection::GetInstance();
+                $resultSet = $this->connection->ExecuteNonQuery($sql, $parameters, QueryType::Query);
+            } catch(Exception $ex)
+            {
+                throw $ex;
             }
-            $jsonContent=json_encode($arrayToEncode, JSON_PRETTY_PRINT);
-            file_put_contents($this->fileName, $jsonContent);
+
+            if(!empty($resultSet))
+                return true;
+            else
+                return false;
+
         }
 
         
-        private function RetrieveData()
+        public function Search($nameAuditorium, $idCinema)
         {
-            $this->auditoriumList = array();
-            if(file_exists($this->fileName))
-            {
-                $jsonContent = file_get_contents($this->fileName);
-                $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
-                
-                foreach($arrayToDecode as $valuesArray)
-                {
-                    $auditorium = new Auditorium();
-                    $auditorium->setAmountOfSeats($valuesArray["amountOfSeats"]);
-                    $auditorium->setIdCinemaFK($valuesArray["idCinemaFK"]);
-                    $auditorium->setIdAuditorium($valuesArray["idAuditorium"]);
-                    $auditorium->setTicketPrice($valuesArray["ticketPrice"]);
-                    $auditorium->setNameAuditorium($valuesArray["nameAuditorium"]);
-                    $auditorium->setActive($valuesArray["active"]);
+            $sql = "SELECT * FROM ".$this->tableName; " WHERE (nameAuditorium = :nameAuditorium) AND (idCinema = :idCinema) AND active = '1'";
 
-                    array_push($this->auditoriumList, $auditorium);
-                }
+            $parameters['nameAuditorium'] = $nameAuditorium;
+            $parameters['idCinema'] = $idCinema;
+
+            try
+            {
+                $this->connection = Connection::getInstance();
+                $resultSet = $this->connection->Execute($sql, $parameters, QueryType::Query);
+            } catch(Exception $ex)
+            {
+                throw $ex;
             }
+
+            if(!empty($resultSet))
+                return $this->mapear($resultSet);
+            else
+                return false;
         }
     }
 ?>

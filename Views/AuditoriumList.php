@@ -1,14 +1,10 @@
 <?php
-     namespace Views;
-     require_once("Config/Autoload.php");
      include('Header.php');
      include('Nav.php');
 
-     use Models\Auditorium as Auditorium;
-     use DAO\AuditoriumDAO as AuditoriumDAO;
+    /* use Models\Auditorium as Auditorium;
+     use Models\Cinema as Cinema;*/
 
-     $auditoriumRepository = new AuditoriumDAO();
-     $auditoriumById = $auditoriumRepository->GetAuditoriumByCinema($cinemaID);
      
 ?>
      <!DOCTYPE html>
@@ -25,8 +21,8 @@
                     <!-- AGREGAR AUDITORIUM -->
                     <?php if($_SESSION['isAdmin']=="1"){
                     ?>
-                    <form class="form" action="<?php echo FRONT_ROOT ?>/Auditorium/ShowAddView" method="post">
-                    <center><button type="submit" name="cinemaId" value="<?php echo $cinemaID;?>">Add Auditorium</button></center>
+                    <form class="form" action="<?php echo FRONT_ROOT ?>/Auditorium/AddView" method="post">
+                    <center><button type="submit" name="idCinema" value="<?php echo $cinema->getIdCinema();?>">Add Auditorium</button></center>
                     </form>
                     <?php }?>
                     <table>
@@ -38,20 +34,27 @@
                          </thead>
                          <tbody>
                          <?php
-                              foreach($auditoriumById as $auditorium)
+                              
+                              foreach($cinemasList as $cinema)
                                    {
-                                        if($auditorium->getActive()==1)
+                                        if($cinema->getIdCinema() == $idCinema)
                                         {
 
+                                        $auditoriumsList = $cinema->getAuditoriums();
+                                        foreach($auditoriumsList as $auditorium)
+                                             {
+                                             
                                         ?>
                                              <tr>
                                                   <td><?php echo $auditorium->getNameAuditorium(); ?></td>
                                                   <td><?php echo $auditorium->getIdAuditorium(); ?></td>
                                                   <td><?php echo $auditorium->getAmountOfSeats(); ?></td>
                                                   <td><?php echo $auditorium->getTicketPrice(); ?></td>
-                                             </tr>     
-                              <?php     }
-                                   } ?>
+                                             </tr>
+                                             <?php 
+                                             }     
+                                        }    
+                                   } ?>           
                          </tbody>
                     </table>
                </div>

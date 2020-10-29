@@ -6,17 +6,15 @@
         private $name;
         private $capacity;
         private $adress;
-        private $id;
-        private $eliminated;
-        private $auditoriums;
-
-        function __construct($name = NULL, $capacity = NULL, $adress = NULL, $id = NULL, $eliminated = NULL, $auditoriums = NULL)
+        private $idCinema;
+        private $auditoriums = array(); // Array de Auditoriums
+        
+        function __construct($name = NULL, $capacity = NULL, $adress = NULL, $idCinema = NULL, $auditoriums = NULL)
         {
             $this->name = $name;
             $this->capacity = $capacity;
             $this->adress = $adress;
-            $this->id = $id;
-            $this->eliminated = $eliminated;
+            $this->idCinema = $idCinema;
             $this->auditoriums = $auditoriums;
         }
 
@@ -50,24 +48,14 @@
             $this->adress = $adress;
         }
 
-        public function getId()
+        public function getIdCinema()
         {
-            return $this->id;
+            return $this->idCinema;
         }
 
-        public function setId($id)
+        public function setIdCinema($idCinema)
         {
-            $this->id = $id;
-        }
-
-        public function setEliminated($eliminated)
-        {
-            $this->eliminated=$eliminated;
-        }
-
-        public function getEliminated()
-        {
-            return $this->eliminated;
+            $this->idCinema = $idCinema;
         }
 
         public function setAuditoriums($auditoriums)

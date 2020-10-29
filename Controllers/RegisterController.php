@@ -1,20 +1,20 @@
 <?php
     namespace Controllers;
 
-    use DAO\ClientDAO as ClientDAO;
-    use Models\Client as Client;
+    use DAO\UserDAO as UserDAO;
+    use Models\User as User;
     require_once("Config/Autoload.php");
 
     class RegisterController
     {
-        private $clientDAO;
+        private $userDAO;
 
         public function __construct()
         {
-            $this->clientDAO = new ClientDAO();
+            $this->userDAO = new UserDAO();
         }
 
-        public function ShowAddView($message = "")
+        public function ShowLoginView($message = "")
         {
             require_once(VIEWS_PATH."Login.php");
         }
@@ -24,35 +24,30 @@
             require_once(VIEWS_PATH."Register.php");
         }
         
-        public function AddClient($email, $password)
+        public function Add($firstName, $lastName, $email, $password)
         {
-            $emailExists=0; // Creo una variable para verificar si el email enviado ya está registrado, 0 significa NO, 1 Significa SI
+            $userDAO = new UserDAO();
 
-            $clientsList = $this->clientDAO->GetAll(); //Llamo a la lista de clientes y luego verifico si existe
-            if($clientsList!=NULL)
+            $exists = $userDAO->Search($email); // Busca si ya hay un usuarios registrado con el mail recibido
+
+            if($exists==false) // Si retorna false es porque no lo encontro y continua con el registro
             {
-                
-                foreach($clientsList as $client)
-                {   
-                    if($email==$client->getEmail())
-                    {
-                        $emailExists=1;
-                        $message="Email already registered";
-                        $this->ShowAddView($message);
-                        break;
-                    }  
-                }
+                $user = new User();
+                $user->setFirstName($firstName);
+                $user->setLastName($lastName);
+                $user->setEmail($email);
+                $user->setPassword($password);
+    
+                $this->userDAO->Add($user);
+                $message="Registration finished, please sign in to continue";
+                $this->ShowLoginView($message);
             }
-            if($emailExists==0) // Si es igual a 0, entonces no hay un cliente con ese Email o no hay ninguno, y se agrega al Json
-            {   
-                $newClient = new Client();
-                $newClient->setEmail($email);
-                $newClient->setPassword($password);
-                $newClient->setIsAdmin("0"); 
-                $this->clientDAO->Add($newClient);
-                $message = "Registration finished, please log in to continue";
-                $this->ShowAddView($message);
+            else // Aca entra si retorno algo y el usuario ya esta registrado
+            {
+                $message="Email already registered!";
+                $this->ShowRegisterView($message);
             }
+            
         }
     }
      

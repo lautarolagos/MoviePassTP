@@ -3,7 +3,7 @@
     include('Header.php');
     include('Nav.php');
 ?>
-<!-- $amountOfSeats, $idCinemaFK, $idAuditorium, $ticketPrice, $nameAuditorium, $active -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,25 +15,19 @@
      <section  class="">
          <div class="cont-form">
               <h2 class="form-title">Add Auditorium</h2>
-                   <form  class="form" action="<?php echo FRONT_ROOT ?>/Auditorium/AddAuditorium" method="POST" class="">
+                   <form  class="form" action="<?php echo FRONT_ROOT ?>Auditorium/Add" method="POST" class="">
                     <div>
                          <div>
-                              <label class ="form-label" for="idCinemaFK">ID Cinema</label>
-                              <input class="form-input" type="Text" name="idCinemaFK" value="<?php echo $cinemaID; ?>" class="" readonly>
+                            <input class="form-input"type="text" name="nameAuditorium" class="" placeholder="Auditorium Name" required>
                          </div>
                          <div>
-                              <label class ="form-label" for="nameAuditorium">Name</label>
-                              <input class="form-input" type="Text" name="nameAuditorium" value="" class="" required>
+                            <input class="form-input"type="number" name="amountOfSeats" class="" placeholder="Amount of Seats" required>
                          </div>
                          <div>
-                              <label class ="form-label" for="amountOfSeats">Amount of Seats</label>
-                              <input class="form-input" type="number" name="amountOfSeats" value="" class="" required>
+                            <input class="form-input"type="number" name="ticketPrice" class="" placeholder="Tikcet Price" required>
                          </div>
-                    </div>
-                    <div>
                          <div>
-                              <label class ="form-label" for="ticketPrice">Ticket Price</label>
-                              <input class="form-input" type="number" name="tikcetPrice" value="" class="" required>
+                         <input type="hidden" value="<?php echo $idCinema;?>">
                          </div>
                     </div>
                     <div>
