@@ -7,7 +7,7 @@
         private $capacity;
         private $adress;
         private $idCinema;
-        private $auditoriums = array();
+        private $auditoriums = array(); // Array de Auditoriums
         
         function __construct($name = NULL, $capacity = NULL, $adress = NULL, $idCinema = NULL, $auditoriums = NULL)
         {

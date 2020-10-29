@@ -4,6 +4,7 @@
     use DAO\CinemaDAOJSON as CinemaDAOJSON;
     use DAO\CinemaDAOMySQL as CinemaDAOMySQL;
     use DAO\AuditoriumDAO as AuditoriumDAO;
+    use Interfaces\IAuditoriumDAO as IAuditoriumDAO;
     use Models\Cinema as Cinema;
     use Models\Auditorium as Auditorium;
 
@@ -15,7 +16,6 @@
 
         public function __construct()
         {
-            // aca los profes dijeron que habia que hacer esto, cosa que si queremos cambiar entre usar JSON y MySql solo hay que comentar una linea
             //$this->cinemaDAO = new CinemaDAOJSON();
             $this->cinemaDAO = new CinemaDAOMySQL();   
         }
@@ -85,13 +85,23 @@
         } 
         
 
-        public function ShowAuditoriums($cinema)
+        public function ShowAuditoriums($idCinema)
         {
-            $auditoriumDAO = new AuditoriumDAO;
-            // Lo que hago es setear en el objeto cinema, el array de Auditoriums que me llega de la base de datos
-            // Lo hice de esta manera porque Fernando dijo que un Cine tiene que tener un array de Salas
-            $cinema->setAuditoriums($auditoriumDAO->GetById($cinema->getIdCinema()));
+            $cinemaDAO = new CinemaDAOMySQL();
+            $auditoriumDAO = new AuditoriumDAO();
+            $cinemasList = $cinemaDAO->GetAll();
+
+            foreach($cinemasList as $cinema)
+            {
+                if($cinema->getIdCinema() == $idCinema)
+                {
+                    $auditoriumsList = $auditoriumDAO->GetById($idCinema);
+                    $cinema->setAuditoriums($auditoriumsList);
+                    
+                }
+            }
             require_once(VIEWS_PATH."AuditoriumList.php");
+
         }
 
 

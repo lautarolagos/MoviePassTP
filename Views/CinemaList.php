@@ -67,7 +67,7 @@
                                                   <!-- Boton de Ver Salas -->
                                                   <td>
                                                   <form action="<?php echo FRONT_ROOT ?>Cinema/ShowAuditoriums" method="POST">
-                                                  <button class="button-auditoriums" type="submit" name="idCinema" value="<?php echo $cinema;?>">SEE AUDITORIUMS</button>
+                                                  <button class="button-auditoriums" type="submit" name="idCinema" value="<?php  echo $cinema->getIdCinema();?>">SEE AUDITORIUMS</button>
                                                   </form>
                                                   </td>
                                              </tr>     

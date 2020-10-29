@@ -3,9 +3,11 @@
 
     use \Exception as Exception;
     use Interfaces\IUserDAO as IUserDAO;
-    use Models\Auditorium as Auditorium;    
+    use Models\Auditorium as Auditorium;  
     use DAO\Connection as Connection;
+    use Interfaces\IAuditoriumDAO as IAuditoriumDAO;
 
+    
     class AuditoriumDAO implements IAuditoriumDAO
     {
         private $connection;
@@ -30,25 +32,32 @@
             }
         }
 
-        public function GetById($idCinema) // Obtener los auditoriums de un cine pasado por ID
+        public function GetById($idCinema) // Metodo para obtener la lista de salas pertenecientes a un cine pasado por ID
         {
-            $query = "SELECT * FROM ".$this->tableName; " WHERE idCinema = :idCinema AND active = '1'";
+            try 
+            {
+                $auditoriumsList = array();
+                $query = "SELECT * FROM " . $this->tableName ." WHERE idCinema = ".$idCinema;
 
-            $parameters['idCinema'] = $idCinema;
-            
-            try
-            {
-                $this->connection = Connection::getInstance();
-                $resultSet = $this->connection->Execute($sql, $parameters, QueryType::Query);
-            } catch(Exception $ex)
-            {
-                throw $ex;
+                $this->connection = Connection::GetInstance();
+                $result = $this->connection->Execute($query);
+                foreach ($result as $row) 
+                {
+                    $auditorium = new Auditorium();
+                    $auditorium->setAmountOfSeats($row["amountOfSeats"]);
+                    $auditorium->setIdAuditorium($row["idAuditorium"]);
+                    $auditorium->setTicketPrice($row["ticketPrice"]);
+                    $auditorium->setNameAuditorium($row["nameAuditorium"]);
+                 
+
+                    array_push($auditoriumsList, $auditorium);
+                }
+                return $auditoriumsList;
             }
-
-            if(!empty($resultSet))
-                return $this->mapear($resultSet);
-            else
-                return false;
+            catch (Exception $ex) 
+            {
+                return null;
+            }
         }
 
         protected function mapear($value)

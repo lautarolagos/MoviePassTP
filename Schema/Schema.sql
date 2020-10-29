@@ -52,3 +52,6 @@ idMovie int not null,
 constraint `PK-idGenre` primary key (idGenre),
 constraint `FK-idMovie` foreign key (idMovie) references movies(idMovie)
 );*/
+
+SELECT * from auditoriums;
+INSERT INTO auditoriums (amountOfSeats, idCinema, ticketPrice, nameAuditorium) values ('10', '12', '50', 'dfffsf');

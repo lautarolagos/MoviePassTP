@@ -8,7 +8,7 @@
         private $ticketPrice;
         private $nameAuditorium;
     
-        function construct__($amountOfSeats, $idAuditorium, $ticketPrice, $nameAuditorium)
+        function __construct($amountOfSeats=NULL, $idAuditorium=NULL, $ticketPrice=NULL, $nameAuditorium=NULL)
         {
             $this->amountOfSeats=$amountOfSeats;   
             $this->idAuditorium=$idAuditorium;

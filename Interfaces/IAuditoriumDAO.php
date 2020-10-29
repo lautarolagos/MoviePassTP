@@ -3,6 +3,7 @@
     
     use Models\User as User;
     use DAO\Connection as Connection;
+    use Models\Auditorium as Auditorium;
 
     interface IAuditoriumDAO
     {

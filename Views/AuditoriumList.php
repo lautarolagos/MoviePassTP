@@ -1,13 +1,10 @@
 <?php
-     namespace Views;
-     require_once("Config/Autoload.php");
      include('Header.php');
      include('Nav.php');
 
-     use Models\Auditorium as Auditorium;
-     use Models\Cinema as Cinema;
+    /* use Models\Auditorium as Auditorium;
+     use Models\Cinema as Cinema;*/
 
-     $auditoriumsList = $cinema->getAuditoriums();  
      
 ?>
      <!DOCTYPE html>
@@ -37,16 +34,27 @@
                          </thead>
                          <tbody>
                          <?php
-                              foreach($auditoriumsList as $auditorium)
+                              
+                              foreach($cinemasList as $cinema)
                                    {
+                                        if($cinema->getIdCinema() == $idCinema)
+                                        {
+
+                                        $auditoriumsList = $cinema->getAuditoriums();
+                                        foreach($auditoriumsList as $auditorium)
+                                             {
+                                             
                                         ?>
                                              <tr>
                                                   <td><?php echo $auditorium->getNameAuditorium(); ?></td>
                                                   <td><?php echo $auditorium->getIdAuditorium(); ?></td>
                                                   <td><?php echo $auditorium->getAmountOfSeats(); ?></td>
                                                   <td><?php echo $auditorium->getTicketPrice(); ?></td>
-                                             </tr>     
-                         <?php     } ?>
+                                             </tr>
+                                             <?php 
+                                             }     
+                                        }    
+                                   } ?>           
                          </tbody>
                     </table>
                </div>
