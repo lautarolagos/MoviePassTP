@@ -22,7 +22,7 @@
                     <?php if($_SESSION['isAdmin']=="1"){
                     ?>
                     <form class="form" action="<?php echo FRONT_ROOT ?>/Auditorium/AddView" method="post">
-                    <center><button type="submit" name="idCinema" value="<?php echo $cinema->getIdCinema();?>">Add Auditorium</button></center>
+                    <center><button class="button-add" type="submit" name="idCinema" value="<?php echo $cinema->getIdCinema();?>">Add Auditorium</button></center>
                     </form>
                     <?php }?>
                     <table>
