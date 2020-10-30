@@ -3,16 +3,16 @@
 
     require_once("Config/Autoload.php");
 
-    use Models\Client as Client;
-    use DAO\ClientDAO as ClientDAO;
+    use Models\User as User;
+    use DAO\UserDAO as UserDAO;
 
     class LoginController
     {
-        private $clientDAO;
+        private $userDAO;
 
         public function __construct()
         {
-            $this->clientDAO = new ClientDAO();
+            $this->userDAO = new UserDAO();
         }
 
         public function ShowCinemaView()
@@ -30,46 +30,36 @@
             require_once(VIEWS_PATH."Login.php");
         }
 
+        public function setSession($user)
+        {
+            $_SESSION['userLogedIn'] = $user;
+            $_SESSION['firstName'] = $user->getFirstName();
+            $_SESSION['isAdmin'] = $user->getIsAdmin();
+        }
+
+
         public function Check($email, $password)
         {
-            $clientsList = $this->clientDAO->GetAll();
-            $succesLogin=0;
-            if($clientsList!=NULL)
+            $userDAO = new UserDAO();
+
+            $user = $userDAO->Read($email, $password);
+
+            if($user)
             {
-                foreach($clientsList as $value)
+                if($user->getPassword() == $password)
                 {
-                    if(($email==$value->getEmail()) && ($password==$value->getPassword()))
-                    {
-                        if($value->getIsAdmin()==0)
-                        {
-                            $succesLogin=1;
-                            $loggedUser = $value;
-                            $_SESSION['loggedUser'] = $loggedUser;
-                            $_SESSION['isAdmin'] = $value->getIsAdmin();
-                            $_SESSION['email'] = $email;
-                            $this->ShowCinemaView();
-                            break;
-                        }
-                        else if($value->getIsAdmin()==1)
-                        {
-                            $succesLogin=1;
-                            $loggedUser = $value;
-                            $_SESSION['loggedUser'] = $loggedUser;
-                            $_SESSION['isAdmin'] = $value->getIsAdmin();
-                            $_SESSION['email'] = $email;
-                            
-                            $this->ShowCinemaView();
-                            break;
-                        }
-                    }
+                    $this->setSession($user);
+                    $this->ShowCinemaView();
+                    return $user;
                 }
             }
-
-            if($succesLogin==0)
+            else
             {
-                $message="Incorrect email/password";
+                $message="Incorrect email / password";
                 $this->ShowSigninView($message);
+                return false;
             }
+            
         }
     }
 ?>
