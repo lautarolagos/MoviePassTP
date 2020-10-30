@@ -29,11 +29,9 @@
                               <th>Name</th>
                               <th>Capacity</th>
                               <th>Adress</th>
-                              <?php if($_SESSION['isAdmin']=="1"){?>
                               <th></th>
                               <th>Options</th>
                               <th></th>
-                              <?php }?>
                          </thead>
                          <tbody>
                          <?php
