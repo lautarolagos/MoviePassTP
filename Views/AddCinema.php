@@ -1,5 +1,4 @@
 <?php
-    namespace Views;
     include('Header.php');
     include('Nav.php');
 ?>
@@ -15,21 +14,21 @@
      <section  class="">
          <div class="cont-form">
               <h2 class="form-title">Add Cinema</h2>
-                   <form  class="form" action="<?php echo FRONT_ROOT ?>Cinema/AddCinema" method="POST" class="">
+                   <form  class="form" action="<?php echo FRONT_ROOT ?>Cinema/AddCinema" method="POST">
                     <div>
                          <div>
-                              <label class ="form-label" for="name">Name</label>
-                              <input class="form-input" type="Text" name="name" value="" class="" required>
+                              <label class ="form-label" for="nameId">Name</label>
+                              <input class="form-input" type="Text" name="name" id="nameId" value="" required>
                          </div>
                          <div>
-                              <label class ="form-label" for="capacity">Total Capacity</label>
-                              <input class="form-input" type="number" name="capacity" value="" class="" required>
+                              <label class ="form-label" for="capacityId">Total Capacity</label>
+                              <input class="form-input" type="number" name="capacity" id="capacityId" value="" required>
                          </div>
                     </div>
                     <div>
                          <div>
-                              <label class ="form-label" for="adress">Adress</label>
-                              <input class="form-input" type="Text" name="adress" value="" class="" required>
+                              <label class ="form-label" for="adressId">Adress</label>
+                              <input class="form-input" type="Text" name="adress" id="adressId" value="" required>
                          </div>
                     </div>
                     <div>

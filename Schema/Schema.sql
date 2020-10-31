@@ -3,7 +3,7 @@ use moviepassdb;
 
 /*create table if not exists users(
 idUser int not null auto_increment,
-name varchar(30) not null,
+firstName varchar(30) not null,
 lastName varchar(30) not null,
 email varchar(30) not null,
 password varchar(30) not null,
@@ -18,7 +18,7 @@ name varchar(30) not null,
 capacity int not null,
 adress varchar(30) not null,
 idCinema int not null auto_increment,
-active boolean default(1),
+isActive boolean default(1),
 constraint `PK-idCinema` primary key (idCinema)
 );*/
 

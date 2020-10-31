@@ -1,12 +1,8 @@
 <?php
      include('Header.php');
      include('Nav.php');
-
-    /* use Models\Auditorium as Auditorium;
-     use Models\Cinema as Cinema;*/
-
-     
 ?>
+
      <!DOCTYPE html>
      <html lang="en">
      <head>
