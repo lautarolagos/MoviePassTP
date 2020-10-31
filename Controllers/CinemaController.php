@@ -4,7 +4,6 @@
     use DAO\CinemaDAOJSON as CinemaDAOJSON;
     use DAO\CinemaDAOMySQL as CinemaDAOMySQL;
     use DAO\AuditoriumDAO as AuditoriumDAO;
-    use Interfaces\IAuditoriumDAO as IAuditoriumDAO;
     use Models\Cinema as Cinema;
     use Models\Auditorium as Auditorium;
 
@@ -13,6 +12,7 @@
     Class CinemaController
     {
         private $cinemaDAO;
+        private $auditoriumDAO;
 
         public function __construct()
         {
@@ -23,7 +23,16 @@
 
         public function ShowCinemaList($message="")
         {
+            $auditoriumDAO = new AuditoriumDAO();
+
             $cinemasList = $this->cinemaDAO->GetAll();
+            
+            /*foreach($cinemasList as $cinema)
+            {
+                $auditoriums=$auditoriumDAO->GetById($cinema->getIdCinema());
+                $cinema->setAuditoriums($auditoriums);
+            }*/
+
             require_once(VIEWS_PATH."CinemaList.php");
         }
    
@@ -88,18 +97,8 @@
         public function ShowAuditoriums($idCinema)
         {
             $cinemaDAO = new CinemaDAOMySQL();
-            $auditoriumDAO = new AuditoriumDAO();
             $cinemasList = $cinemaDAO->GetAll();
-
-            foreach($cinemasList as $cinema)
-            {
-                if($cinema->getIdCinema() == $idCinema)
-                {
-                    $auditoriumsList = $auditoriumDAO->GetById($idCinema);
-                    $cinema->setAuditoriums($auditoriumsList);
-                    
-                }
-            }
+            
             require_once(VIEWS_PATH."AuditoriumList.php");
 
         }

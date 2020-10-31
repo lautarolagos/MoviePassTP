@@ -18,11 +18,12 @@
           <div class="table-list"> 
                <title>Auditorium Listings - MoviePass</title>
                     <h2 class="table-title">Auditorium List</h2>
+                    
                     <!-- AGREGAR AUDITORIUM -->
                     <?php if($_SESSION['isAdmin']=="1"){
                     ?>
-                    <form class="form" action="<?php echo FRONT_ROOT ?>/Auditorium/AddView" method="post">
-                    <center><button class="button-add" type="submit" name="idCinema" value="<?php echo $cinema->getIdCinema();?>">Add Auditorium</button></center>
+                    <form class="form" action="<?php echo FRONT_ROOT ?>Auditorium/AddView" method="post">
+                    <center><button class="button-add" type="submit" name="idCinema" value="<?php echo $idCinema ?>">Add Auditorium</button></center>
                     </form>
                     <?php }?>
                     <table>
@@ -34,16 +35,12 @@
                          </thead>
                          <tbody>
                          <?php
-                              
                               foreach($cinemasList as $cinema)
                                    {
                                         if($cinema->getIdCinema() == $idCinema)
                                         {
-
-                                        $auditoriumsList = $cinema->getAuditoriums();
-                                        foreach($auditoriumsList as $auditorium)
+                                             foreach($cinema->getAuditoriums() as $auditorium)
                                              {
-                                             
                                         ?>
                                              <tr>
                                                   <td><?php echo $auditorium->getNameAuditorium(); ?></td>
@@ -51,7 +48,7 @@
                                                   <td><?php echo $auditorium->getAmountOfSeats(); ?></td>
                                                   <td><?php echo $auditorium->getTicketPrice(); ?></td>
                                              </tr>
-                                             <?php 
+                                             <?php    
                                              }     
                                         }    
                                    } ?>           

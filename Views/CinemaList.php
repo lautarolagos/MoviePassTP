@@ -1,14 +1,7 @@
 <?php
-     require_once("Config/Autoload.php");
      include('Header.php');
      include('Nav.php');
      
-     use DAO\CinemaDAOMySQL as CinemaDAOMySQL;
-     use Models\Cinema as Cinema;
-     $cinemaDAO = new CinemaDAOMySQL();
-     $cinemasList = $cinemaDAO->GetAll();
-    // Se supone que aca no es necesario hacer todo esto, ya que en CinemaController/ShowCinemaList se pasa la lista de cines, pero por algun motivo
-    // Aca llega vacio el array
 ?>
      <!DOCTYPE html>
      <html lang="en">
@@ -34,7 +27,7 @@
                               <th></th>
                          </thead>
                          <tbody>
-                         <?php
+                         <?php 
                               foreach($cinemasList as $cinema)
                                    {?>
                                              <tr>

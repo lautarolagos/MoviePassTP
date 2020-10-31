@@ -4,6 +4,9 @@
     use Interfaces\ICinemaDAO as ICinemaDAO;
     use Models\Cinema as Cinema;
     use DAO\Connection as Connection;
+    use DAO\AuditoriumDAO as AuditoriumDAO;
+    use Interfaces\IAuditoriumDAO as IAuditoriumDAO;
+    use Models\Auditorium as Auditorium;
 
     class CinemaDAOMySQL implements ICinemaDAO
     {
@@ -31,6 +34,7 @@
 
         public function GetAll()
         {
+            $auditoriumDAO = new AuditoriumDAO();
             try
             {
                 $cinemasList = array();
@@ -53,6 +57,12 @@
                     array_push($cinemasList, $cinema);
                 }
 
+                foreach($cinemasList as $cinema)
+                {
+                    $auditoriums=$auditoriumDAO->GetById($cinema->getIdCinema());
+                    $cinema->setAuditoriums($auditoriums);
+                }
+                
                 return $cinemasList;
             }
             catch(Exception $ex)
