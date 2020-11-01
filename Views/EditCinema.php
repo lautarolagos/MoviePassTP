@@ -1,9 +1,8 @@
 <?php
-    namespace Views;
     include('Header.php');
     include('Nav.php');
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,25 +14,22 @@
      <section  class="">
          <div class="cont-form">
               <h2 class="form-title">Edit Cinema</h2>
-                   <form  class="form" action="<?php echo FRONT_ROOT ?>Cinema/EditCinema" method="POST" class="">
+                   <form  class="form" action="<?php echo FRONT_ROOT ?>Cinema/EditCinema" method="POST">
                     <div>
                          <div>
-                              <label class ="form-label" for="name">Name</label>
-                              <input class="form-input" type="Text" name="name" value="" class="">
+                              <label class ="form-label" for="nameId">Name</label>
+                              <input class="form-input" type="Text" name="name" id="nameId" value="" required>
                          </div>
                          <div>
-                              <label class ="form-label" for="capacity">Capacity</label>
-                              <input class="form-input" type="number" name="capacity" value="" class="">
+                              <label class ="form-label" for="capacityId">Capacity</label>
+                              <input class="form-input" type="number" name="capacity" id="capacityId" value="" required>
                          </div>
                     </div>
                     <div>
                          <div>
-                              <label class ="form-label" for="adress">Adress</label>
-                              <input class="form-input" type="Text" name="adress" value="" class="">
-                         </div>
-                         <div>
-                              <label class ="form-label" for="ticketPrice">Ticket Price</label>
-                              <input class="form-input" type="number" name="ticketPrice" value="" class="">
+                              <label class ="form-label" for="adressId">Adress</label>
+                              <input class="form-input" type="Text" name="adress" id="adressId" value="" required>
+                              <input type="hidden" name="idCinema" value="<?php echo $cinemaId; ?>">
                          </div>
                     </div>
                     <div>

@@ -39,7 +39,7 @@
             {
                 $cinemasList = array();
 
-                $query = "SELECT * FROM ".$this->tableName; " WHERE active = '1'";
+                $query = "SELECT * FROM ".$this->tableName. " WHERE isActive = 1";
 
                 $this->connection = Connection::GetInstance();
 
@@ -74,7 +74,7 @@
 
         public function ReadAll()
         {
-            $sql = "SELECT * FROM ".$this->tableName; " WHERE active = '1'";
+            $sql = "SELECT * FROM ".$this->tableName; " WHERE isActive = '1'";
 
             try
             {
@@ -93,7 +93,7 @@
 
         public function Search($adress) // Busca un cine en la BDD con la direccion pasada
         {
-            $sql = "SELECT * FROM ".$this->tableName . " WHERE (adress = :adress) and active = '1'";
+            $sql = "SELECT * FROM ".$this->tableName . " WHERE (adress = :adress) and isActive = '1'";
 
             $parameters['adress'] = $adress;
 
@@ -123,9 +123,33 @@
             return count($resp) > 1 ? $resp : $resp['0'];
         }
 
+        public function Edit($name, $capacity, $adress, $id)
+        {
+            try
+            {
+                $sql = "UPDATE " . $this->tableName . " SET name = :name, capacity = :capacity, adress = :adress WHERE idCinema = :id";
+                $parameters["name"] = $name;
+                $parameters["capacity"] = $capacity;
+                $parameters["adress"] = $adress;
+                $parameters["id"] = $id;
+
+                $this->connection = Connection::GetInstance();
+
+                $resultSet = $this->connection->ExecuteNonQuery($sql, $parameters, QueryType::Query);
+            } catch(Exception $ex)
+            {
+                throw $ex;
+            }
+
+            if(!empty($resultSet))
+                return true;
+            else
+                return false;
+        }
+
         public function Delete($id)
         {
-            $sql = "UPDATE ".$this->tableName . " SET active = '0' WHERE idCinema = :id";
+            $sql = "UPDATE ".$this->tableName . " SET isActive = '0' WHERE idCinema = :id";
             $parameters['id'] = $id;
 
             try

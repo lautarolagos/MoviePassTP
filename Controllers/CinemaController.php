@@ -74,6 +74,22 @@
             }
         }
 
+        public function EditCinema($name, $capacity, $adress, $idCinema)
+        {
+            $cinemaDAO = new CinemaDAOMySQL;
+
+            $edited = $cinemaDAO->Edit($name, $capacity, $adress, $idCinema);
+
+            if($edited == true){
+                $message = "Cinema edited";
+                $this->ShowCinemaList($message);
+            }
+            else
+            {
+                $message = "Sorry, try again";
+                $this->ShowCinemaEdit($message);
+            }
+        }
 
         public function DeleteCinema($idCinema) // ESTE ES CON MYSQL
         {

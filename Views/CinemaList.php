@@ -1,8 +1,8 @@
 <?php
      include('Header.php');
      include('Nav.php');
-     
 ?>
+
      <!DOCTYPE html>
      <html lang="en">
      <head>

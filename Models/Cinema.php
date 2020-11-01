@@ -7,14 +7,16 @@
         private $capacity;
         private $adress;
         private $idCinema;
+        private $isActive;
         private $auditoriums = array(); // Array de Auditoriums
         
-        function __construct($name = NULL, $capacity = NULL, $adress = NULL, $idCinema = NULL, $auditoriums = NULL)
+        function __construct($name = NULL, $capacity = NULL, $adress = NULL, $idCinema = NULL, $isActive = NULL, $auditoriums = NULL)
         {
             $this->name = $name;
             $this->capacity = $capacity;
             $this->adress = $adress;
             $this->idCinema = $idCinema;
+            $this->isActive = $isActive;
             $this->auditoriums = $auditoriums;
         }
 
@@ -56,6 +58,14 @@
         public function setIdCinema($idCinema)
         {
             $this->idCinema = $idCinema;
+        }
+
+        public function getIsActive(){
+            return $this->isActive;
+        }
+
+        public function setIsActive($isActive){
+            $this->isActive = $isActive;
         }
 
         public function setAuditoriums($auditoriums)

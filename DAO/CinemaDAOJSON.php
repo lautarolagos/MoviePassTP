@@ -27,7 +27,7 @@
             {
                 if($cinema->getId()==$id)
                 {
-                    $cinema->setActive("0"); // Setea el cine como inactivo con un 0
+                    $cinema->setIsActive("0"); // Setea el cine como inactivo con un 0
                 }
             }
             $this->SaveData();
@@ -48,7 +48,7 @@
                 $valuesArray["capacity"]=$cinema->getCapacity();
                 $valuesArray["adress"]=$cinema->getAdress();
                 $valuesArray["id"]=$cinema->getId();
-                $valuesArray["active"]=$cinema->getActive();
+                $valuesArray["isActive"]=$cinema->getIsActive();
                 $valuesArray["auditoriums"]=$cinema->getAuditoriums(); // Esto no creo que este bien, porque deberia ser un array
 
                 array_push($arrayToEncode, $valuesArray);
@@ -72,7 +72,7 @@
                     $cinema->setCapacity($valuesArray["capacity"]);
                     $cinema->setAdress($valuesArray["adress"]);
                     $cinema->setId($valuesArray["id"]);
-                    $cinema->setActive($valuesArray["active"]);
+                    $cinema->setIsActive($valuesArray["isActive"]);
                     $cinema->setAuditoriums($valuesArray["auditoriums"]); // Esto no creo que este bien, porque deberia ser un array
 
                     array_push($this->cinemaListings, $cinema);
