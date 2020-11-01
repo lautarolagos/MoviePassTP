@@ -97,7 +97,7 @@
         
         public function Search($nameAuditorium, $idCinema)
         {
-            $sql = "SELECT * FROM ".$this->tableName; " WHERE (nameAuditorium = :nameAuditorium) AND (idCinema = :idCinema) AND active = '1'";
+            $sql = "SELECT * FROM " .$this->tableName. " WHERE (nameAuditorium = :nameAuditorium) AND (idCinema = :idCinema) AND active = '1'";
 
             $parameters['nameAuditorium'] = $nameAuditorium;
             $parameters['idCinema'] = $idCinema;

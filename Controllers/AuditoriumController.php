@@ -2,6 +2,7 @@
     namespace Controllers;
 
     use DAO\AuditoriumDAO as AuditoriumDAO;
+    use DAO\CinemaDAOMySQL as CinemaDAOMySQL;
     use Models\Auditorium as Auditorium;
 
     require_once("Config/Autoload.php");
@@ -9,10 +10,12 @@
     class AuditoriumController
     {
         private $auditoriumDAO;
+        private $cinemaDAO;
 
         public function __construct()
         {
             $this->auditoriumDAO = new AuditoriumDAO();
+            $this->cinemaDAO = new CinemaDAOMySQL();
         }
 
 
@@ -21,7 +24,13 @@
             require_once(VIEWS_PATH."AddAuditorium.php");
         }
 
-        
+        public function ShowAuditoriumList($idCinema, $message)
+        {
+            $cinemasList = $this->cinemaDAO->GetAll();
+
+            require_once(VIEWS_PATH."AuditoriumList.php");
+        }
+
         public function Add($nameAuditorium, $amountOfSeats, $ticketPrice, $idCinema)
         {
             $auditoriumDAO = new AuditoriumDAO();
@@ -35,9 +44,9 @@
                 $newAuditorium->setAmountOfSeats($amountOfSeats);
                 $newAuditorium->setTicketPrice($ticketPrice);
 
-                $this->auditoriumDAO->Add($newCinema, $idCinema);
+                $this->auditoriumDAO->Add($newAuditorium, $idCinema);
                 $message="Auditorium added succesfully";
-                $this->ShowCinemaList($message);
+                $this->ShowAuditoriumList($idCinema, $message);
             }
             else
             {

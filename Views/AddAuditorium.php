@@ -27,7 +27,7 @@
                             <input class="form-input"type="number" name="ticketPrice" class="" placeholder="Tikcet Price" required>
                          </div>
                          <div>
-                         <input type="hidden" value="<?php echo $idCinema;?>">
+                         <input type="hidden" name="idCinema" value="<?php echo $idCinema;?>">
                          </div>
                     </div>
                     <div>
