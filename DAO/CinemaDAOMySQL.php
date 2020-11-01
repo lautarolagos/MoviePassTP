@@ -127,10 +127,11 @@
         {
             try
             {
-                $sql = "UPDATE" . $this->tableName . "SET name = :name, capacity = :capacity, adress = :adress WHERE idCinema = :id";
+                $sql = "UPDATE " . $this->tableName . " SET name = :name, capacity = :capacity, adress = :adress WHERE idCinema = :id";
                 $parameters["name"] = $name;
                 $parameters["capacity"] = $capacity;
                 $parameters["adress"] = $adress;
+                $parameters["id"] = $id;
 
                 $this->connection = Connection::GetInstance();
 
