@@ -22,9 +22,9 @@
                               <th>Name</th>
                               <th>Capacity</th>
                               <th>Adress</th>
-                              <th></th>
+                              <?php if($_SESSION['isAdmin']=="1"){?><th></th> <?php } ?>
                               <th>Options</th>
-                              <th></th>
+                              <?php if($_SESSION['isAdmin']=="1"){?><th></th> <?php } ?>
                          </thead>
                          <tbody>
                          <?php 
@@ -37,7 +37,6 @@
                                                   <td><?php echo $cinema->getName(); ?></td>
                                                   <td><?php echo $cinema->getCapacity(); ?></td>
                                                   <td><?php echo $cinema->getAdress(); ?></td>
-                                                  
                                                   <!-- Boton de Edit -->
                                                   <?php if($_SESSION['isAdmin']=="1"){
                                                    ?>
@@ -47,7 +46,6 @@
                                                    <?php }?>
                                                    </form>
                                                    </td>    
-
                                                   <!-- Boton de Delete -->
                                                   <?php if($_SESSION['isAdmin']=="1"){
                                                   ?>

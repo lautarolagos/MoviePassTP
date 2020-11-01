@@ -24,7 +24,7 @@
             require_once(VIEWS_PATH."AddAuditorium.php");
         }
 
-        public function ShowAuditoriumList($idCinema, $message)
+        public function ShowAuditoriumList($idCinema, $message="")
         {
             $cinemasList = $this->cinemaDAO->GetAll();
 
@@ -55,6 +55,47 @@
             }
 
         }
+
+        public function ShowEditView($idAuditorium, $idCinema)
+        {
+            require_once(VIEWS_PATH."EditAuditorium.php");
+        }
+
+        public function Edit($nameAuditorium, $amountOfSeats, $ticketPrice, $idAuditorium, $idCinema)
+        {
+            $auditoriumDAO = new AuditoriumDAO;
+
+            $edited = $auditoriumDAO->Edit($nameAuditorium, $amountOfSeats, $ticketPrice, $idAuditorium);
+
+            if($edited == true)
+            {
+                $message = "Auditorium edited";
+                $this->ShowAuditoriumList($idCinema, $message);
+            }
+            else
+            {
+                $message = "Sorry, try again";
+                $this->ShowAuditoriumList($idCinema, $message);
+            }
+        }
+
+        public function Delete($idAuditorium, $idCinema)
+        {
+            $auditoriumDAO = new AuditoriumDAO;
+            
+            $supr = $auditoriumDAO->Delete($idAuditorium);
+
+            if($supr==true)
+            {
+                $message="Auditorium deleted";
+                $this->ShowAuditoriumList($idCinema, $message);
+            }
+            else
+            {
+                $message="Sorry, something went wrong";
+                $this->ShowAuditoriumList($idCinema, $message);
+            }
+        } 
     }
 
 ?>

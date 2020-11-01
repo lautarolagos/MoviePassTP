@@ -37,7 +37,7 @@
             try 
             {
                 $auditoriumsList = array();
-                $query = "SELECT * FROM " . $this->tableName ." WHERE idCinema = ".$idCinema;
+                $query = "SELECT * FROM " . $this->tableName ." WHERE idCinema = ".$idCinema . " AND active = '1'";
 
                 $this->connection = Connection::GetInstance();
                 $result = $this->connection->Execute($query);
@@ -71,11 +71,10 @@
             return count($resp) > 1 ? $resp : $resp['0'];
         }
 
-        public function Delete($idCinema, $idAuditorium)
+        public function Delete($idAuditorium)
         {
-            $sql = "UPDATE ".$this->tableName . " SET active = '0' WHERE idCinema = :idCinema AND idAuditorium = :idAuditorium";
+            $sql = "UPDATE ".$this->tableName . " SET active = '0' WHERE idAuditorium = :idAuditorium";
             
-            $parameters['idCinema'] = $idCinema;
             $parameters['idAuditorium'] = $idAuditorium;
 
             try
@@ -91,7 +90,6 @@
                 return true;
             else
                 return false;
-
         }
 
         
@@ -113,6 +111,31 @@
 
             if(!empty($resultSet))
                 return $this->mapear($resultSet);
+            else
+                return false;
+        }
+
+
+        public function Edit($nameAuditorium, $amountOfSeats, $ticketPrice, $idAuditorium)
+        {
+            try
+            {
+                $sql = "UPDATE " . $this->tableName . " SET nameAuditorium = :nameAuditorium, amountOfSeats = :amountOfSeats, ticketPrice = :ticketPrice WHERE idAuditorium = :idAuditorium";
+                $parameters["nameAuditorium"] = $nameAuditorium;
+                $parameters["amountOfSeats"] = $amountOfSeats;
+                $parameters["ticketPrice"] = $ticketPrice;
+                $parameters["idAuditorium"] = $idAuditorium;
+
+                $this->connection = Connection::GetInstance();
+
+                $resultSet = $this->connection->ExecuteNonQuery($sql, $parameters, QueryType::Query);
+            } catch(Exception $ex)
+            {
+                throw $ex;
+            }
+
+            if(!empty($resultSet))
+                return true;
             else
                 return false;
         }
