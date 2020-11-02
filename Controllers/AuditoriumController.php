@@ -2,6 +2,7 @@
     namespace Controllers;
 
     use DAO\AuditoriumDAO as AuditoriumDAO;
+    use DAO\CinemaDAOMySQL as CinemaDAOMySQL;
     use Models\Auditorium as Auditorium;
 
     require_once("Config/Autoload.php");
@@ -9,10 +10,12 @@
     class AuditoriumController
     {
         private $auditoriumDAO;
+        private $cinemaDAO;
 
         public function __construct()
         {
             $this->auditoriumDAO = new AuditoriumDAO();
+            $this->cinemaDAO = new CinemaDAOMySQL();
         }
 
 
@@ -21,7 +24,13 @@
             require_once(VIEWS_PATH."AddAuditorium.php");
         }
 
-        
+        public function ShowAuditoriumList($idCinema, $message="")
+        {
+            $cinemasList = $this->cinemaDAO->GetAll();
+
+            require_once(VIEWS_PATH."AuditoriumList.php");
+        }
+
         public function Add($nameAuditorium, $amountOfSeats, $ticketPrice, $idCinema)
         {
             $auditoriumDAO = new AuditoriumDAO();
@@ -35,9 +44,9 @@
                 $newAuditorium->setAmountOfSeats($amountOfSeats);
                 $newAuditorium->setTicketPrice($ticketPrice);
 
-                $this->auditoriumDAO->Add($newCinema, $idCinema);
+                $this->auditoriumDAO->Add($newAuditorium, $idCinema);
                 $message="Auditorium added succesfully";
-                $this->ShowCinemaList($message);
+                $this->ShowAuditoriumList($idCinema, $message);
             }
             else
             {
@@ -46,6 +55,48 @@
             }
 
         }
+
+        public function ShowEditView($idAuditorium, $idCinema)
+        {
+            $message="";
+            require_once(VIEWS_PATH."EditAuditorium.php");
+        }
+
+        public function Edit($nameAuditorium, $amountOfSeats, $ticketPrice, $idAuditorium, $idCinema)
+        {
+            $auditoriumDAO = new AuditoriumDAO;
+
+            $edited = $auditoriumDAO->Edit($nameAuditorium, $amountOfSeats, $ticketPrice, $idAuditorium);
+
+            if($edited == true)
+            {
+                $message = "Auditorium edited";
+                $this->ShowAuditoriumList($idCinema, $message);
+            }
+            else
+            {
+                $message = "Sorry, try again";
+                $this->ShowAuditoriumList($idCinema, $message);
+            }
+        }
+
+        public function Delete($idAuditorium, $idCinema)
+        {
+            $auditoriumDAO = new AuditoriumDAO;
+            
+            $supr = $auditoriumDAO->Delete($idAuditorium);
+
+            if($supr==true)
+            {
+                $message="Auditorium deleted";
+                $this->ShowAuditoriumList($idCinema, $message);
+            }
+            else
+            {
+                $message="Sorry, something went wrong";
+                $this->ShowAuditoriumList($idCinema, $message);
+            }
+        } 
     }
 
 ?>

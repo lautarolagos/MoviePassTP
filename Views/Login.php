@@ -35,10 +35,16 @@
                </form>
           </div>
 
-          <?php if(isset($message)){
-                    ?>
-                    <p><?php echo $message; ?></p>
-               <?php }?>
-          
+          <?php 
+          if($message!='')
+          {
+          ?>
+          <div class="container">
+               <div class="alert alert-danger">
+                    <strong><?php echo $message; ?></strong>
+               </div>
+          </div>
+          <?php }
+          ?>
   </body>
   </html>

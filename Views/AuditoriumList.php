@@ -28,6 +28,9 @@
                               <th>ID</th>
                               <th>Total Seats</th>
                               <th>Ticket Price</th>
+                              <?php if($_SESSION['isAdmin']=="1"){?><th></th> <?php } ?>
+                              <?php if($_SESSION['isAdmin']=="1"){?><th>Options</th> <?php } ?>
+                             
                          </thead>
                          <tbody>
                          <?php
@@ -43,13 +46,45 @@
                                                   <td><?php echo $auditorium->getIdAuditorium(); ?></td>
                                                   <td><?php echo $auditorium->getAmountOfSeats(); ?></td>
                                                   <td><?php echo $auditorium->getTicketPrice(); ?></td>
+
+                                                  <!-- Boton de Edit -->
+                                                  <?php if($_SESSION['isAdmin']=="1"){
+                                                   ?>
+                                                   <td>
+                                                   <form action="<?php echo FRONT_ROOT ?>Auditorium/ShowEditView" method="POST">
+                                                   <button class="button-edit" type="submit" name="idAuditorium" value="<?php echo $auditorium->getIdAuditorium(); ?>">EDIT</button>
+                                                   <input type="hidden" name="idCinema" value="<?php echo $idCinema; ?>">
+                                                   <?php }?>
+                                                   </form>
+                                                   </td>
+                                                  <!-- Boton de Delete -->
+                                                  <?php if($_SESSION['isAdmin']=="1"){
+                                                   ?>
+                                                   <td>
+                                                   <form action="<?php echo FRONT_ROOT ?>Auditorium/Delete" method="POST">
+                                                   <button class="button-delete" type="submit" name="idAuditorium" value="<?php echo $auditorium->getIdAuditorium(); ?>">DELETE</button>
+                                                   <input type="hidden" name="idCinema" value="<?php echo $idCinema; ?>">
+                                                   <?php }?>
+                                                   </form>
+                                                   </td>             
                                              </tr>
-                                             <?php    
+                                             <?php
                                              }     
                                         }    
                                    } ?>           
                          </tbody>
                     </table>
                </div>
+               <?php 
+          if($message!='')
+          {
+          ?>
+          <div class="container">
+               <div class="alert alert-danger">
+                    <strong><?php echo $message; ?></strong>
+               </div>
+          </div>
+          <?php }
+          ?>
           </body>
      </html>

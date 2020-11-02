@@ -45,6 +45,7 @@
 
         public function ShowCinemaEdit($cinemaId)
         {
+            $message="";
             require_once(VIEWS_PATH."EditCinema.php");
         }
 
@@ -114,7 +115,7 @@
         {
             $cinemaDAO = new CinemaDAOMySQL();
             $cinemasList = $cinemaDAO->GetAll();
-            
+            $message="";
             require_once(VIEWS_PATH."AuditoriumList.php");
 
         }

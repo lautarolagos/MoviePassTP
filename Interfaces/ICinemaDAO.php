@@ -9,5 +9,6 @@
         function ReadAll();
         function Search($adress);
         function Delete($id);
+        function Edit($name, $capacity, $adress, $id);
     }
 ?>

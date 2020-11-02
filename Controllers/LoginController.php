@@ -20,7 +20,7 @@
             $this->cinemaDAO = new CinemaDAOMySQL();
         }
 
-        public function ShowCinemaView()
+        public function ShowCinemaView($message="")
         {
             $auditoriumDAO = new AuditoriumDAO();
 
@@ -64,7 +64,8 @@
                 if($user->getPassword() == $password)
                 {
                     $this->setSession($user);
-                    $this->ShowCinemaView();
+                    $message="";
+                    $this->ShowCinemaView($message);
                     return $user;
                 }
             }
