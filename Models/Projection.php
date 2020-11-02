@@ -5,7 +5,7 @@
     {
         private $date;
         private $hour;
-
+        private $auditorium;
         function __construct($date, $hour)
         {
             $this->date = $date;

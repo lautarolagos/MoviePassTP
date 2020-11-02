@@ -10,8 +10,9 @@
         private $genreIds; //Array ids
         private $overview;
         private $releaseDate;
-
-        function __construct($idMovie = NULL, $adult = NULL, $language = NULL, $title = NULL, $genreIds = NULL, $overview = NULL, $releaseDate = NULL){
+        private $posterPath;
+// agregar duracion
+        function __construct($idMovie = NULL, $adult = NULL, $language = NULL, $title = NULL, $genreIds = NULL, $overview = NULL, $releaseDate = NULL, $posterPath = NULL){
             $this->idMovie = $idMovie;
             $this->adult = $adult;
             $this->language = $language;
@@ -19,6 +20,7 @@
             $this->genreIds = $genreIds;
             $this->overview = $overview;
             $this->releaseDate = $releaseDate;
+            $this->posterPath = $posterPath;
         }
 
         //Getters
@@ -50,6 +52,10 @@
             return $this->releaseDate;
         }
 
+        function getPosterPath(){
+            return $this->posterPath;
+        }
+
         //Setters
         function setIdMovie($idMovie){
             $this->idMovie = $idMovie;
@@ -77,6 +83,10 @@
 
         function setReleaseDate($releaseDate){
             $this->releaseDate = $releaseDate;
+        }
+
+        function setPosterPath($posterPath){
+            $this->posterPath = $posterPath;
         }
     }
 ?>

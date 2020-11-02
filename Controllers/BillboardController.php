@@ -21,6 +21,7 @@
                 $movie->setGenreIds($this->setGenres($movies['results'][$i]['genre_ids']));
                 $movie->setOverview($movies['results'][$i]['overview']);
                 $movie->setReleaseDate($movies['results'][$i]['release_date']);
+                $movie->setPosterPath($movies['results'][$i]['poster_path']);
 
                 array_push($moviesArray, $movie);
             }
