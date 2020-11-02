@@ -8,25 +8,26 @@
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Edit Cinema</title>
+     <title>Edit Auditorium</title>
 </head>
 <body>
      <section  class="">
          <div class="cont-form">
-              <h2 class="form-title">Edit Cinema</h2>
-                   <form  class="form" action="<?php echo FRONT_ROOT ?>Cinema/EditCinema" method="POST">
+              <h2 class="form-title">Edit Auditorium</h2>
+                   <form  class="form" action="<?php echo FRONT_ROOT ?>Auditorium/Edit" method="POST">
                     <div>
                          <div>
-                              <input class="form-input" type="Text" name="name" id="nameId" value="" placeholder="Name" required>
+                              <input class="form-input" type="Text" name="nameAuditorium" id="nameId" value="" placeholder="Name" required>
                          </div>
                          <div>
-                              <input class="form-input" type="number" name="capacity" id="capacityId" value="" placeholder="Capacity" required>
+                              <input class="form-input" type="number" name="amountOfSeats" id="amountOfSeatsId" value="" placeholder="Amount of Seats" required>
                          </div>
                     </div>
                     <div>
                          <div>
-                              <input class="form-input" type="Text" name="adress" id="adressId" value="" placeholder="Adress" required>
-                              <input type="hidden" name="idCinema" value="<?php echo $cinemaId; ?>">
+                              <input class="form-input" type="number" name="ticketPrice" id="ticketPriceId" value="" placeholder="Ticket price" required>
+                              <input type="hidden" name="idAuditorium" value="<?php echo $idAuditorium; ?>">
+                              <input type="hidden" name="idCinema" value="<?php echo $idCinema; ?>">
                          </div>
                     </div>
                     <div>

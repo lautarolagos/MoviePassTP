@@ -9,7 +9,8 @@
     {
         function Add(Auditorium $auditorium, $idCinema);
         function GetById($idCinema);
-        function Delete($idCinema, $idAuditorium);
+        function Delete($idAuditorium);
         function Search($nameAuditorium, $idCinema);
+        function Edit($nameAuditorium, $amountOfSeats, $adress, $idAuditorium);
     }
 ?>

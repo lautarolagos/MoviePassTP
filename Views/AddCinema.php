@@ -17,18 +17,15 @@
                    <form  class="form" action="<?php echo FRONT_ROOT ?>Cinema/AddCinema" method="POST">
                     <div>
                          <div>
-                              <label class ="form-label" for="nameId">Name</label>
-                              <input class="form-input" type="Text" name="name" id="nameId" value="" required>
+                              <input class="form-input" type="Text" name="name" value="" placeholder="Name" required>
                          </div>
                          <div>
-                              <label class ="form-label" for="capacityId">Total Capacity</label>
-                              <input class="form-input" type="number" name="capacity" id="capacityId" value="" required>
+                               <input class="form-input"type="number" name="capacity" class="" placeholder="Capacity" required>
                          </div>
                     </div>
                     <div>
                          <div>
-                              <label class ="form-label" for="adressId">Adress</label>
-                              <input class="form-input" type="Text" name="adress" id="adressId" value="" required>
+                              <input class="form-input" type="Text" name="adress" value="" placeholder="Adress" required>
                          </div>
                     </div>
                     <div>
@@ -37,13 +34,17 @@
                </form>
           </div>
      </section>
-     <?php
-          if(isset($message)) // Modifica el Label o lo que sea a tu gusto, vos sabes como hacerlo
-          { ?>
-               <label for=""><?php echo $message; ?></label>
-          <?php
-          }
-     ?>     
+     <?php 
+          if($message!='')
+          {
+          ?>
+          <div class="container">
+               <div class="alert alert-danger">
+                    <strong><?php echo $message; ?></strong>
+               </div>
+          </div>
+          <?php }
+          ?>  
      
 </body>
 </html>
