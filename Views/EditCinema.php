@@ -36,11 +36,17 @@
           </div>
      </section>
 
-<?php if(isset($message))
-                    {
-                         echo $message;
-                    }
-                    ?>
+     <?php 
+          if($message!='')
+          {
+          ?>
+          <div class="container">
+               <div class="alert alert-danger">
+                    <strong><?php echo $message; ?></strong>
+               </div>
+          </div>
+          <?php }
+          ?>
 </body>
 </html>
 <?php include('Footer.php') ?> 

@@ -3,7 +3,7 @@
 
     class SessionController
     {
-        public function ShowLoginView()
+        public function ShowLoginView($message="")
         {
             require_once(VIEWS_PATH."Login.php");
         }
@@ -11,7 +11,8 @@
         public function Logout()
         {
             session_destroy();
-            $this->ShowLoginView();
+            $message="";
+            $this->ShowLoginView($message);
         }
     }
     

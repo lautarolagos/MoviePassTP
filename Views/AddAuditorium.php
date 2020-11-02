@@ -36,13 +36,17 @@
                </form>
           </div>
      </section>
-     <?php
-          if(isset($message)) // Modifica el Label o lo que sea a tu gusto, vos sabes como hacerlo
-          { ?>
-               <label for=""><?php echo $message; ?></label>
-          <?php
-          }
-     ?>     
+     <?php 
+          if($message!='')
+          {
+          ?>
+          <div class="container">
+               <div class="alert alert-danger">
+                    <strong><?php echo $message; ?></strong>
+               </div>
+          </div>
+          <?php }
+          ?>
      
 </body>
 </html>

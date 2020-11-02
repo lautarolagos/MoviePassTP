@@ -58,6 +58,7 @@
 
         public function ShowEditView($idAuditorium, $idCinema)
         {
+            $message="";
             require_once(VIEWS_PATH."EditAuditorium.php");
         }
 
