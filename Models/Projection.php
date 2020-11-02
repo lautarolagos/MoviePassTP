@@ -1,77 +1,35 @@
 <?php
     namespace Models;
 
-    class Cinema
+    class Projection   
     {
-        //idCompra
-        //peliculaSeleccionada
-        //cantidadEntradas
-        //funcionID
-        //totalCompra
-        private $idBuy;
-        private $movieSelected;
-        private $ticketQuantity;
-        private $totalPurchase;
-        private $id;
-        
+        private $date;
+        private $hour;
 
-        function __construct($idBuy = NULL, $movieSelected = NULL, $ticketQuantity = NULL, $totalPurchase = NULL, $idTicket = NULL)
+        function __construct($date, $hour)
         {
-            $this->idBuy = $idBuy;
-            $this->movieSelected = $movieSelected;
-            $this->ticketQuantity = $ticketQuantity;
-            $this->totalPurchase = $totalPurchase;
-            $this->idTicket = $idTicket;
+            $this->date = $date;
+            $this->hour = $hour;
         }
 
-        public function getIdBuy()
+        public function getDate()
         {
-            return $this->useridBuy;
+            return $this->date;
         }
 
-        public function setIdBuy($idBuy)
+        public function getHour()
         {
-            $this->idBuy = $idBuy;
+            return $this->hour;
+        } 
+
+        public function setDate($date)
+        {
+            $this->date = $date;
         }
 
-        public function getMovieSelected()
+        public function setHour($hour)
         {
-            return $this->movieSelected;
-        }
-
-        public function setMovieSelected($movieSelected)
-        {
-            $this->movieSelected = $movieSelected;
-        }
-
-        public function getTicketQuantity()
-        {
-            return $this->ticketQuantity;
-        }
-
-        public function setTicketQuantity($ticketQuantity)
-        {
-            $this->ticketQuantity = $ticketQuantity;
-        }
-
-        public function getTotalPurchase()
-        {
-            return $this->totalPurchase;
-        }
-
-        public function setTotalPurchase($totalPurchase)
-        {
-            $this->totalPurchase = $totalPurchase;
-        }
-
-        public function getIdTicket()
-        {
-            return $this->idTicket;
-        }
-
-        public function setIdTicket($idTicket)
-        {
-            $this->idTicket = $idTicket;
+            $this->hour = $hour;
         }
     }
 ?>

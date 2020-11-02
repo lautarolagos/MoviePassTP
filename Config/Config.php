@@ -14,4 +14,8 @@ define("DB_HOST", "localhost");
 define("DB_NAME", "moviepassdb");
 define("DB_USER", "root");
 define("DB_PASS", "root");
+
+//API
+define("API_PATH", "https://api.themoviedb.org/3/");
+define("API_KEY", "?api_key=92c4495ef346859068c8ab366d26228c");
 ?>

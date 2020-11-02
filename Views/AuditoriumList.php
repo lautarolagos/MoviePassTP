@@ -43,6 +43,12 @@
                                                   <td><?php echo $auditorium->getIdAuditorium(); ?></td>
                                                   <td><?php echo $auditorium->getAmountOfSeats(); ?></td>
                                                   <td><?php echo $auditorium->getTicketPrice(); ?></td>
+
+                                                  <td>
+                                                  <form action="<?php echo FRONT_ROOT ?>Billboard/ShowMoviesAPI" method="POST">
+                                                  <button class="button-edit" type="submit" name="" value="">ADD MOVIE</button>
+                                                  </form>
+                                                  </td>
                                              </tr>
                                              <?php    
                                              }     
