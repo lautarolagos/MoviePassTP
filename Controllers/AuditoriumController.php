@@ -53,7 +53,6 @@
                 $message="There is already an auditorium with that name, please enter another one";
                 $this->AddView($idCinema, $message); // Cuidado aca
             }
-
         }
 
         public function ShowEditView($idAuditorium, $idCinema)
