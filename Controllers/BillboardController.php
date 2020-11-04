@@ -1,21 +1,24 @@
 <?php
     namespace Controllers;
 
-    use DAO\BillboardDAO as BillboardDAO;
+    use DAO\MovieDAO as MovieDAO;
+    use DAO\GenreDAO as GenreDAO;
     use Models\Movie as Movie;
     use Models\Genre as Genre;
 
     class BillboardController
     {
-        private $billboardDAO;
+        private $movieDAO;
+        private $genreDAO;
 
         function __construct()
         {
-            $this->billboardDAO = new BillboardDAO;
+            $this->movieDAO = new MovieDAO();
+            $this->genreDAO = new GenreDAO();
         }
 
         //API Functions:
-        public function ShowMoviesAPI()
+        public function ShowMoviesAPI($idAuditorium)
         {
             $movies = json_decode(file_get_contents(API_PATH."movie/now_playing".API_KEY."&language=en-US"), true);
 
@@ -38,39 +41,21 @@
 
                     array_push($moviesArray, $movie);
                 }
-                require_once(VIEWS_PATH."ShowAddMovieAPI.php");
+                require_once(VIEWS_PATH."ShowMoviesAPI.php");
             }
         }
 
-        // public function setGenres($genreIdsAPI)
-        // {
-        //     $genre = json_decode(file_get_contents(API_PATH . "genre/movie/list" . API_KEY . "&language=en-US"), true);
-
-        //     $genreArrayAPI = $genre['genres'];
-        //     $genreArray = array();
-
-        //     //Recorremos el arreglo que nos viene de la API con los id's del o los géneros de una película
-        //     foreach($genreIdsAPI as $genreIds)
-        //     {
-        //         //Recorremos todo el arreglo de generos que tambén pedimos a la API para poder saber el nombre y la id del o los generos que nos lleguen
-        //         foreach($genreArrayAPI as $values)
-        //         {
-        //             if($genreIds == $values['id'])
-        //             {
-        //                 $newGenre = new Genre();
-        //                 $newGenre->setIdGenre($values['id']);
-        //                 $newGenre->setName($values['name']);
-        //                 array_push($genreArray, $newGenre);
-        //             }
-        //         }
-        //     }
-        //     return $genreArray;
-        // }
-
         //Billboard functions:
-        public function Add($movieId)
+        public function ShowAddProjection($movieId, $idAuditorium)
         {
-            echo "Movie id: ".$movieId;
+            require_once(VIEWS_PATH."AddProjection.php");
+        }
+
+        public function Add($date, $startTime, $endTime, $movieId, $idAuditorium)
+        {
+           $movieObj = $this->movieDAO->ReturnMovieByIdFromAPI($movieId);
+
+           
         }
     }
 ?>

@@ -51,7 +51,7 @@
                                                   <td>
                                                   <form action="<?php echo FRONT_ROOT ?>Billboard/ShowMoviesAPI" method="POST">
                                                   <button class="button-edit" type="submit" name="" value="">ADD MOVIE</button>
-                                                  <input type="hidden" name="idCinema" value="<?php echo $idCinema; ?>">
+                                                  <input type="hidden" name="idAuditorium" value="<?php echo $auditorium->getIdAuditorium();?>">
                                                   </form>
                                                   </td>
 
