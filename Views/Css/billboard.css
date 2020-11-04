@@ -32,3 +32,18 @@
     margin-bottom: .25rem;
   }
   
+  .button-edit{
+    border-radius: 5px;
+    padding: 5px 20px;
+    color: #FFF;
+    background: green;
+    cursor: pointer;
+    border: none;
+    font-family: 'Staatliches', cursive;
+    margin-right:  -60px;
+    margin-left: -10px;
+}
+
+  .button-edit:hover{
+  background: rgb(11, 39, 11);
+}

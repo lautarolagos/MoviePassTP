@@ -51,6 +51,7 @@
                                                   <td>
                                                   <form action="<?php echo FRONT_ROOT ?>Billboard/ShowMoviesAPI" method="POST">
                                                   <button class="button-edit" type="submit" name="" value="">ADD MOVIE</button>
+                                                  <input type="hidden" name="idCinema" value="<?php echo $idCinema; ?>">
                                                   </form>
                                                   </td>
 
@@ -69,7 +70,7 @@
                                                    ?>
                                                    <td>
                                                    <form action="<?php echo FRONT_ROOT ?>Auditorium/Delete" method="POST">
-                                                   <button class="button-delete" type="submit" name="idAuditorium" value="<?php echo $auditorium->getIdAuditorium(); ?>">DELETE</button>
+                                                   <button class="" type="submit" name="idAuditorium" value="<?php echo $auditorium->getIdAuditorium(); ?>">DELETE</button>
                                                    <input type="hidden" name="idCinema" value="<?php echo $idCinema; ?>">
                                                    <?php }?>
                                                    </form>

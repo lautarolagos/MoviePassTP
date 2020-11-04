@@ -6,6 +6,7 @@
 
     interface IBillboardDAO
     {
-        
+        public function Add($movieId);
+        public function SearchById($movieId);
     }
 ?>

@@ -6,6 +6,8 @@
         private $date;
         private $hour;
         private $auditorium;
+        private $movie;
+        
         function __construct($date, $hour)
         {
             $this->date = $date;
