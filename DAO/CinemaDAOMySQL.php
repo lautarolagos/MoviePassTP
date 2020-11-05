@@ -49,17 +49,23 @@
                 {                
                     $cinema = new Cinema(); // aca quizas algo esta mal
                     $cinema->setName($row["name"]);
-                    $cinema->setCapacity($row["capacity"]);
                     $cinema->setAdress($row["adress"]);
                     $cinema->setIdCinema($row['idCinema']);
-                    //$cinema->setAuditoriums(NULL);
 
                     array_push($cinemasList, $cinema);
                 }
 
                 foreach($cinemasList as $cinema)
                 {
+                    $capacityCounter=0;
                     $auditoriums=$auditoriumDAO->GetById($cinema->getIdCinema());
+                    
+                    foreach($auditoriums as $audi)
+                    {
+                        $capacityCounter = $capacityCounter + $audi->getAmountOfSeats();
+                    }
+                    
+                    $cinema->setCapacity($capacityCounter);
                     $cinema->setAuditoriums($auditoriums);
                 }
                 
@@ -107,7 +113,7 @@
             }
 
             if(!empty($resultSet))
-                return $this->mapear($resultSet);
+                return true;
             else
                 return false;
         }
@@ -123,13 +129,12 @@
             return count($resp) > 1 ? $resp : $resp['0'];
         }
 
-        public function Edit($name, $capacity, $adress, $id)
+        public function Edit($name, $adress, $id)
         {
             try
             {
-                $sql = "UPDATE " . $this->tableName . " SET name = :name, capacity = :capacity, adress = :adress WHERE idCinema = :id";
+                $sql = "UPDATE " . $this->tableName . " SET name = :name, adress = :adress WHERE idCinema = :id";
                 $parameters["name"] = $name;
-                $parameters["capacity"] = $capacity;
                 $parameters["adress"] = $adress;
                 $parameters["id"] = $id;
 

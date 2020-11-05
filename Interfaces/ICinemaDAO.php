@@ -7,8 +7,8 @@
         function Add(Cinema $cinema);
         function GetAll();
         function ReadAll();
-        function Search($adress);
+        function Search($name);
         function Delete($id);
-        function Edit($name, $capacity, $adress, $id);
+        function Edit($name, $adress, $id);
     }
 ?>

@@ -38,8 +38,8 @@
     <div class="inner">
     <h3 class="masthead-brand">Welcome!</h3>
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link active" href="<?php echo FRONT_ROOT ?>Session/ShowLoginView">Sign In</a>
+        <a class="nav-link" href="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaList">Cinemas</a>
         <a class="nav-link" href="#">Contact</a>
       </nav>
     </div>

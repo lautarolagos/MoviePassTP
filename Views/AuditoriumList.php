@@ -13,7 +13,7 @@
      <body>
           <div class="table-list"> 
                <title>Auditorium Listings - MoviePass</title>
-                    <h2 class="table-title"><?php echo $cinemasList[$idCinema]->getName(); ?></h2>
+                    <h2 class="table-title"><?php echo $cinemasList[$idCinema-1]->getName(); ?></h2>
                     <h2 class="table-title">Auditorium List</h2>
                     
                     <!-- AGREGAR AUDITORIUM -->
