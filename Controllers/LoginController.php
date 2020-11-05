@@ -26,12 +26,6 @@
 
             $cinemasList = $this->cinemaDAO->GetAll();
             
-           /* foreach($cinemasList as $cinema)
-            {
-                $auditoriums=$auditoriumDAO->GetById($cinema->getIdCinema());
-                $cinema->setAuditoriums($auditoriums);
-            }*/
-            
             require_once(VIEWS_PATH."CinemaList.php");
         }
         

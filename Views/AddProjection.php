@@ -1,6 +1,8 @@
 <?php
     require_once('Header.php');
     require_once('Nav.php');
+
+    date_default_timezone_set('America/Argentina/Buenos_Aires');
 ?>
 
 <!DOCTYPE html>
@@ -22,11 +24,7 @@
                     </div>
                     <div>
                         <label for="startTimeId">Start Time</label>
-                        <input class="form-input"type="time" name="startTine" id="startTimeId" required>
-                    </div>
-                    <div>
-                        <label for="endTimeId">End Time</label>
-                        <input class="form-input"type="time" name="endTime" id="endTimeId" required>
+                        <input class="form-input" type="time" name="startTine" id="startTimeId" min="<?php echo date('H:i');?>" required>
                     </div>
                     <div>
                         <input type="hidden" name="idMovie" value="<?php echo $movieId;?>">

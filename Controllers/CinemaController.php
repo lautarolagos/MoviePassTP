@@ -24,15 +24,7 @@
         public function ShowCinemaList($message="")
         {
             $auditoriumDAO = new AuditoriumDAO();
-
             $cinemasList = $this->cinemaDAO->GetAll();
-            
-            /*foreach($cinemasList as $cinema)
-            {
-                $auditoriums=$auditoriumDAO->GetById($cinema->getIdCinema());
-                $cinema->setAuditoriums($auditoriums);
-            }*/
-
             require_once(VIEWS_PATH."CinemaList.php");
         }
    
@@ -54,7 +46,7 @@
         {
             $cinemaDAO = new CinemaDAOMySQL;
 
-            $exists = $cinemaDAO->Search($adress);
+            $exists = $cinemaDAO->Search($name);
 
             if($exists==false)
             {
@@ -70,7 +62,7 @@
             }
             else
             {
-                $message= "There is already a cinema in that adress, please enter another one";
+                $message= "There is already a cinema with that name, please enter another one";
                 $this->ShowAddView($message);
             }
         }

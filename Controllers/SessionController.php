@@ -3,16 +3,21 @@
 
     class SessionController
     {
-        public function ShowLoginView($message="")
+        public function ShowHomePage($message="")
         {
-            require_once(VIEWS_PATH."Login.php");
+            require_once(VIEWS_PATH."Home.php");
         }
 
         public function Logout()
         {
             session_destroy();
             $message="";
-            $this->ShowLoginView($message);
+            $this->ShowHomePage($message);
+        }
+
+        public function ShowLoginView($message="")
+        {
+            require_once(VIEWS_PATH."Login.php");
         }
     }
     

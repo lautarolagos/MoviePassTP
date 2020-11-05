@@ -91,11 +91,11 @@
         }
 
 
-        public function Search($adress) // Busca un cine en la BDD con la direccion pasada
+        public function Search($name) // Busca un cine en la BDD con la direccion pasada
         {
-            $sql = "SELECT * FROM ".$this->tableName . " WHERE (adress = :adress) and isActive = '1'";
+            $sql = "SELECT * FROM ".$this->tableName . " WHERE (name = :name) and isActive = '1'";
 
-            $parameters['adress'] = $adress;
+            $parameters['name'] = $name;
 
             try
             {

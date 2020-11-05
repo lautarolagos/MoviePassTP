@@ -15,12 +15,22 @@
             <nav class="menu">
                 <ul>
                     <li style="background-color: red;">
-                        <a>Welcome <strong><?php echo $_SESSION['firstName']?> !</strong></a>
+                        <?php if(isset($_SESSION['firstName'])){?>
+                        <a>Welcome, <strong><?php echo $_SESSION['firstName']?>!</strong></a> <?php  } else { ?>
+                        <a>Welcome, <strong> guest! </strong></a> <?php } ?>
                     </li>
+                    <li>
+                        <a href="<?php echo FRONT_ROOT ?>Session/ShowHomePage">Home</a>
+                    </li>
+                    <?php if(!isset($_SESSION['userLogedIn'])){?>
+                    <li>
+                        <a href="<?php echo FRONT_ROOT ?>Session/ShowLoginView">Sign In</a>
+                    </li>
+                    <?php }?>
                     <li>
                         <a href="#">Billboard</a>
                     </li>
-                    <?php if($_SESSION['isAdmin']=="1")
+                    <?php if(isset($_SESSION['isAdmin'])=='1')
                     {
                     ?>
                     <li>
@@ -32,10 +42,11 @@
                     <li>
                         <a href="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaList">Cinema Listings</a>
                     </li>
+                    <?php if(isset($_SESSION['userLogedIn'])){?>
                     <li>
                         <a href="<?php echo FRONT_ROOT ?>Session/Logout">Logout</a>
                     </li>
-                    
+                    <?php }?>
                 </ul>
             </nav>
     </header>
