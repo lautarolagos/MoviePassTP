@@ -7,12 +7,13 @@
         private $adult;
         private $language;
         private $title;
-        private $genreIds; //Array ids
+        private $genreIds; //Array de los ids de generos 
         private $overview;
         private $releaseDate;
         private $posterPath;
-// agregar duracion
-        function __construct($idMovie = NULL, $adult = NULL, $language = NULL, $title = NULL, $genreIds = NULL, $overview = NULL, $releaseDate = NULL, $posterPath = NULL){
+        private $isActive;
+
+        function __construct($idMovie = NULL, $adult = NULL, $language = NULL, $title = NULL, $genreIds = NULL, $overview = NULL, $releaseDate = NULL, $posterPath = NULL, $isActive = NULL){
             $this->idMovie = $idMovie;
             $this->adult = $adult;
             $this->language = $language;
@@ -21,6 +22,7 @@
             $this->overview = $overview;
             $this->releaseDate = $releaseDate;
             $this->posterPath = $posterPath;
+            $this->isActive = $isActive;
         }
 
         //Getters
@@ -56,6 +58,10 @@
             return $this->posterPath;
         }
 
+        function getIsActive(){
+            return $this->isActive;
+        }
+
         //Setters
         function setIdMovie($idMovie){
             $this->idMovie = $idMovie;
@@ -87,6 +93,10 @@
 
         function setPosterPath($posterPath){
             $this->posterPath = $posterPath;
+        }
+
+        function setIsActive($isActive){
+            $this->isActive = $isActive;
         }
     }
 ?>

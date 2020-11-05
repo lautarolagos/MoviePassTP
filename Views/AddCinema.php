@@ -19,9 +19,6 @@
                          <div>
                               <input class="form-input" type="Text" name="name" value="" placeholder="Name" required>
                          </div>
-                         <div>
-                               <input class="form-input"type="number" name="capacity" class="" placeholder="Capacity" required>
-                         </div>
                     </div>
                     <div>
                          <div>

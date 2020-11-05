@@ -47,23 +47,32 @@
                 
                 foreach ($resultSet as $row)
                 {                
-                    $cinema = new Cinema(); // aca quizas algo esta mal
+                    $cinema = new Cinema();
                     $cinema->setName($row["name"]);
-                    $cinema->setCapacity($row["capacity"]);
                     $cinema->setAdress($row["adress"]);
                     $cinema->setIdCinema($row['idCinema']);
-                    //$cinema->setAuditoriums(NULL);
 
-                    array_push($cinemasList, $cinema);
+                    array_push($cinemasList, $cinema); // Lo que me llega de la DB lo meto en un array de Cinemas
                 }
 
-                foreach($cinemasList as $cinema)
+                foreach($cinemasList as $cinema) // Recorro la lista de Cinemas, para asignarles sus Auditoriums
                 {
-                    $auditoriums=$auditoriumDAO->GetById($cinema->getIdCinema());
+                    $capacityCounter=0;
+                    $auditoriums=$auditoriumDAO->GetById($cinema->getIdCinema()); // Obtengo la lista de Auditoriums por ID de cine
+                    
+                    foreach($auditoriums as $audi) // Asigno a cada cine sus salas y hago el cuento de asientos para asignarle la capacidad total al cine
+                    {
+                        $capacityCounter = $capacityCounter + $audi->getAmountOfSeats();
+                        $cinemaAudi = new Cinema();
+                        $cinemaAudi->setIdCinema($cinema->getIdCinema());
+                        $audi->setCinema($cinemaAudi); // Aca el objeto "Auditorium" tiene un objeto "Cine" que solo contiene la ID del Cine al que pertenece
+                    }
+                    
+                    $cinema->setCapacity($capacityCounter);
                     $cinema->setAuditoriums($auditoriums);
                 }
                 
-                return $cinemasList;
+                return $cinemasList; // Retorno la lista completamente cargada
             }
             catch(Exception $ex)
             {
@@ -91,11 +100,11 @@
         }
 
 
-        public function Search($adress) // Busca un cine en la BDD con la direccion pasada
+        public function Search($name) // Busca un cine en la BDD con el nombre que me mandan
         {
-            $sql = "SELECT * FROM ".$this->tableName . " WHERE (adress = :adress) and isActive = '1'";
+            $sql = "SELECT * FROM ".$this->tableName . " WHERE (name = :name) and isActive = '1'";
 
-            $parameters['adress'] = $adress;
+            $parameters['name'] = $name;
 
             try
             {
@@ -107,7 +116,7 @@
             }
 
             if(!empty($resultSet))
-                return $this->mapear($resultSet);
+                return true;
             else
                 return false;
         }
@@ -123,13 +132,12 @@
             return count($resp) > 1 ? $resp : $resp['0'];
         }
 
-        public function Edit($name, $capacity, $adress, $id)
+        public function Edit($name, $adress, $id)
         {
             try
             {
-                $sql = "UPDATE " . $this->tableName . " SET name = :name, capacity = :capacity, adress = :adress WHERE idCinema = :id";
+                $sql = "UPDATE " . $this->tableName . " SET name = :name, adress = :adress WHERE idCinema = :id";
                 $parameters["name"] = $name;
-                $parameters["capacity"] = $capacity;
                 $parameters["adress"] = $adress;
                 $parameters["id"] = $id;
 

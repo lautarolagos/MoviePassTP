@@ -16,29 +16,23 @@
                     <h2 class="table-title">Cinema List</h2>
                     <table>
                          <thead>
-                              <?php if($_SESSION['isAdmin']=="1"){?>
-                              <th>ID</th>
-                              <?php }?>
                               <th>Name</th>
                               <th>Capacity</th>
                               <th>Adress</th>
-                              <?php if($_SESSION['isAdmin']=="1"){?><th></th> <?php } ?>
-                              <th>Options</th>
-                              <?php if($_SESSION['isAdmin']=="1"){?><th></th> <?php } ?>
+                              <?php if(isset($_SESSION['isAdmin'])=='1'){?><th></th> <?php } ?>
+                              <?php if(isset($_SESSION['isAdmin'])=='1'){?><th>Options</th> <?php } ?>
+                              <?php if(isset($_SESSION['isAdmin'])=='1'){?><th></th> <?php } ?>
                          </thead>
                          <tbody>
                          <?php 
                               foreach($cinemasList as $cinema)
                                    {?>
                                              <tr>
-                                                  <?php if($_SESSION['isAdmin']=="1"){?>
-                                                  <td><?php echo $cinema->getIdCinema(); ?></td>
-                                                  <?php }?>
                                                   <td><?php echo $cinema->getName(); ?></td>
                                                   <td><?php echo $cinema->getCapacity(); ?></td>
                                                   <td><?php echo $cinema->getAdress(); ?></td>
                                                   <!-- Boton de Edit -->
-                                                  <?php if($_SESSION['isAdmin']=="1"){
+                                                  <?php if(isset($_SESSION['isAdmin'])=='1'){
                                                    ?>
                                                    <td>
                                                    <form action="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaEdit" method="POST">
@@ -47,7 +41,7 @@
                                                    </form>
                                                    </td>    
                                                   <!-- Boton de Delete -->
-                                                  <?php if($_SESSION['isAdmin']=="1"){
+                                                  <?php if(isset($_SESSION['isAdmin'])=='1'){
                                                   ?>
                                                   <td>
                                                   <form action="<?php echo FRONT_ROOT ?>Cinema/DeleteCinema" method="POST">
@@ -56,10 +50,13 @@
                                                   </form>
                                                   </td>
                                                   <!-- Boton de Ver Salas -->
+                                                  <?php if(isset($_SESSION['isAdmin'])=='1'){
+                                                  ?>
                                                   <td>
                                                   <form action="<?php echo FRONT_ROOT ?>Cinema/ShowAuditoriums" method="POST">
                                                   <button class="button-auditoriums" type="submit" name="idCinema" value="<?php  echo $cinema->getIdCinema();?>">SEE AUDITORIUMS</button>
                                                   </form>
+                                                  <?php }?>
                                                   </td>
                                              </tr>     
                               <?php     } ?>

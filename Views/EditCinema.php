@@ -19,9 +19,6 @@
                          <div>
                               <input class="form-input" type="Text" name="name" id="nameId" value="" placeholder="Name" required>
                          </div>
-                         <div>
-                              <input class="form-input" type="number" name="capacity" id="capacityId" value="" placeholder="Capacity" required>
-                         </div>
                     </div>
                     <div>
                          <div>

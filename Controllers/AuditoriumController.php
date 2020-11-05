@@ -33,9 +33,9 @@
 
         public function Add($nameAuditorium, $amountOfSeats, $ticketPrice, $idCinema)
         {
-            $auditoriumDAO = new AuditoriumDAO();
+            //$auditoriumDAO = new AuditoriumDAO();
 
-            $exists = $auditoriumDAO->Search($nameAuditorium, $idCinema);
+            $exists = $this->auditoriumDAO->Search($nameAuditorium, $idCinema);
 
             if($exists==false)
             {
@@ -63,9 +63,8 @@
 
         public function Edit($nameAuditorium, $amountOfSeats, $ticketPrice, $idAuditorium, $idCinema)
         {
-            $auditoriumDAO = new AuditoriumDAO;
 
-            $edited = $auditoriumDAO->Edit($nameAuditorium, $amountOfSeats, $ticketPrice, $idAuditorium);
+            $edited = $this->auditoriumDAO->Edit($nameAuditorium, $amountOfSeats, $ticketPrice, $idAuditorium);
 
             if($edited == true)
             {
@@ -81,9 +80,8 @@
 
         public function Delete($idAuditorium, $idCinema)
         {
-            $auditoriumDAO = new AuditoriumDAO;
             
-            $supr = $auditoriumDAO->Delete($idAuditorium);
+            $supr = $this->auditoriumDAO->Delete($idAuditorium);
 
             if($supr==true)
             {

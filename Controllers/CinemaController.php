@@ -24,15 +24,7 @@
         public function ShowCinemaList($message="")
         {
             $auditoriumDAO = new AuditoriumDAO();
-
             $cinemasList = $this->cinemaDAO->GetAll();
-            
-            /*foreach($cinemasList as $cinema)
-            {
-                $auditoriums=$auditoriumDAO->GetById($cinema->getIdCinema());
-                $cinema->setAuditoriums($auditoriums);
-            }*/
-
             require_once(VIEWS_PATH."CinemaList.php");
         }
    
@@ -50,17 +42,15 @@
         }
 
 
-        public function AddCinema($name, $capacity, $adress) // este es con MySQL
+        public function AddCinema($name, $adress)
         {
-            $cinemaDAO = new CinemaDAOMySQL;
-
-            $exists = $cinemaDAO->Search($adress);
+            $exists = $this->cinemaDAO->Search($name);
 
             if($exists==false)
             {
                 $newCinema = new Cinema();
                 $newCinema->setName($name);
-                $newCinema->setCapacity($capacity);
+                $newCinema->setCapacity("0");
                 $newCinema->setAdress($adress);
                 $newCinema->setAuditoriums(NULL);
 
@@ -70,16 +60,14 @@
             }
             else
             {
-                $message= "There is already a cinema in that adress, please enter another one";
+                $message= "There is already a cinema with that name, please enter another one";
                 $this->ShowAddView($message);
             }
         }
 
-        public function EditCinema($name, $capacity, $adress, $idCinema)
+        public function EditCinema($name, $adress, $idCinema)
         {
-            $cinemaDAO = new CinemaDAOMySQL;
-
-            $edited = $cinemaDAO->Edit($name, $capacity, $adress, $idCinema);
+            $edited = $this->cinemaDAO->Edit($name, $adress, $idCinema);
 
             if($edited == true){
                 $message = "Cinema edited";
@@ -94,9 +82,7 @@
 
         public function DeleteCinema($idCinema) // ESTE ES CON MYSQL
         {
-            $cinemaDAO = new CinemaDAOMySQL;
-
-            $supr = $cinemaDAO->Delete($idCinema);
+            $supr = $this->cinemaDAO->Delete($idCinema);
 
             if($supr==true)
             {
@@ -113,56 +99,9 @@
 
         public function ShowAuditoriums($idCinema)
         {
-            $cinemaDAO = new CinemaDAOMySQL();
-            $cinemasList = $cinemaDAO->GetAll();
+            $cinemasList = $this->cinemaDAO->GetAll();
             $message="";
             require_once(VIEWS_PATH."AuditoriumList.php");
-
         }
-
-
-        /*public function Add($name, $capacity, $adress) // esto es con json
-        {
-            $adressExist=0; // Creo una variable para verificar si la direccion enviada ya está registrada, 0 significa NO, 1 Significa SI
-            $listCounter=-1; // Esto sirve para ir contando cuantos cines ya hay agregados y poder saber que id asignarle al nuevo cine
-            $cinemaList = $this->cinemaDAO->GetAll(); //Llamo a la lista de cines y luego verifico si existe
-
-            if($cinemaList != NULL)
-            {
-                foreach($cinemaList as $cinema)
-                {
-                    if($cinema->getActive()==1) // Compara solamente los cines que esten activos.
-                    {
-                        if($adress == $cinema->getAdress())
-                        {
-                            $adressExist=1;
-                            $message= "There is already a cinema in that adress, please enter another one";
-                            $this->ShowAddView($message);
-                        }
-                        $listCounter++;   
-                    }
-                }
-            }
-            if($adressExist==0)// Si es igual a 0, entonces no hay un cine con esa direccion o no hay ninguno, y se agrega al Json
-            {
-                $newCinema = new Cinema();
-                $newCinema->setName($name);
-                $newCinema->setCapacity($capacity);
-                $newCinema->setAdress($adress);
-                $newCinema->setIdCinema($listCounter+1);
-                $newCinema->setAuditoriums(NULL); // Por defecto se crea un cine sin auditoriums
-                $this->cinemaDAO->Add($newCinema);
-                $message="Cinema added succesfully";
-                $this->ShowCinemaList($message);
-            }
-        }*/
-
-
-        /*public function Delete($idCinema) // ESTE ES CON JSON
-        {
-            $this->cinemaDAO->Delete($idCinema);
-            $message="Cinema deleted";
-            $this->ShowCinemaList($message); // Retorna un mensaje diciendo que se logro borrar el cine
-        }*/
     }
 ?>
