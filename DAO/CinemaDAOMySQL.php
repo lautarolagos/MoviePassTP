@@ -63,6 +63,9 @@
                     foreach($auditoriums as $audi)
                     {
                         $capacityCounter = $capacityCounter + $audi->getAmountOfSeats();
+                        $cinemaAudi = new Cinema();
+                        $cinemaAudi->setIdCinema($cinema->getIdCinema());
+                        $audi->setCinema($cinemaAudi); // Aca el objeto "Auditorium" tiene un objeto "Cine" que solo contiene la ID del Cine al que pertenece
                     }
                     
                     $cinema->setCapacity($capacityCounter);
