@@ -47,20 +47,20 @@
                 
                 foreach ($resultSet as $row)
                 {                
-                    $cinema = new Cinema(); // aca quizas algo esta mal
+                    $cinema = new Cinema();
                     $cinema->setName($row["name"]);
                     $cinema->setAdress($row["adress"]);
                     $cinema->setIdCinema($row['idCinema']);
 
-                    array_push($cinemasList, $cinema);
+                    array_push($cinemasList, $cinema); // Lo que me llega de la DB lo meto en un array de Cinemas
                 }
 
-                foreach($cinemasList as $cinema)
+                foreach($cinemasList as $cinema) // Recorro la lista de Cinemas, para asignarles sus Auditoriums
                 {
                     $capacityCounter=0;
-                    $auditoriums=$auditoriumDAO->GetById($cinema->getIdCinema());
+                    $auditoriums=$auditoriumDAO->GetById($cinema->getIdCinema()); // Obtengo la lista de Auditoriums por ID de cine
                     
-                    foreach($auditoriums as $audi)
+                    foreach($auditoriums as $audi) // Asigno a cada cine sus salas y hago el cuento de asientos para asignarle la capacidad total al cine
                     {
                         $capacityCounter = $capacityCounter + $audi->getAmountOfSeats();
                         $cinemaAudi = new Cinema();
@@ -72,7 +72,7 @@
                     $cinema->setAuditoriums($auditoriums);
                 }
                 
-                return $cinemasList;
+                return $cinemasList; // Retorno la lista completamente cargada
             }
             catch(Exception $ex)
             {
@@ -100,7 +100,7 @@
         }
 
 
-        public function Search($name) // Busca un cine en la BDD con la direccion pasada
+        public function Search($name) // Busca un cine en la BDD con el nombre que me mandan
         {
             $sql = "SELECT * FROM ".$this->tableName . " WHERE (name = :name) and isActive = '1'";
 
