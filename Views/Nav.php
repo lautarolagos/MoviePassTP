@@ -30,8 +30,7 @@
                     <li>
                         <a href="#">Billboard</a>
                     </li>
-                    <?php if(isset($_SESSION['isAdmin'])=='1')
-                    {
+                    <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {
                     ?>
                     <li>
                         <a href="<?php echo FRONT_ROOT ?>Cinema/ShowAddView">Add Cinema</a>
