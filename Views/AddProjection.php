@@ -24,7 +24,7 @@
                     </div>
                     <div>
                         <label for="startTimeId">Start Time</label>
-                        <input class="form-input" type="time" name="startTine" id="startTimeId" min="<?php echo date('H:i');?>" required>
+                        <input class="form-input" type="time" name="startTine" id="startTimeId" min="<?php echo date("H:i"); ?>" required>
                     </div>
                     <div>
                         <input type="hidden" name="idMovie" value="<?php echo $movieId;?>">
@@ -34,6 +34,10 @@
                 <div>
                     <button type="submit" class="btn-submit">Add</button>
                 </div>
+            </form>
+            <form class="form" action="<?php echo FRONT_ROOT ?>Billboard/ShowMoviesAPI" method="POST">
+                    <input type="hidden" name="idMovie" value="<?php echo $idAuditorium; ?>">
+                    <button class="btn-submit" type="submit">Go Back</button>
             </form>
         </div>
     </section>

@@ -1,6 +1,7 @@
 <?php
      namespace Views;
      include_once('Header.php');
+     include('Nav.php');
   ?>
   <!DOCTYPE html>
   <html lang="en">
