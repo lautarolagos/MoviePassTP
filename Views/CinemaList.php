@@ -19,9 +19,10 @@
                               <th>Name</th>
                               <th>Capacity</th>
                               <th>Adress</th>
-                              <?php if(isset($_SESSION['isAdmin'])=='1'){?><th></th> <?php } ?>
-                              <?php if(isset($_SESSION['isAdmin'])=='1'){?><th>Options</th> <?php } ?>
-                              <?php if(isset($_SESSION['isAdmin'])=='1'){?><th></th> <?php } ?>
+                              
+                              <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") { ?><th></th><?php }?>
+                              <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") { ?><th>Options</th><?php }?>
+                              <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") { ?><th></th><?php }?>
                          </thead>
                          <tbody>
                          <?php 
@@ -32,7 +33,7 @@
                                                   <td><?php echo $cinema->getCapacity(); ?></td>
                                                   <td><?php echo $cinema->getAdress(); ?></td>
                                                   <!-- Boton de Edit -->
-                                                  <?php if(isset($_SESSION['isAdmin'])=='1'){
+                                                  <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {
                                                    ?>
                                                    <td>
                                                    <form action="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaEdit" method="POST">
@@ -41,7 +42,7 @@
                                                    </form>
                                                    </td>    
                                                   <!-- Boton de Delete -->
-                                                  <?php if(isset($_SESSION['isAdmin'])=='1'){
+                                                  <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {
                                                   ?>
                                                   <td>
                                                   <form action="<?php echo FRONT_ROOT ?>Cinema/DeleteCinema" method="POST">
@@ -50,7 +51,7 @@
                                                   </form>
                                                   </td>
                                                   <!-- Boton de Ver Salas -->
-                                                  <?php if(isset($_SESSION['isAdmin'])=='1'){
+                                                  <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {
                                                   ?>
                                                   <td>
                                                   <form action="<?php echo FRONT_ROOT ?>Cinema/ShowAuditoriums" method="POST">
