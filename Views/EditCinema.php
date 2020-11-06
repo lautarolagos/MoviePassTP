@@ -14,6 +14,7 @@
      <section  class="">
          <div class="cont-form">
               <h2 class="form-title">Edit Cinema</h2>
+                    <hr>
                    <form  class="form" action="<?php echo FRONT_ROOT ?>Cinema/EditCinema" method="POST">
                     <div>
                          <div>
@@ -29,6 +30,9 @@
                     <div>
                          <button type="submit" class="btn-submit">Save Changes</button>
                     </div>
+               </form>
+               <form class="form" action="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaList" method="POST">
+                    <button class="btn-submit" type="submit">Go Back</button>
                </form>
           </div>
      </section>

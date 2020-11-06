@@ -4,9 +4,6 @@
     use Interfaces\ICinemaDAO as ICinemaDAO;
     use Models\Cinema as Cinema;
     use DAO\Connection as Connection;
-    use DAO\AuditoriumDAO as AuditoriumDAO;
-    use Interfaces\IAuditoriumDAO as IAuditoriumDAO;
-    use Models\Auditorium as Auditorium;
 
     class CinemaDAOMySQL implements ICinemaDAO
     {
@@ -34,7 +31,6 @@
 
         public function GetAll()
         {
-            $auditoriumDAO = new AuditoriumDAO();
             try
             {
                 $cinemasList = array();
@@ -52,27 +48,9 @@
                     $cinema->setAdress($row["adress"]);
                     $cinema->setIdCinema($row['idCinema']);
 
-                    array_push($cinemasList, $cinema); // Lo que me llega de la DB lo meto en un array de Cinemas
+                    array_push($cinemasList, $cinema); 
                 }
-
-                foreach($cinemasList as $cinema) // Recorro la lista de Cinemas, para asignarles sus Auditoriums
-                {
-                    $capacityCounter=0;
-                    $auditoriums=$auditoriumDAO->GetById($cinema->getIdCinema()); // Obtengo la lista de Auditoriums por ID de cine
-                    
-                    foreach($auditoriums as $audi) // Asigno a cada cine sus salas y hago el cuento de asientos para asignarle la capacidad total al cine
-                    {
-                        $capacityCounter = $capacityCounter + $audi->getAmountOfSeats();
-                        $cinemaAudi = new Cinema();
-                        $cinemaAudi->setIdCinema($cinema->getIdCinema());
-                        $audi->setCinema($cinemaAudi); // Aca el objeto "Auditorium" tiene un objeto "Cine" que solo contiene la ID del Cine al que pertenece
-                    }
-                    
-                    $cinema->setCapacity($capacityCounter);
-                    $cinema->setAuditoriums($auditoriums);
-                }
-                
-                return $cinemasList; // Retorno la lista completamente cargada
+                return $cinemasList;
             }
             catch(Exception $ex)
             {

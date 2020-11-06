@@ -34,6 +34,9 @@
                          <button type="submit" class="btn-submit">Add</button>
                     </div>
                </form>
+               <form class="form" action="<?php echo FRONT_ROOT ?>Cinema/ShowAuditoriums" method="post">
+                    <center><button class="btn-submit" type="submit" name="idCinema" value="<?php echo $idCinema ?>">Go Back</button></center>
+               </form>
           </div>
      </section>
      <?php 

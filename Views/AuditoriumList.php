@@ -22,6 +22,10 @@
                     <form class="form" action="<?php echo FRONT_ROOT ?>Auditorium/AddView" method="post">
                     <center><button class="button-add" type="submit" name="idCinema" value="<?php echo $idCinema ?>">Add Auditorium</button></center>
                     </form>
+                    
+                    <form class="form" action="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaList" method="post">
+                    <center><button class="button-add" type="submit">Go Back</button></center>
+                    </form>
                     <?php }?>
                     <table>
                          <thead>
