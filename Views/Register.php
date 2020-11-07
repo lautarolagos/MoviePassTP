@@ -1,7 +1,3 @@
-<?php
-     namespace Views;
-     include_once('./Views/Header.php');
-  ?>
      <!DOCTYPE html>
      <html lang="en">
      <head>

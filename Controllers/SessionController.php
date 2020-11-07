@@ -3,16 +3,18 @@
 
     class SessionController
     {
-        public function ShowHomePage($message="")
+        public function ShowHomePage()
         {
             require_once(VIEWS_PATH."Home.php");
         }
 
         public function Logout()
         {
-            session_destroy();
-            $message="";
-            $this->ShowHomePage($message);
+            $status = session_status();
+            if($status == PHP_SESSION_ACTIVE){
+                session_destroy();
+                $this->ShowHomePage();
+            }
         }
 
         public function ShowLoginView($message="")
