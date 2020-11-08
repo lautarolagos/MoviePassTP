@@ -8,13 +8,16 @@
         private $ticketPrice;
         private $nameAuditorium;
         private $cinema;
-        function __construct($amountOfSeats=NULL, $idAuditorium=NULL, $ticketPrice=NULL, $nameAuditorium=NULL, $cinema = NULL)
+        private $projection; //Array de projections
+
+        function __construct($amountOfSeats=NULL, $idAuditorium=NULL, $ticketPrice=NULL, $nameAuditorium=NULL, $cinema = NULL, $projection = NULL)
         {
             $this->amountOfSeats=$amountOfSeats;   
             $this->idAuditorium=$idAuditorium;
             $this->ticketPrice=$ticketPrice;
             $this->nameAuditorium=$nameAuditorium;
             $this->cinema=$cinema;
+            $this->projection = $projection;
         }
 
         public function getAmountOfSeats()
@@ -37,6 +40,10 @@
         {
             return $this->cinema;
         }
+        public function getProjection()
+        {
+            return $this->projection;
+        }
 
 
         public function setAmountOfSeats($amountOfSeats)
@@ -58,6 +65,10 @@
         public function setCinema($cinema)
         {
             $this->cinema=$cinema;
+        }
+        public function setProjection($projection)
+        {
+            $this->projection=$projection;
         }
     }
 ?>

@@ -1,3 +1,4 @@
+#DROP DATABASE moviepassdb;
 create database if not exists moviepassdb;
 use moviepassdb;
 
@@ -18,7 +19,7 @@ select * from users;
 create table if not exists cinemas(
 name varchar(30) not null,
 capacity int not null,
-adress varchar(30) not null,
+adress varchar(50) not null,
 idCinema int not null auto_increment,
 isActive boolean default(1),
 constraint `PK-idCinema` primary key (idCinema)
@@ -63,9 +64,20 @@ constraint `PK-idGenre` primary key (idGenre)
 #DROP TABLE genresXmovies;
 create table if not exists genresXmovies(
 idGenreXmovie int auto_increment not null,
-idMovie int not null, #id 1 (pelicula X)
+idMovie int not null,
 idGenre int not null,
 constraint `PK-idGenreXmovie` primary key (idGenreXmovie),
 constraint `FK-idMovie` foreign key (idMovie) references movies (idMovie),
 constraint `FK-idGenre` foreign key (idGenre) references genres (idGenre) 
 );
+
+#DROP TABLE projections;
+create table if not exists projections(
+idProjection int auto_increment not null,
+dateTime varchar(50) not null,
+idAuditorium int not null,
+idMovie int not null,
+constraint `PK-idProjection` primary key (idProjection),
+constraint `FK-idAuditorium` foreign key (idAuditorium) references auditoriums (idAuditorium),
+constraint `FK-projection-idMovie` foreign key (idMovie) references movies (idMovie)
+); 

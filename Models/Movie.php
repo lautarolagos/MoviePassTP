@@ -7,17 +7,19 @@
         private $adult;
         private $language;
         private $title;
+        private $runtime;
         private $genreIds; //Array de los ids de generos 
         private $overview;
         private $releaseDate;
         private $posterPath;
         private $isActive;
 
-        function __construct($idMovie = NULL, $adult = NULL, $language = NULL, $title = NULL, $genreIds = NULL, $overview = NULL, $releaseDate = NULL, $posterPath = NULL, $isActive = NULL){
+        function __construct($idMovie = NULL, $adult = NULL, $language = NULL, $title = NULL, $runtime = NULL, $genreIds = NULL, $overview = NULL, $releaseDate = NULL, $posterPath = NULL, $isActive = NULL){
             $this->idMovie = $idMovie;
             $this->adult = $adult;
             $this->language = $language;
             $this->title = $title;
+            $this->runtime = $runtime;
             $this->genreIds = $genreIds;
             $this->overview = $overview;
             $this->releaseDate = $releaseDate;
@@ -40,6 +42,10 @@
 
         function getTitle(){
             return $this->title;
+        }
+
+        function getRuntime(){
+            return $this->runtime;
         }
         
         function getGenreIds(){
@@ -78,6 +84,13 @@
         function setTitle($title){
             $this->title = $title;
         }
+
+        function setRuntime($runtime){
+            $hours = floor($runtime / 60);
+            $minutes = $runtime % 60;
+            $total = $hours.":".$minutes;
+            $this->runtime = $total;
+        }
         
         function setGenreIds($genreIds){
             $this->genreIds = $genreIds;
@@ -97,6 +110,12 @@
 
         function setIsActive($isActive){
             $this->isActive = $isActive;
+        }
+
+        public function StyleRuntime($Runtime)
+        {
+            $runtimeArray = explode(":",$Runtime);
+            return $newRuntime = $runtimeArray[0]."h ".$runtimeArray[1]."m";
         }
     }
 ?>

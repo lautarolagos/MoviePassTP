@@ -16,27 +16,25 @@
     <section  class="">
         <div class="cont-form">
             <h2 class="form-title">Add Projection</h2>
-             <form  class="form" action="<?php echo FRONT_ROOT ?>Billboard/Test" method="POST">
+             <form  class="form" action="<?php echo FRONT_ROOT ?>API/Test" method="POST">
                 <div>
                     <div>
-                        <label for="dateId">Date</label>
-                        <input class="form-input"type="date" name="date" id="dateId" min="<?php echo date('Y-m-d');?>" required>
+                        <label for="dateTimeId">Date-Time</label>
+                        <input class="form-input" type="datetime-local" name="dateTime" id="dateTimeId" min="<?php echo date("Y-m-d")."T".date("H:i");?>" max="9999-12-31T23:59" required>
                     </div>
-                    <div>
-                        <label for="startTimeId">Start Time</label>
-                        <input class="form-input" type="time" name="startTine" id="startTimeId" min="<?php echo date("H:i"); ?>" required>
-                    </div>
+
                     <div>
                         <input type="hidden" name="idMovie" value="<?php echo $movieId;?>">
-                        <input type="hidden" name="idMovie" value="<?php echo $idAuditorium;?>">
+                        <input type="hidden" name="idAuditorium" value="<?php echo $idAuditorium;?>">
+                        <input type="hidden" name="movieRuntime" value="<?php echo $movieRuntime;?>">
                     </div>
                 </div>
                 <div>
                     <button type="submit" class="btn-submit">Add</button>
                 </div>
             </form>
-            <form class="form" action="<?php echo FRONT_ROOT ?>Billboard/ShowMoviesAPI" method="POST">
-                    <input type="hidden" name="idMovie" value="<?php echo $idAuditorium; ?>">
+            <form class="form" action="<?php echo FRONT_ROOT ?>API/ShowMovies" method="POST">
+                    <input type="hidden" name="idAuditorium" value="<?php echo $idAuditorium; ?>">
                     <button class="btn-submit" type="submit">Go Back</button>
             </form>
         </div>
