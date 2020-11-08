@@ -30,16 +30,24 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="<?php echo CSS_PATH ?>billboard.css" rel="stylesheet">
+    <link href="<?php echo CSS_PATH ?>billboardAdmin.css" rel="stylesheet">
   </head>
   
 <body>
     <header>
-    <div class="navbar navbar-dark bg-dark shadow-sm">
+<!-- NAV -->
+<div class="navbar navbar-dark bg-dark shadow-sm">
       <div class="container d-flex justify-content-between">
         <h1 style="margin:0; padding:0;">M<span>OVIE</span> P<span>ASS</span></h1>
+        <form action="#" method="" class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" id="btn-search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" for="btn-search" type="button">Search</button>
+      </form>
       </div>
     </div>
+    </div>
+  </nav>
+<!-- NAV END -->
     </header>
 
   <main role="main">

@@ -41,7 +41,7 @@
       <?php if(!isset($_SESSION['userLogedIn'])){?>
       <a class="nav-link active" href="<?php echo FRONT_ROOT ?>Session/ShowLoginView">Sign In</a> <?php } ?>
         <a class="nav-link" href="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaList">Cinemas</a>
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link" href="<?php echo FRONT_ROOT ?>Billboard/ShowBillboard">Billboard</a>
       </nav>
     </div>
   </header>

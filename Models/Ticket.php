@@ -42,7 +42,5 @@
         {
             $this->purchase = $purchase;
         }
-
-
     }
 ?>
