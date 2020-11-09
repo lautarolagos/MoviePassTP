@@ -46,7 +46,7 @@
         }
 
         //Billboard functions:
-        public function ShowAddProjection($movieId, $idAuditorium)
+        public function ShowAddProjection($idAuditorium, $movieId, $posterImg)
         {
             require_once(VIEWS_PATH."AddProjection.php");
         }

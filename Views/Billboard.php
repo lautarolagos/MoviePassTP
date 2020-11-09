@@ -51,7 +51,7 @@
 <!-- CAROUSEL -->
 <main role="main">
 
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -59,6 +59,7 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
+      <img src="https://i.imgur.com/BxDl66d.jpg" alt="firstSlider">
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
         <div class="container">
           <div class="carousel-caption text-left">
@@ -69,6 +70,7 @@
         </div>
       </div>
       <div class="carousel-item">
+      <img src="https://i.imgur.com/nAsBjpb.jpg" alt="secondSlider">
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
         <div class="container">
           <div class="carousel-caption">
@@ -79,6 +81,7 @@
         </div>
       </div>
       <div class="carousel-item">
+      <img src="https://i.imgur.com/gIri1pd.jpg" alt="thirdSlider">
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
         <div class="container">
           <div class="carousel-caption text-right">

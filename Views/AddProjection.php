@@ -1,7 +1,6 @@
 <?php
     require_once('Header.php');
     require_once('Nav.php');
-
     date_default_timezone_set('America/Argentina/Buenos_Aires');
 ?>
 
@@ -18,6 +17,9 @@
             <h2 class="form-title">Add Projection</h2>
              <form  class="form" action="<?php echo FRONT_ROOT ?>Billboard/Test" method="POST">
                 <div>
+                <div>
+                    <img class="posterImg" src="https://image.tmdb.org/t/p/w342/<?php echo $posterImg;?>" alt="">
+                </div>
                     <div>
                         <label for="dateId">Date</label>
                         <input class="form-input"type="date" name="date" id="dateId" min="<?php echo date('Y-m-d');?>" required>
