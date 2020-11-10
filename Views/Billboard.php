@@ -62,35 +62,32 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-      <img src="https://i.imgur.com/BxDl66d.jpg" alt="firstSlider">
+      <img src="https://i.imgur.com/49gJeYi.jpg" alt="firstSlider">
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
         <div class="container">
           <div class="carousel-caption text-left">
-            <h1>Example headline.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+            <h1>DISCOUNTS EVERY WEEK</h1>
+            <center><p>25% OFF every Tuesday and Wednesday when buying 2 or more tickets!</p></center>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-      <img src="https://i.imgur.com/nAsBjpb.jpg" alt="secondSlider">
+      <img src="https://i.imgur.com/YiGesA8.jpg" alt="secondSlider">
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
         <div class="container">
           <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+            <h1>CINEMAS WITH THE LASTEST TECHNOLOGY</h1>
+            <center><p>Equiped with Dolby Surround 7.1 and screens up to 8K for the best immersive experience</p></center>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-      <img src="https://i.imgur.com/gIri1pd.jpg" alt="thirdSlider">
+      <img src="https://i.imgur.com/i4NQ2Yg.jpg" alt="thirdSlider">
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
         <div class="container">
           <div class="carousel-caption text-right">
-            <h1>One more for good measure.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+            <h1>PREMIERES AND UPCOMING MOVIES</h1>
+            <center><p>Watch the latest movies and be the first to see them!</p></center>
           </div>
         </div>
       </div>
