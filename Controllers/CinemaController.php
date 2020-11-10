@@ -27,6 +27,14 @@
             $cinemasList = $this->AssignAuditoriums($cinemasList); // cargo los auditoriums a sus cines correspondientes
             require_once(VIEWS_PATH."CinemaList.php");
         }
+
+        public function ShowAuditoriums($idCinema)
+        {
+            $cinemasList = $this->cinemaDAO->GetAll(); 
+            $cinemasList = $this->AssignAuditoriums($cinemasList);
+            $message="";
+            require_once(VIEWS_PATH."AuditoriumList.php");
+        }
    
         public function AssignAuditoriums($cinemasList)
         {
@@ -39,8 +47,12 @@
                 {
                     $capacityCounter = $capacityCounter + $audi->getAmountOfSeats();
                     $cinemaAudi = new Cinema();
+                    $cinemaAudi->setName($cinema->getName());
                     $cinemaAudi->setIdCinema($cinema->getIdCinema());
                     $audi->setCinema($cinemaAudi); // Aca el objeto "Auditorium" tiene un objeto "Cine" que solo contiene la ID del Cine al que pertenece
+                    $cinemaAudi->setAdress($cinema->getAdress());
+                    $cinemaAudi->setIsActive($cinema->getIsActive());
+                    $audi->setCinema($cinemaAudi);
                 }
                 
                 $cinema->setCapacity($capacityCounter);
@@ -103,8 +115,13 @@
         public function DeleteCinema($idCinema) // ESTE ES CON MYSQL
         {
             $supr = $this->cinemaDAO->Delete($idCinema);
-
-            if($supr==true)
+            $suprAudit = $this->auditoriumDAO->DeleteFromCinema($idCinema);
+            if($supr==true && $suprAudit ==true)
+            {
+                $message="Cinema and auditoriums deleted";
+                $this->ShowCinemaList($message);
+            }
+            else if($supr==true)
             {
                 $message="Cinema deleted";
                 $this->ShowCinemaList($message);
@@ -114,14 +131,6 @@
                 $message="Cinema not found";
                 $this->ShowCinemaList($message);
             }
-        }
-        
-        public function ShowAuditoriums($idCinema)
-        {
-            $cinemasList = $this->cinemaDAO->GetAll(); 
-            $cinemasList = $this->AssignAuditoriums($cinemasList);
-            $message="";
-            require_once(VIEWS_PATH."AuditoriumList.php");
         }
     }
 ?>

@@ -17,6 +17,9 @@
         <div class="cont-form">
             <h2 class="form-title">Add Projection</h2>
              <form  class="form" action="<?php echo FRONT_ROOT ?>API/Test" method="POST">
+             <div>
+                <img class="posterImg" src="https://image.tmdb.org/t/p/w342/<?php echo $posterImg;?>" alt="">
+            </div>
                 <div>
                     <div>
                         <label for="dateTimeId">Date-Time</label>

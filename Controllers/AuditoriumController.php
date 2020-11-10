@@ -27,6 +27,19 @@
             require_once(VIEWS_PATH."AddAuditorium.php");
         }
 
+        public function ShowAuditoriumList($idCinema, $message="")
+        {
+            $cinemasList = $this->cinemaDAO->GetAll(); // Lista de cines sin los auditoriums asignados
+            $cinemasList = $this->AssignAuditoriums($cinemasList); // cargo los auditoriums a sus cines correspondientes
+            require_once(VIEWS_PATH."AuditoriumList.php");
+        }
+
+        public function ShowEditView($idAuditorium, $idCinema)
+        {
+            $message="";
+            require_once(VIEWS_PATH."EditAuditorium.php");
+        }
+
         public function Add($nameAuditorium, $amountOfSeats, $ticketPrice, $idCinema)
         {
 
@@ -49,18 +62,6 @@
                 $message="There is already an auditorium with that name, please enter another one";
                 $this->AddView($idCinema, $message); // Cuidado aca
             }
-        }
-
-        // public function AssignProjections($idAuditorium, $idCinema)
-        // {
-        //     $this->cinemaDAO();
-        //     $projectionsList = $this->projectionDAO->GetProjections($idAuditorium);
-        // } 
-
-        public function ShowEditView($idAuditorium, $idCinema)
-        {
-            $message="";
-            require_once(VIEWS_PATH."EditAuditorium.php");
         }
 
         public function Edit($nameAuditorium, $amountOfSeats, $ticketPrice, $idAuditorium, $idCinema)
@@ -95,6 +96,31 @@
                 $message="Sorry, something went wrong";
                 $this->ShowAuditoriumList($idCinema, $message);
             }
+        }
+
+        public function AssignAuditoriums($cinemasList)
+        {
+            foreach($cinemasList as $cinema) // Recorro la lista de Cinemas, para asignarles sus Auditoriums
+            {
+                $capacityCounter=0;
+                $auditoriums = $this->auditoriumDAO->GetById($cinema->getIdCinema()); // Obtengo la lista de Auditoriums por ID de cine
+                
+                foreach($auditoriums as $audi) // Asigno a cada cine sus salas y hago el conteo de asientos para asignarle la capacidad total al cine
+                {
+                    $capacityCounter = $capacityCounter + $audi->getAmountOfSeats();
+                    $cinemaAudi = new Cinema();
+                    $cinemaAudi->setName($cinema->getName());
+                    $cinemaAudi->setIdCinema($cinema->getIdCinema());
+                    $audi->setCinema($cinemaAudi); // Aca el objeto "Auditorium" tiene un objeto "Cine" que solo contiene la ID del Cine al que pertenece
+                    $cinemaAudi->setAdress($cinema->getAdress());
+                    $cinemaAudi->setIsActive($cinema->getIsActive());
+                    $audi->setCinema($cinemaAudi);
+                }
+                
+                $cinema->setCapacity($capacityCounter);
+                $cinema->setAuditoriums($auditoriums);
+            }
+            return $cinemasList;
         }
     }
 

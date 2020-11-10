@@ -92,6 +92,26 @@
                 return false;
         }
 
+        public function DeleteFromCinema($idCinema)
+        {
+            $sql = "UPDATE " . $this->tableName . " SET active = '0' WHERE idCinema = :idCinema";
+            $parameters['idCinema'] = $idCinema;
+
+            try
+            {
+                $this->connection = Connection::GetInstance();
+                $resultSet = $this->connection->ExecuteNonQuery($sql, $parameters, QueryType::Query);
+            } catch(Exception $ex)
+            {
+                throw $ex;
+            }
+
+            if(!empty($resultSet))
+                return true;
+            else
+                return false;
+        }
+
         
         public function Search($nameAuditorium, $idCinema)
         {

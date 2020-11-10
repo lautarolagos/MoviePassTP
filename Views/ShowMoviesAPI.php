@@ -1,3 +1,7 @@
+<?php 
+  include("Nav.php");
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,7 +34,7 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="<?php echo CSS_PATH ?>billboard.css" rel="stylesheet">
+    <link href="<?php echo CSS_PATH ?>billboardAdmin.css" rel="stylesheet">
   </head>
   
 <body>
@@ -62,6 +66,7 @@
                       <input type="hidden" name="movieId" value="<?php echo $movies->getIdMovie();?>">
                       <input type = "hidden" name="idAuditorium" value="<?php echo $idAuditorium;?>">
                       <input type="hidden" name="movieRuntime" value="<?php echo $movies->getRuntime(); ?>">
+                      <input type="hidden" name="posterImg" value="<?php echo $movies->getPosterPath(); ?>">
                     </form>
                   </div>
                   <small class="text-muted"><?php echo"Runtime: ".$movies->StyleRuntime($movies->getRuntime());?></small>

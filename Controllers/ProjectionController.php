@@ -27,7 +27,7 @@
             }
         }
 
-        public function ShowAddProjection($movieId, $idAuditorium, $movieRuntime)
+        public function ShowAddProjection($movieId, $idAuditorium, $movieRuntime, $posterImg)
         {
             require_once(VIEWS_PATH."AddProjection.php");
         }

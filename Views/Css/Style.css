@@ -290,3 +290,13 @@ tr:hover td{
     background: #fa5252;
 }
 
+.posterImg {
+    border-radius: 6px; 
+    margin : 0 0 20px 8px;
+    border: solid 2px red;
+    cursor: pointer;
+}
+
+.posterImg :hover{
+    background-color: rgba(0,0,0,.8);
+}
