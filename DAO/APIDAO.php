@@ -1,24 +1,11 @@
 <?php
-    namespace Controllers;
+    namespace DAO;
 
-    use DAO\MovieDAO as MovieDAO;
-    use DAO\GenreDAO as GenreDAO;
     use Models\Movie as Movie;
-    use Models\Genre as Genre;
 
-    class BillboardController
+    class APIDAO 
     {
-        private $movieDAO;
-        private $genreDAO;
-
-        function __construct()
-        {
-            $this->movieDAO = new MovieDAO();
-            $this->genreDAO = new GenreDAO();
-        }
-
-        //API Functions:
-        public function ShowMoviesAPI($idAuditorium)
+        public function ShowMovies()
         {
             $movies = json_decode(file_get_contents(API_PATH."movie/now_playing".API_KEY."&language=en-US"), true);
 
@@ -34,6 +21,7 @@
                     $movie->setAdult($movies['results'][$i]['adult']);
                     $movie->setLanguage($movies['results'][$i]['original_language']);
                     $movie->setTitle($movies['results'][$i]['title']);
+                    $movie->SetRuntime($this->SetRuntimeMovie($movie->getIdMovie()));
                     $movie->setGenreIds($movies['results'][$i]['genre_ids']);
                     $movie->setOverview($movies['results'][$i]['overview']);
                     $movie->setReleaseDate($movies['results'][$i]['release_date']);
@@ -41,21 +29,20 @@
 
                     array_push($moviesArray, $movie);
                 }
-                require_once(VIEWS_PATH."ShowMoviesAPI.php");
+
+                return $moviesArray;
+            }
+            else
+            {
+                return $message = "Ups, an error has occurred";
             }
         }
 
-        //Billboard functions:
-        public function ShowAddProjection($movieId, $idAuditorium)
+        //Invocamos de nuevo a la API para acceder a la duracion de cada película, pasandole el id de la misma en el llamado de la API
+        public function SetRuntimeMovie($idMovie)
         {
-            require_once(VIEWS_PATH."AddProjection.php");
-        }
-
-        public function Add($date, $startTime, $endTime, $movieId, $idAuditorium)
-        {
-           $movieObj = $this->movieDAO->ReturnMovieByIdFromAPI($movieId);
-
-           
+            $movieDetails = json_decode(file_get_contents(API_PATH."movie/".$idMovie.API_KEY."&language=en-US"), true);
+            return $movieDetails['runtime'];
         }
     }
 ?>

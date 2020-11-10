@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Album example · Bootstrap</title>
+    <title>Available Movies</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
 
@@ -57,12 +57,14 @@
                 <p class="card-text"><?php echo $movies->getOverview();?></p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <form action="<?php echo FRONT_ROOT;?>Billboard/ShowAddProjection" method="POST">
-                      <button type="submit" class="button-edit" name="movieId" value="<?php echo $movies->getIdMovie();?>">Add projection</button>
+                    <form action="<?php echo FRONT_ROOT;?>Projection/ShowAddProjection" method="POST">
+                      <button type="submit" class="button-edit">Add projection</button>
+                      <input type="hidden" name="movieId" value="<?php echo $movies->getIdMovie();?>">
                       <input type = "hidden" name="idAuditorium" value="<?php echo $idAuditorium;?>">
+                      <input type="hidden" name="movieRuntime" value="<?php echo $movies->getRuntime(); ?>">
                     </form>
                   </div>
-                  <small class="text-muted"><?php echo"Release date: ".$movies->getReleaseDate();?></small>
+                  <small class="text-muted"><?php echo"Runtime: ".$movies->StyleRuntime($movies->getRuntime());?></small>
                 </div>
               </div>
             </div>

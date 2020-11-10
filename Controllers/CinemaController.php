@@ -16,7 +16,6 @@
 
         public function __construct()
         {
-            //$this->cinemaDAO = new CinemaDAOJSON();
             $this->cinemaDAO = new CinemaDAOMySQL();
             $this->auditoriumDAO = new AuditoriumDAO();
         }
@@ -36,7 +35,7 @@
                 $capacityCounter=0;
                 $auditoriums = $this->auditoriumDAO->GetById($cinema->getIdCinema()); // Obtengo la lista de Auditoriums por ID de cine
                 
-                foreach($auditoriums as $audi) // Asigno a cada cine sus salas y hago el cuento de asientos para asignarle la capacidad total al cine
+                foreach($auditoriums as $audi) // Asigno a cada cine sus salas y hago el conteo de asientos para asignarle la capacidad total al cine
                 {
                     $capacityCounter = $capacityCounter + $audi->getAmountOfSeats();
                     $cinemaAudi = new Cinema();
@@ -115,13 +114,12 @@
                 $message="Cinema not found";
                 $this->ShowCinemaList($message);
             }
-        } 
+        }
         
-
         public function ShowAuditoriums($idCinema)
         {
-            $cinemasList = $this->cinemaDAO->GetAll();
-            $cinemasList = $this->AssignAuditoriums($cinemasList); 
+            $cinemasList = $this->cinemaDAO->GetAll(); 
+            $cinemasList = $this->AssignAuditoriums($cinemasList);
             $message="";
             require_once(VIEWS_PATH."AuditoriumList.php");
         }

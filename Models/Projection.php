@@ -8,14 +8,18 @@
         private $endTime;
         private $auditorium;
         private $movie;
+        private $ticket; //Array de tickets
+        private $isActive;
         
-        function __construct($date, $startTime, $endTime, $auditorium, $movie)
+        function __construct($date, $startTime, $endTime, $auditorium, $movie, $ticket, $isActive)
         {
             $this->date = $date;
             $this->startTime = $startTime;
             $this->endTime = $endTime;
             $this->auditorium = $auditorium;
             $this->movie = $movie;
+            $this->ticket = $ticket;
+            $this->isActive = $isActive;
         }
 
         public function getDate()
@@ -26,7 +30,7 @@
         public function getStartTime()
         {
             return $this->startTime;
-        } 
+        }
 
         public function getEndTime()
         {
@@ -42,6 +46,17 @@
         {
             return $this->movie;
         }
+
+        public function getTicket()
+        {
+            return $this->ticket;
+        }
+
+        public function getIsActive()
+        {
+            return $this->isActive;
+        }
+
 
         public function setDate($date)
         {
@@ -66,6 +81,16 @@
         public function setMovie($movie)
         {
             $this->movie = $movie;
+        }
+
+        public function setTicket($ticket)
+        {
+            $this->ticket = $ticket;
+        }
+
+        public function setIsActive($isActive)
+        {
+            $this->isActive = $isActive;
         }
     }
 ?>

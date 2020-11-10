@@ -20,11 +20,7 @@
                     <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {
                     ?>
                     <form class="form" action="<?php echo FRONT_ROOT ?>Auditorium/AddView" method="post">
-                    <center><button class="button-add" type="submit" name="idCinema" value="<?php echo $idCinema ?>">Add Auditorium</button></center>
-                    </form>
-                    
-                    <form class="form" action="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaList" method="post">
-                    <center><button class="button-add" type="submit">Go Back</button></center>
+                    <center><button class="button-add" type="submit" name="idCinema" value="<?php echo $idCinema ?>" style="margin-bottom: 8px">Add Auditorium</button></center>
                     </form>
                     <?php }?>
                     <table>
@@ -73,8 +69,8 @@
                                                   <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {
                                                   ?>
                                                   <td>
-                                                  <form action="<?php echo FRONT_ROOT ?>Billboard/ShowMoviesAPI" method="POST">
-                                                  <button class="button-auditoriums" type="submit" name="idAuditorium" value="">ADD MOVIE</button>
+                                                  <form action="<?php echo FRONT_ROOT ?>API/ShowMovies" method="POST">
+                                                  <button class="button-auditoriums" type="submit" name="idAuditorium">ADD MOVIE</button>
                                                   <input type="hidden" name="idAuditorium" value="<?php echo $auditorium->getIdAuditorium();?>">
                                                   </form>
                                                   <?php }?>
@@ -85,6 +81,14 @@
                                    } ?>          
                          </tbody>
                     </table>
+                    
+                    <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {
+                    ?>
+                    <form class="form" action="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaList" method="post">
+                    <center><button class="button-add" type="submit" style="margin: 8px;">Go Back</button></center>
+                    </form>
+                    <?php } ?>
+
                </div>
                <?php 
           if($message!='')

@@ -22,16 +22,9 @@
 
         public function ShowCinemaView($message="")
         {
-            $auditoriumDAO = new AuditoriumDAO();
-
             $cinemasList = $this->cinemaDAO->GetAll();
             
             require_once(VIEWS_PATH."CinemaList.php");
-        }
-        
-        public function ShowAddView()
-        {
-            require_once(VIEWS_PATH."AddCinema.php");
         }
 
         public function ShowSigninView($message="")
