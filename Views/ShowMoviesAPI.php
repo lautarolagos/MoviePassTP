@@ -1,3 +1,6 @@
+<?php 
+  include("Nav.php");
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -35,8 +38,8 @@
   
 <body>
     <header>
-<!-- NAV -->
-<div class="navbar navbar-dark bg-dark shadow-sm">
+<!-- NAV DESHABILITADO TEMPORALMENTE HASTA QUE HAGAMOS EL BACKEND DEL BOTON-->
+<!-- <div class="navbar navbar-dark bg-dark shadow-sm">
       <div class="container d-flex justify-content-between">
         <h1 style="margin:0; padding:0;">M<span>OVIE</span> P<span>ASS</span></h1>
         <form action="#" method="" class="form-inline mt-2 mt-md-0">
@@ -46,7 +49,7 @@
       </div>
     </div>
     </div>
-  </nav>
+  </nav> -->
 <!-- NAV END -->
     </header>
 

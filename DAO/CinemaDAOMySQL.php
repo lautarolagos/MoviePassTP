@@ -47,6 +47,7 @@
                     $cinema->setName($row["name"]);
                     $cinema->setAdress($row["adress"]);
                     $cinema->setIdCinema($row['idCinema']);
+                    //$cinema->setIsActive($row['isActive']); // comentado por unas dudas, fijarse si esta bien seteado el isActive en cualquier otra parte que se cree el objeto Cine
 
                     array_push($cinemasList, $cinema); 
                 }

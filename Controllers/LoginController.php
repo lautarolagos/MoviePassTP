@@ -5,33 +5,19 @@
 
     use Models\User as User;
     use DAO\UserDAO as UserDAO;
-    use DAO\CinemaDAOMySQL as CinemaDAOMySQL;
-    use DAO\AuditoriumDAO as AuditoriumDAO;
-    use Models\Cinema as Cinema;
 
     class LoginController
     {
         private $userDAO;
-        private $cinemaDAO;
 
         public function __construct()
         {
             $this->userDAO = new UserDAO();
-            $this->cinemaDAO = new CinemaDAOMySQL();
-        }
-
-        public function ShowCinemaView($message="")
-        {
-            $auditoriumDAO = new AuditoriumDAO();
-
-            $cinemasList = $this->cinemaDAO->GetAll();
-            
-            require_once(VIEWS_PATH."CinemaList.php");
         }
         
-        public function ShowAddView()
+        public function ShowBillboard()
         {
-            require_once(VIEWS_PATH."AddCinema.php");
+            require_once(VIEWS_PATH."Billboard.php");
         }
 
         public function ShowSigninView($message="")
@@ -46,7 +32,6 @@
             $_SESSION['isAdmin'] = $user->getIsAdmin();
         }
 
-
         public function Check($email, $password)
         {
             $userDAO = new UserDAO();
@@ -59,7 +44,7 @@
                 {
                     $this->setSession($user);
                     $message="";
-                    $this->ShowCinemaView($message);
+                    $this->ShowBillboard($message);
                     return $user;
                 }
             }
@@ -69,7 +54,6 @@
                 $this->ShowSigninView($message);
                 return false;
             }
-            
         }
     }
 ?>

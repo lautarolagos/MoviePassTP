@@ -50,7 +50,7 @@
     <h1 class="cover-heading">MoviePass</h1>
     <p class="lead">We help you find near cinemas and buy tickets for the latest movies, all from the safety of your home!</p>
     <p class="lead">
-      <a href="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaList" class="btn btn-lg btn-secondary">Continue</a>
+      <a href="<?php echo FRONT_ROOT ?>Billboard/ShowBillboard" class="btn btn-lg btn-secondary">Continue</a>
     </p>
   </main>
 

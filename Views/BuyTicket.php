@@ -20,7 +20,7 @@
                          </div>
                          <div>
                          <label for="creditCard">Payment information:</label> <?php // Esto deberia auto completarse si el usuario ya tiene registrada una tarjeta de credito ?>
-                              <input class="form-input"type="number" id="creditCard" name="creditCard" class="" placeholder="Credit card number" required>
+                              <input class="form-input"type="number" id="creditCard" name="creditCard" class="" placeholder="XXXX-XXXX-XXXX" required>
                          </div>
                          <center><button class="btn-submit" type="submit">Next Step</button></center>
                     </form>

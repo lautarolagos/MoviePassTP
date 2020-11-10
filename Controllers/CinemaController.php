@@ -40,8 +40,11 @@
                 {
                     $capacityCounter = $capacityCounter + $audi->getAmountOfSeats();
                     $cinemaAudi = new Cinema();
+                    $cinemaAudi->setName($cinema->getName());
                     $cinemaAudi->setIdCinema($cinema->getIdCinema());
-                    $audi->setCinema($cinemaAudi); // Aca el objeto "Auditorium" tiene un objeto "Cine" que solo contiene la ID del Cine al que pertenece
+                    $cinemaAudi->setAdress($cinema->getAdress());
+                    $cinemaAudi->setIsActive($cinema->getIsActive());
+                    $audi->setCinema($cinemaAudi); // Seteo un objeto de tipo Cine al Auditorium
                 }
                 
                 $cinema->setCapacity($capacityCounter);

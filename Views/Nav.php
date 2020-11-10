@@ -28,7 +28,7 @@
                     </li>
                     <?php }?>
                     <li>
-                        <a href="#">Billboard</a>
+                        <a href="<?php echo FRONT_ROOT ?>Billboard/ShowBillboard">Billboard</a>
                     </li>
                     <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {
                     ?>
