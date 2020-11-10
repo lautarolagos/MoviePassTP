@@ -12,9 +12,6 @@ isAdmin boolean default(0),
 constraint `PK-idUser` primary key (idUser)
 );
 
-#UPDATE users SET isAdmin = 1 WHERE idUser = 1;
-select * from users;
-
 #DROP TABLE cinemas;
 create table if not exists cinemas(
 name varchar(30) not null,
@@ -24,10 +21,6 @@ idCinema int not null auto_increment,
 isActive boolean default(1),
 constraint `PK-idCinema` primary key (idCinema)
 );
-
-SELECT * FROM cinemas;
-
-#UPDATE cinemas SET name = "Nuevo nombre 1", capacity = 200, adress = "Nueva calle 1" WHERE idCinema = 1; 
 
 #DROP TABLE auditoriums;
 create table if not exists auditoriums(
@@ -74,10 +67,14 @@ constraint `FK-idGenre` foreign key (idGenre) references genres (idGenre)
 #DROP TABLE projections;
 create table if not exists projections(
 idProjection int auto_increment not null,
-dateTime varchar(50) not null,
+date varchar(15) not null,
+startTime varchar(15) not null,
+endTime varchar(50) not null,
 idAuditorium int not null,
 idMovie int not null,
+isActive boolean default(1),
 constraint `PK-idProjection` primary key (idProjection),
 constraint `FK-idAuditorium` foreign key (idAuditorium) references auditoriums (idAuditorium),
 constraint `FK-projection-idMovie` foreign key (idMovie) references movies (idMovie)
 ); 
+

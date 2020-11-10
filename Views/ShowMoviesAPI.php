@@ -57,10 +57,11 @@
                 <p class="card-text"><?php echo $movies->getOverview();?></p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <form action="<?php echo FRONT_ROOT;?>API/ShowAddProjection" method="POST">
-                      <button type="submit" class="button-edit" name="movieId" value="<?php echo $movies->getIdMovie();?>">Add projection</button>
+                    <form action="<?php echo FRONT_ROOT;?>Projection/ShowAddProjection" method="POST">
+                      <button type="submit" class="button-edit">Add projection</button>
+                      <input type="hidden" name="movieId" value="<?php echo $movies->getIdMovie();?>">
                       <input type = "hidden" name="idAuditorium" value="<?php echo $idAuditorium;?>">
-                      <input type = "hidden" name="movieRuntime" value="<?php echo $movies->getRuntime();?>">
+                      <input type="hidden" name="movieRuntime" value="<?php echo $movies->getRuntime(); ?>">
                     </form>
                   </div>
                   <small class="text-muted"><?php echo"Runtime: ".$movies->StyleRuntime($movies->getRuntime());?></small>

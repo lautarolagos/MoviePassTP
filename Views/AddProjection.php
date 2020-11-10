@@ -26,7 +26,7 @@
                     <div>
                         <input type="hidden" name="idMovie" value="<?php echo $movieId;?>">
                         <input type="hidden" name="idAuditorium" value="<?php echo $idAuditorium;?>">
-                        <input type="hidden" name="movieRuntime" value="<?php echo $movieRuntime;?>">
+                        <input type="hidden" name="movieRuntime" value="<?php echo $movieRuntime; ?>">
                     </div>
                 </div>
                 <div>
@@ -34,7 +34,7 @@
                 </div>
             </form>
             <form class="form" action="<?php echo FRONT_ROOT ?>API/ShowMovies" method="POST">
-                    <input type="hidden" name="idAuditorium" value="<?php echo $idAuditorium; ?>">
+                    <input type="hidden" name="idAuditoriumBack" value="<?php echo $idAuditorium; ?>">
                     <button class="btn-submit" type="submit">Go Back</button>
             </form>
         </div>

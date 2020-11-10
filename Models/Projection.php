@@ -3,24 +3,33 @@
 
     class Projection   
     {
-        private $dateTime;
+        private $date;
+        private $startTime;
         private $endTime;
         private $auditorium;
         private $movie;
         private $ticket; //Array de tickets
+        private $isActive;
         
-        function __construct($dateTime, $endTime, $auditorium, $movie, $ticket)
+        function __construct($date, $startTime, $endTime, $auditorium, $movie, $ticket, $isActive)
         {
-            $this->dateTime = $dateTime;
+            $this->date = $date;
+            $this->startTime = $startTime;
             $this->endTime = $endTime;
             $this->auditorium = $auditorium;
             $this->movie = $movie;
             $this->ticket = $ticket;
+            $this->isActive = $isActive;
         }
 
-        public function getDateTime()
+        public function getDate()
         {
-            return $this->dateTime;
+            return $this->date;
+        }
+
+        public function getStartTime()
+        {
+            return $this->startTime;
         }
 
         public function getEndTime()
@@ -43,10 +52,20 @@
             return $this->ticket;
         }
 
-
-        public function setDateTime($dateTime)
+        public function getIsActive()
         {
-            $this->dateTime = $dateTime;
+            return $this->isActive;
+        }
+
+
+        public function setDate($date)
+        {
+            $this->date = $date;
+        }
+
+        public function setStartTime($startTime)
+        {
+            $this->startTime = $startTime;
         }
 
         public function setEndTime($endTime)
@@ -67,6 +86,11 @@
         public function setTicket($ticket)
         {
             $this->ticket = $ticket;
+        }
+
+        public function setIsActive($isActive)
+        {
+            $this->isActive = $isActive;
         }
     }
 ?>

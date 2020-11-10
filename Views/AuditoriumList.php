@@ -70,7 +70,7 @@
                                                   ?>
                                                   <td>
                                                   <form action="<?php echo FRONT_ROOT ?>API/ShowMovies" method="POST">
-                                                  <button class="button-auditoriums" type="submit" name="idAuditorium" value="">ADD MOVIE</button>
+                                                  <button class="button-auditoriums" type="submit" name="idAuditorium">ADD MOVIE</button>
                                                   <input type="hidden" name="idAuditorium" value="<?php echo $auditorium->getIdAuditorium();?>">
                                                   </form>
                                                   <?php }?>
