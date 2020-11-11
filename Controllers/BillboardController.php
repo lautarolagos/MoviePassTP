@@ -15,7 +15,12 @@
             $this->movieDAO = new MovieDAO();
         }
 
-        public function ShowBillboard()
+        public function ShowBillboard($activeProjections)
+        {
+            require_once(VIEWS_PATH."Billboard.php");
+        }
+
+        public function LoadProjections()
         {
             $activeProjections = $this->projectionDAO->GetActiveProjections(); // Array de las projections activas
             // Ahora cada projection del array tiene un obj adentro de tipo movie que solo contiene la ID de la movie
@@ -27,7 +32,11 @@
                 $movie = $this->movieDAO->Search($idMovie);
                 $projection->setMovie($movie); // le asigno a la projection la movie completamente cargada
             }
-            require_once(VIEWS_PATH."Billboard.php");
+            if(!isset($activeProjections))
+            {
+                $activeProjections = "hola";
+            }
+            $this->ShowBillboard($activeProjections);
         }
     }
 ?>

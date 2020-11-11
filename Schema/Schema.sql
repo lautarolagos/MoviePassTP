@@ -82,3 +82,16 @@ constraint `FK-projection-idMovie` foreign key (idMovie) references movies (idMo
 ); 
 
 #INSERT INTO projections (date, startTime, endTime, idAuditorium, idMovie) VALUES ("2020-10-16", "16:00", "18:00", 1, 635302);
+
+
+ 
+                SELECT
+                cinemas.name,
+                cinemas.capacity,
+                cinemas.adress,
+                cinemas.idCinema
+            FROM
+                cinemas
+                JOIN auditoriums ON cinemas.idCinema = auditoriums.idCinema
+            WHERE 
+                auditoriums.idAuditorium = 1;

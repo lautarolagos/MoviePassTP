@@ -34,7 +34,12 @@
             //Si ya llegamos hasta aca quiere decir que se valido todo correctamente y podemos agregar esta projection
             $auditorium = new Auditorium();
             $auditorium = $this->auditoriumDAO->GetAuditoriumById($idAuditorium);
+
             $auditorium = $this->auditoriumDAO->SetCinemaForAuditorium($auditorium);
+            /*echo "<pre>";
+            var_dump($auditorium);
+            echo "</pre>";*/
+
 
             $movie = new Movie();
             $movie = $this->APIDAO->ReturnMovieByIdFromAPI($idMovie);

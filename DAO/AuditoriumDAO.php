@@ -6,6 +6,7 @@
     use Models\Auditorium as Auditorium;  
     use DAO\Connection as Connection;
     use Interfaces\IAuditoriumDAO as IAuditoriumDAO;
+    use Models\Cinema as Cinema;
 
     
     class AuditoriumDAO implements IAuditoriumDAO
@@ -59,18 +60,7 @@
         {
             try
             {
-                $query = 
-                "SELECT
-                cinemas.name,
-                cinemas.capacity,
-                cinemas.addres,
-                cinemas.idCinema,
-            FROM
-                cinemas
-                JOIN auditoriums ON cinemas.idCinema = auditoriums.idCinema
-            WHERE 
-                auditoriums.idAuditorium = " .$auditorium->getIdAuditorium();
-                
+                $query = "SELECT cinemas.name, cinemas.capacity, cinemas.adress, cinemas.idCinema FROM cinemas JOIN auditoriums ON cinemas.idCinema = auditoriums.idCinema WHERE auditoriums.idAuditorium = " .$auditorium->getIdAuditorium();
                 $this->connection = Connection::GetInstance();
                 $result = $this->connection->Execute($query);
                 foreach($result as $row)
