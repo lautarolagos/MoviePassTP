@@ -10,9 +10,10 @@
 .contenedor{
     width: 100%;
     display: flex;
+    margin: 0;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 40vh;
 }
 
 .contenedor figure{
@@ -77,8 +78,8 @@
 /*-------------------- DISEÑO DE TABLE-------------------------*/
 
 .table-list-buy{
-    width:1200px;
-    margin: 150px auto;
+    width:1000px;
+    margin: 0 auto;
     padding: 300px;
     border-radius: 5px;
     border-collapse: collapse;
@@ -96,7 +97,8 @@
 }
 
 .table-list-buy th,td{
-    padding: 20px;
+    padding: 20px 10px;
+    text-align: center;
 }
 
 .table-list-buy thead{
@@ -112,4 +114,19 @@
 
 .table-list-buy tr:hover td{
     background-color: #491515;
+}
+
+.button-add{
+    font-family: 'Staatliches', cursive;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin: 0 10px;
+    background: #2ccf62;
+    color: #FFF;
+    cursor: pointer;
+    border: none;
+}
+
+.button-add:hover{
+    background: #166932;
 }
