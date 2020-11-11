@@ -49,7 +49,7 @@
 
   <main role="main" class="inner cover">
     <h1 class="cover-heading">MoviePass</h1>
-    <p class="lead">We help you find near cinemas and buy tickets for the latest movies, all from the safety of your home!</p>
+    <p class="lead">We help you find near cinemas and buy tickets for the latest movies, all from the comfort of your home!</p>
     <p class="lead">
     <a href="<?php echo FRONT_ROOT ?>Billboard/ShowBillboard" class="btn btn-lg btn-secondary">Continue</a>
     </p>
@@ -58,6 +58,7 @@
   <footer class="mastfoot mt-auto">
     <div class="inner">
       <p>MoviePass 2020 <a href="http://www.mdp.utn.edu.ar/">UTN Mar del Plata</a></p>
+      <p>Developed by: Lautaro Lagos Leiva, Leandro Pintos, Luca Llanos</p>
     </div>
   </footer>
 </div>
