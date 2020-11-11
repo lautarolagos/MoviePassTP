@@ -37,9 +37,9 @@ constraint `FK-idCinema` foreign key (idCinema) references cinemas(idCinema)
 #DROP TABLE movies;
 create table if not exists movies(
 idMovie int not null,
-adult boolean not null,
+adult varchar(15) not null,
 language varchar(5) not null,
-title varchar(50) not null,
+title varchar(70) not null,
 runtime varchar(10) not null,
 overview text not null,
 releaseDate varchar(15) not null,

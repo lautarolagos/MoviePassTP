@@ -32,6 +32,28 @@
             {
                 throw $ex;
             }
-        }        
+        }
+        
+        public function Search($idMovie) // Busca una pelicula en la BDD para saber si ya esta agregada y no duplicarla
+        {
+            $sql = "SELECT * FROM ".$this->tableName . " WHERE (idMovie = :idMovie)";
+
+            $parameters['idMovie'] = $idMovie;
+
+            try
+            {
+                $this->connection = Connection::getInstance();
+                $resultSet = $this->connection->Execute($sql, $parameters, QueryType::Query);
+            } catch(Exception $ex)
+            {
+                throw $ex;
+            }
+
+            if(!empty($resultSet))
+                return true;
+            else
+                return false;
+        }
+
     }
 ?>

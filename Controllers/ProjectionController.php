@@ -39,7 +39,12 @@
             $movie = new Movie();
             $movie = $this->APIDAO->ReturnMovieByIdFromAPI($idMovie);
             //Añadimos la peícula a nuestra DB
-            $this->MovieDAO->Add($movie);
+            $exists = $this->MovieDAO->Search($idMovie); // Verifico si ya esta agregada la peli para no duplicarla
+            if($exists == false)
+            {
+                $this->MovieDAO->Add($movie);
+            }
+
 
             $projection = new Projection();
             $projection->setDate($date);
@@ -49,15 +54,15 @@
             $projection->setMovie($movie);
             $projection->setTicket(NULL);
 
-            $check = $this->projectionDAO->Add($projection);
+            $check = $this->projectionDAO->Add($projection, $idAuditorium, $idMovie);
 
             if($check == true)
             {
-                echo "La peli se agrego AHHHHHHHHHH ME VENGOOOOOOOOOOO";
+                echo "Projection created succesfully";
             }
             else
             {
-                echo "Me quiero quitar la vida";
+                echo "Something went wrong :/";
             }
         }
 

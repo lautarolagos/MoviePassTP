@@ -11,16 +11,16 @@
         private $conenection;
         private $tableName  = "projections";
 
-        public function Add(Projection $projection)
+        public function Add($projection, $idAuditorium, $idMovie)
         {
             try
             {
-                $query = "INSERT INTO" . $this->tableName . "(date, startTime, endTime, idAuditorium, idMovie) VALUES (:date, :startTime, :endTime, :idAuditorium, :idMovie)";
+                $query = "INSERT INTO " . $this->tableName . " (date, startTime, endTime, idAuditorium, idMovie) VALUES (:date, :startTime, :endTime, :idAuditorium, :idMovie)";
                 $parameters['date'] = $projection->getDate();
                 $parameters['startTime'] = $projection->getStartTime();
                 $parameters['endTime'] = $projection->getEndTime();
-                $parameters['idAuditorium'] = $projection->getAuditorium()->getIdAuditorium();
-                $parameters['idMovie'] = $projection->getIdMovie()->getIdMovie();
+                $parameters['idAuditorium'] = $idAuditorium; // Este dato y el de abajo los mando por parametro porque no me deja acceder desde projection por ser metodos privados
+                $parameters['idMovie'] = $idMovie;
 
                 $this->connection = Connection::GetInstance();
                 $result = $this->connection->ExecuteNonQuery($query, $parameters);

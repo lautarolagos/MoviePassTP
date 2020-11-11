@@ -55,7 +55,7 @@
             }
         }
 
-        public function SetCinemaForAuditorium(Auditorium $auditorium)
+        public function SetCinemaForAuditorium($auditorium)
         {
             try
             {
