@@ -15,12 +15,8 @@
         public function ShowMovies($idAuditorium)
         {
             $moviesArray = $this->APIDAO->ShowMovies();
+            $genreList = $this->APIDAO->GetGenres();
             require_once(VIEWS_PATH."ShowMoviesAPI.php");
-        }
-
-        public function Test($dateTime, $idMovie, $idAuditorium, $movieRuntime)
-        {
-            echo "No hay nada :)";
         }
     }
 ?>

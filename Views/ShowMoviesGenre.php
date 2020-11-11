@@ -45,16 +45,20 @@
       <!-- BOTON DE FILTRAR POR GENERO -->
       <form action="<?php echo FRONT_ROOT ?>Genre/MoviesByGenre" method="POST">
       <select class="dropbtn" name="genreFilter" id="">
-      <?php foreach($genreList as $genre){?>
+      <?php foreach($genreListAPI as $genre){?>
       <option><?php echo $genre->getName(); ?></option>
       <?php }?>
       </select>
       <input type = "hidden" name="idAuditorium" value="<?php echo $idAuditorium;?>">
       <button type="submit" name="idGenre">Filter by genre</button>
       </form>
+      <form action="<?php echo FRONT_ROOT ?>API/ShowMovies" method="POST">
+      <input type = "hidden" name="idAuditorium" value="<?php echo $idAuditorium;?>">
+      <button type="submit" name="idGenre">Clear filter</button>
+      </form>
       <!-- END BOTON DE FILTRAR POR GENERO -->
       <div class="row" style="margin-top: 30px;">
-        <?php foreach($moviesArray as $movies) { ?>
+        <?php foreach($moviesGenreFilter as $movies) { ?>
           <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
               <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="275" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title></title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg> -->

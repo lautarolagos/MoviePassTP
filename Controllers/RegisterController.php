@@ -3,7 +3,6 @@
 
     use DAO\UserDAO as UserDAO;
     use Models\User as User;
-    require_once("Config/Autoload.php");
 
     class RegisterController
     {

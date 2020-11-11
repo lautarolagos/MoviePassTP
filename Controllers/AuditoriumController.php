@@ -7,7 +7,6 @@
     use Models\Auditorium as Auditorium;
     use Models\Cinema as Cinema;
 
-    require_once("Config/Autoload.php");
 
     class AuditoriumController
     {
