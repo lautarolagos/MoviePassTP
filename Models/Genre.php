@@ -6,7 +6,7 @@
         private $idGenre;
         private $name;
 
-        function __construct($idGenre, $name)
+        function __construct($idGenre = NULL, $name = NULL)
         {
             $this->idGenre = $idGenre;
             $this->name = $name;

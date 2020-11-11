@@ -3,6 +3,7 @@
 
     use Models\Movie as Movie;
     use Interfaces\IAPIDAO as IAPIDAO;
+    use Models\Genre as Genre;
 
     class APIDAO implements IAPIDAO
     {
@@ -80,6 +81,29 @@
             else
             {
                 return $newMovie;
+            }
+        }
+      
+        public function GetGenres() // Metodo para obtener todos los generos de la API
+        {
+            $genres = json_decode(file_get_contents(API_PATH."genre/movie/list".API_KEY."&language=en-US"), true);
+            
+            if(isset($genres))
+            {
+                $genresArray = array();
+                foreach($genres['genres'] as $genre)
+                {
+                    $genreObj = New Genre();
+                    $genreObj->setIdGenre($genre['id']);
+                    $genreObj->setName($genre['name']);
+                    
+                    array_push($genresArray, $genreObj);
+                }
+                return $genresArray;
+            }
+            else
+            {
+                return $message="No genres have been found";
             }
         }
     }

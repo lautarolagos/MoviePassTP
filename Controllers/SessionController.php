@@ -14,7 +14,7 @@
             if($status == PHP_SESSION_ACTIVE)
             {
                 session_destroy();
-                $_SESSION['userLogedIn'] = null;
+                $_SESSION['userLogedIn'] = null; // Esto arregla que al cerrar sesion, en la vista de Home aparezca el boton de Sign In
                 $this->ShowHomePage();
             }
         }
