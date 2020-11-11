@@ -8,7 +8,10 @@
     interface IAuditoriumDAO
     {
         function Add(Auditorium $auditorium, $idCinema);
-        function GetById($idCinema);
+        function GetAuditoriumById($idAuditorium);
+        function SetCinemaForAuditorium(Auditorium $auditorium);
+        function GetAll();
+        function GetByIdCinema($idCinema);
         function Delete($idAuditorium);
         function Search($nameAuditorium, $idCinema);
         function Edit($nameAuditorium, $amountOfSeats, $adress, $idAuditorium);

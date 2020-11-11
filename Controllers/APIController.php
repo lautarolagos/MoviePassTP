@@ -17,10 +17,5 @@
             $moviesArray = $this->APIDAO->ShowMovies();
             require_once(VIEWS_PATH."ShowMoviesAPI.php");
         }
-
-        public function Test($dateTime, $idMovie, $idAuditorium, $movieRuntime)
-        {
-            echo "No hay nada :)";
-        }
     }
 ?>

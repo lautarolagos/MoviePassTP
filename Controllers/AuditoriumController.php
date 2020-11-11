@@ -7,8 +7,6 @@
     use Models\Auditorium as Auditorium;
     use Models\Cinema as Cinema;
 
-    require_once("Config/Autoload.php");
-
     class AuditoriumController
     {
         private $auditoriumDAO;
@@ -103,7 +101,7 @@
             foreach($cinemasList as $cinema) // Recorro la lista de Cinemas, para asignarles sus Auditoriums
             {
                 $capacityCounter=0;
-                $auditoriums = $this->auditoriumDAO->GetById($cinema->getIdCinema()); // Obtengo la lista de Auditoriums por ID de cine
+                $auditoriums = $this->auditoriumDAO->GetByIdCinema($cinema->getIdCinema()); // Obtengo la lista de Auditoriums por ID de cine
                 
                 foreach($auditoriums as $audi) // Asigno a cada cine sus salas y hago el conteo de asientos para asignarle la capacidad total al cine
                 {
@@ -111,7 +109,7 @@
                     $cinemaAudi = new Cinema();
                     $cinemaAudi->setName($cinema->getName());
                     $cinemaAudi->setIdCinema($cinema->getIdCinema());
-                    $audi->setCinema($cinemaAudi); // Aca el objeto "Auditorium" tiene un objeto "Cine" que solo contiene la ID del Cine al que pertenece
+                    $audi->setCinema($cinemaAudi); // Aca el objeto "Auditorium" tiene un objeto "Cine"
                     $cinemaAudi->setAdress($cinema->getAdress());
                     $cinemaAudi->setIsActive($cinema->getIsActive());
                     $audi->setCinema($cinemaAudi);

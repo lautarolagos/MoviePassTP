@@ -4,36 +4,43 @@
     use \Exception as Exception;  
     use DAO\Connection as Connection;
     use Models\Projection as Projection;
+    use Interfaces\IProjectionDAO as IProjectionDAO;
 
-    class ProjectionDAO
+    class ProjectionDAO implements IProjectionDAO
     {
         private $conenection;
         private $tableName  = "projections";
 
-        public function Add($dateTime, $endTime, $idAuditorium, $movieId)
+        public function Add(Projection $projection)
         {
             try
             {
-                $query = "INSERT INTO" . $this->tableName . "(dateTime, endTime, idAuditorium, idMovie) VALUES (:dateTime, :endTime, :movieId, :idAuditorium)";
-                $parameters['dateTime'] = $dateTime;
-                $parameters['endTime'] = $endTime;
-                $parameters['idAuditorium'] = $idAuditorium;
-                $parameters['idMovie'] = $movieId;
+                $query = "INSERT INTO" . $this->tableName . "(date, startTime, endTime, idAuditorium, idMovie) VALUES (:date, :startTime, :endTime, :idAuditorium, :idMovie)";
+                $parameters['date'] = $projection->getDate();
+                $parameters['startTime'] = $projection->getStartTime();
+                $parameters['endTime'] = $projection->getEndTime();
+                $parameters['idAuditorium'] = $projection->getAuditorium()->getIdAuditorium();
+                $parameters['idMovie'] = $projection->getIdMovie()->getIdMovie();
 
                 $this->connection = Connection::GetInstance();
-                $this->connection->ExecuteNonQuery($query, $parameters);
+                $result = $this->connection->ExecuteNonQuery($query, $parameters);
             }
             catch(Exception $ex)
             {
                 throw $ex;
             }
+
+            if(!empty($result))
+                return true;
+            else
+                return false;
         }
 
         public function Search($date, $idMovie)
         {
             try
             {
-                $query = "SELECT * FROM" . $this->tableName . "WHERE (date = :date) AND (idMovie = :idMovie) AND isActive = 1";
+                $query = "SELECT * FROM " . $this->tableName . " WHERE (date = :date) AND (idMovie = :idMovie) AND isActive = 1";
                 $parameters['date'] = $date;
                 $parameters['idMovie'] = $idMovie;
 
@@ -50,12 +57,12 @@
                 return false;
         }
 
-        public function GetProjections($idAuditorium)
+        public function GetProjectionsByIdAuditorium($idAuditorium)
         {
             try
             {
                 $projectionList = array();
-                $query = "SELECT * FROM" . $this->tableName . "WHERE (idAuditorium = :idAuditorium) AND isActive = 1";
+                $query = "SELECT * FROM " . $this->tableName . " WHERE (idAuditorium = :idAuditorium) AND isActive = 1";
                 $parameters['idAuditorium'] = $idAuditorium;
 
                 $this->connection = Connection::getInstance();
@@ -73,7 +80,7 @@
                 return $projectionList;
             } catch (Exception $ex)
             {
-                throw null;
+                throw $ex;
             }
         }
     }

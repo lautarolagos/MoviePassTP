@@ -32,7 +32,92 @@
             }
         }
 
-        public function GetById($idCinema) // Metodo para obtener la lista de salas pertenecientes a un cine pasado por ID
+        public function GetAuditoriumById($idAuditorium)
+        {
+            try
+            {
+                $query = "SELECT * FROM " . $this->tableName ." WHERE idAuditorium = ".$idAuditorium . " AND active = '1'";
+                $this->connection = Connection::GetInstance();
+                $result = $this->connection->Execute($query);
+                foreach($result as $row)
+                {
+                    $auditorium = new Auditorium();
+                    $auditorium->setAmountOfSeats($row["amountOfSeats"]);
+                    $auditorium->setIdAuditorium($row["idAuditorium"]);
+                    $auditorium->setTicketPrice($row["ticketPrice"]);
+                    $auditorium->setNameAuditorium($row["nameAuditorium"]);
+                }
+                return $auditorium;
+            }
+            catch (Exception $ex) 
+            {
+                return null;
+            }
+        }
+
+        public function SetCinemaForAuditorium(Auditorium $auditorium)
+        {
+            try
+            {
+                $query = 
+                "SELECT
+                cinemas.name,
+                cinemas.capacity,
+                cinemas.addres,
+                cinemas.idCinema,
+            FROM
+                cinemas
+                JOIN auditoriums ON cinemas.idCinema = auditoriums.idCinema
+            WHERE 
+                auditoriums.idAuditorium = " .$auditorium->getIdAuditorium();
+                
+                $this->connection = Connection::GetInstance();
+                $result = $this->connection->Execute($query);
+                foreach($result as $row)
+                {
+                    $cinema = new Cinema();
+                    $cinema->setName($row["name"]);
+                    $cinema->setCapacity($row["capacity"]);
+                    $cinema->setAdress($row["adress"]);
+                    $cinema->setIdCinema($row["idCinema"]);
+                }
+                $auditorium->setCinema($cinema);
+                return $auditorium;
+            }
+            catch (Exception $ex) 
+            {
+                return null;
+            }
+        }
+
+        public function GetAll()
+        {
+            try
+            {
+                $auditoriumsList = array();
+                $query = "SELECT * FROM " . $this->tableName . " WHERE active = 1";
+                
+                $this->connection = Connection::GetInstance();
+                $result = $this->connection->Execute($query);
+                foreach($result as $row)
+                {
+                    $auditorium = new Auditorium();
+                    $auditorium->setAmountOfSeats($row['amountOfSeats']);
+                    $auditorium->setIdAuditorium($row['idAuditorium']);
+                    $auditorium->setTicketPrice($row['ticketPrice']);
+                    $auditorium->setNameAuditorium($row['nameAuditorium']);
+
+                    array_push($auditoriumsList, $auditorium);
+                }
+                return $auditoriumsList;
+            }
+            catch (Exception $ex) 
+            {
+                return null;
+            }
+        }
+
+        public function GetByIdCinema($idCinema) // Metodo para obtener la lista de salas pertenecientes a un cine pasado por ID
         {
             try 
             {

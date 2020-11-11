@@ -38,14 +38,6 @@
   </head>
   
 <body>
-    <header>
-    <div class="navbar navbar-dark bg-dark shadow-sm">
-      <div class="container d-flex justify-content-between">
-        <h1 style="margin:0; padding:0;">M<span>OVIE</span> P<span>ASS</span></h1>
-      </div>
-    </div>
-    </header>
-
   <main role="main">
 
     <div class="album py-5 bg-light">

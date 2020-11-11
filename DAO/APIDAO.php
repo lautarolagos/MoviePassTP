@@ -2,8 +2,9 @@
     namespace DAO;
 
     use Models\Movie as Movie;
+    use Interfaces\IAPIDAO as IAPIDAO;
 
-    class APIDAO 
+    class APIDAO implements IAPIDAO
     {
         public function ShowMovies()
         {
@@ -43,6 +44,43 @@
         {
             $movieDetails = json_decode(file_get_contents(API_PATH."movie/".$idMovie.API_KEY."&language=en-US"), true);
             return $movieDetails['runtime'];
+        }
+
+        public function ReturnMovieByIdFromAPI($idMovie)
+        {
+            $movies = json_decode(file_get_contents(API_PATH."movie/now_playing".API_KEY."&language=en-US"), true);
+
+            $moviesArray = $movies['results'];
+
+            if(isset($moviesArray))
+            {
+                foreach($moviesArray as $movie)
+                {
+                    if($movie['id'] == $idMovie)
+                    {
+                        $newMovie = new Movie();
+                        $newMovie->setIdMovie($movie['id']);
+                        $newMovie->setAdult($movie['adult']);
+                        $newMovie->setLanguage($movie['original_language']);
+                        $newMovie->setTitle($movie['title']);
+                        $newMovie->setRuntime($this->SetRuntimeMovie($idMovie));
+                        //$newMovie->setGenreIds($movie['genre_ids']);
+                        $newMovie->setOverview($movie['overview']);
+                        $newMovie->setReleaseDate($movie['release_date']);
+                        $newMovie->setPosterPath($movie['poster_path']);
+                        
+                        break;
+                    }
+                }
+            }
+            if(!isset($newMovie))
+            {
+                return false;
+            }
+            else
+            {
+                return $newMovie;
+            }
         }
     }
 ?>

@@ -1,8 +1,6 @@
 <?php
     namespace Controllers;
 
-    require_once("Config/Autoload.php");
-
     use Models\User as User;
     use DAO\UserDAO as UserDAO;
 
