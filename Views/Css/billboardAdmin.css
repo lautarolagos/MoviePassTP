@@ -55,7 +55,10 @@
   border-radius: 0px;
   border-color: #202020;
 }
-
+.custom-select:hover option{
+  background-color: #d1d1d1;
+  color: #202020;
+}
 
 .btnFilter{
   background-color: #eaeaea;
@@ -64,6 +67,11 @@
   border-color: #202020;
   padding: 5px 20px;
   margin-left: 20px;
+}
+
+.btnFilter:hover{
+  background-color: #202020;
+  color: #eaeaea;
 }
 
 .btnClear{
@@ -76,6 +84,28 @@
   margin-left: 20px;
 }
 
+.btnClear:hover{
+  background-color: #202020;
+  color: #eaeaea;
+}
+
+
 .filters{
   display: flex;
+}
+
+.mainFondo{
+  background-color: #f8f9fa;
+  padding-bottom: 20%;
+}
+@media (min-width: 800px) {
+  .mainFondo {
+    padding-bottom: 46.5%;
+  }
+}
+
+.cuteMsg{
+  font-family: 'Staatliches', cursive;
+  color: #212529;
+  font-size: 25px;
 }
