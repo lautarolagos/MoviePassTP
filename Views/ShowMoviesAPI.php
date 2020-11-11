@@ -44,13 +44,13 @@
       <div class="container">
       <!-- BOTON DE FILTRAR POR GENERO -->
       <form action="<?php echo FRONT_ROOT ?>Genre/MoviesByGenre" method="POST">
-      <select class="dropbtn" name="genreFilter" id="">
+      <select class="custom-select" name="genreFilter" style="width:200px;">
       <?php foreach($genreList as $genre){?>
       <option><?php echo $genre->getName(); ?></option>
       <?php }?>
       </select>
       <input type = "hidden" name="idAuditorium" value="<?php echo $idAuditorium;?>">
-      <button type="submit" name="idGenre">Filter by genre</button>
+      <button class="btnFilter" type="submit" name="idGenre">Filter by genre</button>
       </form>
       <!-- END BOTON DE FILTRAR POR GENERO -->
       <div class="row" style="margin-top: 30px;">
