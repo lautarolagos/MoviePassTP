@@ -3,6 +3,7 @@
 
     class Projection   
     {
+        private $idProjection;
         private $date;
         private $startTime;
         private $endTime;
@@ -11,8 +12,9 @@
         private $ticket; //Array de tickets
         private $isActive;
         
-        function __construct($date = NULL, $startTime = NULL, $endTime = NULL, $auditorium = NULL, $movie = NULL, $ticket = NULL, $isActive = NULL)
+        function __construct($idProjection = NULL, $date = NULL, $startTime = NULL, $endTime = NULL, $auditorium = NULL, $movie = NULL, $ticket = NULL, $isActive = NULL)
         {
+            $this->idProjection = $idProjection;
             $this->date = $date;
             $this->startTime = $startTime;
             $this->endTime = $endTime;
@@ -22,6 +24,11 @@
             $this->isActive = $isActive;
         }
 
+        public function getIdProjection()
+        {
+            return $this->idProjection;
+        }
+        
         public function getDate()
         {
             return $this->date;
@@ -58,6 +65,11 @@
         }
 
 
+        public function setIdProjection($idProjection)
+        {
+            $this->idProjection = $idProjection;
+        }
+        
         public function setDate($date)
         {
             $this->date = $date;

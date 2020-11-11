@@ -4,6 +4,7 @@
     use \Exception as Exception;  
     use DAO\Connection as Connection;
     use Models\Projection as Projection;
+    use Models\Movie as Movie;
     use Interfaces\IProjectionDAO as IProjectionDAO;
 
     class ProjectionDAO implements IProjectionDAO
@@ -11,7 +12,7 @@
         private $conenection;
         private $tableName  = "projections";
 
-        public function Add($projection, $idAuditorium, $idMovie)
+        public function Add($projection)
         {
             try
             {
@@ -19,8 +20,8 @@
                 $parameters['date'] = $projection->getDate();
                 $parameters['startTime'] = $projection->getStartTime();
                 $parameters['endTime'] = $projection->getEndTime();
-                $parameters['idAuditorium'] = $idAuditorium; // Este dato y el de abajo los mando por parametro porque no me deja acceder desde projection por ser metodos privados
-                $parameters['idMovie'] = $idMovie;
+                $parameters['idAuditorium'] = $projection->getAuditorium()->getIdAuditorium();
+                $parameters['idMovie'] = $projection->getMovie()->getIdMovie(); 
 
                 $this->connection = Connection::GetInstance();
                 $result = $this->connection->ExecuteNonQuery($query, $parameters);
@@ -83,5 +84,42 @@
                 throw $ex;
             }
         }
+
+        public function GetActiveProjections()
+        {
+            try
+            {
+                $activeProjections = array();
+
+                $query = "SELECT * FROM ".$this->tableName. " WHERE isActive = 1";
+
+                $this->connection = Connection::GetInstance();
+
+                $resultSet = $this->connection->Execute($query);
+                
+                foreach ($resultSet as $row)
+                {                
+                    $projection = new Projection();
+                    $projection->setIdProjection($row["idProjection"]);
+                    $projection->setDate($row["date"]);
+                    $projection->setStartTime($row['startTime']);
+                    $projection->setEndTime($row['endTime']);
+                    $projection->setIsActive($row['isActive']);
+                    
+                    $movie = new Movie(); // creo un obj de tipo Movie para la projection
+                    $idMovie = $row['idMovie']; // obtengo la id de la movie que me llega de la DB
+                    $movie->setIdMovie($idMovie); // se lo asigno a la movie recien creada
+                    $projection->setMovie($movie); // y meto el objeto movie en el obj projection
+
+                    array_push($activeProjections, $projection); 
+                }
+                return $activeProjections;
+            }
+            catch(Exception $ex)
+            {
+                throw $ex;
+            }
+        }
+
     }
 ?>

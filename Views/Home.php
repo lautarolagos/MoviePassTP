@@ -42,7 +42,7 @@
         <a class="nav-link active" href="<?php echo FRONT_ROOT ?>Session/ShowLoginView">Sign In</a> 
         <?php } ?>
         <a class="nav-link" href="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaList">Cinemas</a>
-        <a class="nav-link" href="<?php echo FRONT_ROOT ?>Billboard/ShowBillboard">Billboard</a>
+        <a class="nav-link" href="<?php echo FRONT_ROOT ?>Billboard/LoadProjections">Billboard</a>
       </nav>
     </div>
   </header>
@@ -51,7 +51,7 @@
     <h1 class="cover-heading">MoviePass</h1>
     <p class="lead">We help you find near cinemas and buy tickets for the latest movies, all from the comfort of your home!</p>
     <p class="lead">
-    <a href="<?php echo FRONT_ROOT ?>Billboard/ShowBillboard" class="btn btn-lg btn-secondary">Continue</a>
+    <a href="<?php echo FRONT_ROOT ?>Billboard/LoadProjections" class="btn btn-lg btn-secondary">Continue</a>
     </p>
   </main>
 

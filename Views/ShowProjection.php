@@ -26,6 +26,7 @@
                 <th class="th-list-buy">Cinema</th>
                 <th class="th-list-buy">Auditorium</th>
                 <th class="th-list-buy">Date</th>
+                <th class="th-list-buy">Ticket Price</th>
                 <th class="th-list-buy"></th>
             </thead>
             <tbody>
@@ -33,9 +34,11 @@
                         <td class="td-list-buy">ambassador</td>
                         <td class="td-list-buy">sala 1</td>
                         <td class="td-list-buy">2020-11-11 23:00HS</td>
+                        <td class="td-list-buy">$200</td>
                         <td class="td-list-buy">
-                            <form action="" method="POST"></form>
+                            <form action="<?php echo FRONT_ROOT ?>Purchase/ShowStartPurchase" method="POST">
                             <button  style="margin-left: 0;" class="button-add" type="submit" name="" value="">BUY</button>
+                            </form>
                         </td>
                     </tr>
             </tbody>
