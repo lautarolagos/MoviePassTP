@@ -6,7 +6,7 @@
 
     interface IProjectionDAO
     {
-        function Add(Projection $projection, $idAuditorium, $idMovie);
+        function Add(Projection $projection);
         function Search($date, $idMovie);
         function GetProjectionsByIdAuditorium($idAuditorium);
 

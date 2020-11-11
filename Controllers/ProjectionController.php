@@ -54,7 +54,7 @@
             $projection->setMovie($movie);
             $projection->setTicket(NULL);
 
-            $check = $this->projectionDAO->Add($projection, $idAuditorium, $idMovie);
+            $check = $this->projectionDAO->Add($projection);
 
             if($check == true)
             {

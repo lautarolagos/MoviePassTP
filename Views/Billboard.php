@@ -111,7 +111,8 @@
 
     <div class="row">
     <?php 
-    for($i=0; $i<3; $i++)
+    foreach($activeProjections as $movies)
+    //for($i=0; $i<3; $i++)
     {?>  
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">

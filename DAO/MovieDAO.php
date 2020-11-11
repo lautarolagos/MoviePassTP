@@ -44,13 +44,29 @@
             {
                 $this->connection = Connection::getInstance();
                 $resultSet = $this->connection->Execute($sql, $parameters, QueryType::Query);
+
+                if(!empty($resultSet))
+                {
+                    foreach($resultSet as $row)
+                    {
+                        $movie = new Movie();
+                        $movie->setIdMovie($row['idMovie']);
+                        $movie->setAdult($row['adult']);
+                        $movie->setLanguage($row['language']);
+                        $movie->setTitle($row['title']);
+                        $movie->setRuntime($row['runtime']);
+                        $movie->setOverview($row['overview']);
+                        $movie->setReleaseDate($row['releaseDate']);
+                        $movie->setPosterPath($row['posterPath']);
+                    }
+                }
             } catch(Exception $ex)
             {
                 throw $ex;
             }
 
             if(!empty($resultSet))
-                return true;
+                return $movie;
             else
                 return false;
         }

@@ -10,7 +10,7 @@
             <h1>M<span>OVIE</span> P<span>ASS</span></h1>
     </div>
     <div class="cont-form">
-            <form class="form" action="#" method="POST">
+            <form class="form" action="<?php echo FRONT_ROOT ?>Purchase/ShowConfirmBuy" method="POST">
                     <div>
                         <h2 class="form-title">Nombre Pelicula o Foto</h2>
                     </div>
