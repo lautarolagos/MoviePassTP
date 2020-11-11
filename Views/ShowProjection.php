@@ -20,26 +20,26 @@
             </div>
         </figure>
     </div>
-  <!--  <div>
+    <div>
         <table class="table-list-buy">
-            <thead>
-                <th>Cinema</th>
-                <th>Auditorium</th>
-                <th>Date</th>
-                <th></th>
+            <thead class="thead-list-buy">
+                <th class="th-list-buy">Cinema</th>
+                <th class="th-list-buy">Auditorium</th>
+                <th class="th-list-buy">Date</th>
+                <th class="th-list-buy"></th>
             </thead>
             <tbody>
-                    <tr>
-                        <td>ambassador</td>
-                        <td>sala 1</td>
-                        <td>2020-11-11 23:00HS</td>
-                        <td>
+                    <tr class="tr-list-buy">
+                        <td class="td-list-buy">ambassador</td>
+                        <td class="td-list-buy">sala 1</td>
+                        <td class="td-list-buy">2020-11-11 23:00HS</td>
+                        <td class="td-list-buy">
                             <form action="" method="POST"></form>
-                            <button  style="margin-left: 0;" class="" type="submit" name="" value="">BUY</button>
+                            <button  style="margin-left: 0;" class="button-add" type="submit" name="" value="">BUY</button>
                         </td>
                     </tr>
             </tbody>
         </table>
-    </div>-->
+    </div>
 </body>
 </html>
