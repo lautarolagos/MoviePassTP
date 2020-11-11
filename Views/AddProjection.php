@@ -16,7 +16,7 @@
     <section  class="">
         <div class="cont-form">
             <h2 class="form-title">Add Projection</h2>
-             <form  class="form" action="<?php echo FRONT_ROOT ?>API/Test" method="POST">
+             <form  class="form" action="<?php echo FRONT_ROOT ?>Projection/projectionCheck" method="POST">
              <div>
                 <img class="posterImg" src="https://image.tmdb.org/t/p/w342/<?php echo $posterImg;?>" alt="">
             </div>

@@ -11,7 +11,7 @@
         private $ticket; //Array de tickets
         private $isActive;
         
-        function __construct($date, $startTime, $endTime, $auditorium, $movie, $ticket, $isActive)
+        function __construct($date = NULL, $startTime = NULL, $endTime = NULL, $auditorium = NULL, $movie = NULL, $ticket = NULL, $isActive = NULL)
         {
             $this->date = $date;
             $this->startTime = $startTime;

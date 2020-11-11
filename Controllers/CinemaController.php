@@ -39,7 +39,7 @@
             foreach($cinemasList as $cinema) // Recorro la lista de Cinemas, para asignarles sus Auditoriums
             {
                 $capacityCounter=0;
-                $auditoriums = $this->auditoriumDAO->GetById($cinema->getIdCinema()); // Obtengo la lista de Auditoriums por ID de cine
+                $auditoriums = $this->auditoriumDAO->GetByIdCinema($cinema->getIdCinema()); // Obtengo la lista de Auditoriums por ID de cine
                 
                 foreach($auditoriums as $audi) // Asigno a cada cine sus salas y hago el conteo de asientos para asignarle la capacidad total al cine
                 {
