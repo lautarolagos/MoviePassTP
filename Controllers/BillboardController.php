@@ -22,27 +22,10 @@
 
         public function LoadProjections()
         {
-            $activeProjections = $this->projectionDAO->GetActiveProjections(); // Array de las projections activas
-            // Ahora cada projection del array tiene un obj adentro de tipo movie que solo contiene la ID de la movie
-            // Tengo que ir a la tabla de movies y obtener los demas datos de esa pelicula y setearselos
-            foreach($activeProjections as $projection)
-            {
-                $idMovie = $projection->getMovie()->getIdMovie(); 
-            
-                $movie = $this->movieDAO->Search($idMovie);
-                $projection->setMovie($movie); // le asigno a la projection la movie completamente cargada
-            }
+            $moviesOnBillboard = $this->movieDAO->GetMoviesBillboard(); // Obtengo la lista de peliculas que estan activas en cartelera
+            $moviesOnBillboard = $this->DeleteDuplicates($moviesOnBillboard); // Elimino las que esten duplicadas
 
-            $moviesOnBillboard = array();
-            foreach($activeProjections as $projections) // creo un array de las peliculas unicamente con projections
-            {
-                $movieProjection = new Movie();
-                $movieProjection = $projections->getMovie();
-                array_push($moviesOnBillboard, $movieProjection);
-            }
-            $moviesOnBillboard = $this->DeleteDuplicates($moviesOnBillboard);
-
-            $this->ShowBillboard($moviesOnBillboard); // En vez de mandar un array de projections, mando un array de las peliculas que estan en projections
+            $this->ShowBillboard($moviesOnBillboard); // Mando la lista filtrada a la vista
         }
 
         public function DeleteDuplicates($moviesOnBillboard, $keep_key_assoc = false)

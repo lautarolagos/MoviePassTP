@@ -24,7 +24,7 @@
             $this->MovieDAO = new MovieDAO();
         }
 
-        public function ShowAddProjection($movieId, $idAuditorium, $movieRuntime, $posterImg)
+        public function ShowAddProjection($movieId, $idAuditorium, $movieRuntime, $posterImg, $msg="")
         {
             require_once(VIEWS_PATH."AddProjection.php");
         }
@@ -63,15 +63,17 @@
 
             if($check == true)
             {
-                echo "Proyection added succesfully";
+                $msg = "Proyection added succesfully";
+                $this->LoadProjections($msg);
             }
             else
             {
-                echo "Something went wrong :/";
+                $msg = "Something went wrong :/";
+                $this->LoadProjections($msg);
             }
         }
 
-        public function projectionCheck($dateTime, $movieId, $idAuditorium, $movieRuntime)
+        public function projectionCheck($dateTime, $movieId, $idAuditorium, $movieRuntime, $posterImg)
         {
             //Separamos la fecha de la hora (fecha en $dateTimeArray[0] y hora en $dateTimeArray[1])
             $dateTimeArray = explode("T", $dateTime);
@@ -102,12 +104,15 @@
                 }
                 else
                 {
-                    echo "Please enter another hour";
+                    $msg = "Please enter another hour";
+                    $this->ShowAddProjection($movieId, $idAuditorium, $movieRuntime, $posterImg, $msg);
+                    
                 }
             }
             else
             {
-                echo "Sorry, that movie already exists in the billboard for today";
+                $msg = "Sorry, that movie already exists in the billboard for today";
+                $this->ShowAddProjection($movieId, $idAuditorium, $movieRuntime, $posterImg, $msg);
             }
         }
 
@@ -224,6 +229,47 @@
         public function ShowProjection($posterPath, $title, $overview)
         {
             require_once(VIEWS_PATH."ShowProjection.php");
+        }
+
+        public function ShowBillboard($moviesOnBillboard)
+        {
+            require_once(VIEWS_PATH."Billboard.php");
+        }
+
+        public function LoadProjections($msg="")
+        {
+            $moviesOnBillboard = $this->MovieDAO->GetMoviesBillboard(); // Obtengo la lista de peliculas que estan activas en cartelera
+            $moviesOnBillboard = $this->DeleteDuplicates($moviesOnBillboard); // Elimino las que esten duplicadas
+
+            $this->ShowBillboard($moviesOnBillboard); // Mando la lista filtrada a la vista
+        }
+        public function DeleteDuplicates($moviesOnBillboard, $keep_key_assoc = false)
+        {    
+            $duplicates = array(); // array donde van a ir las peliculas duplicadas
+            $aux = array(); // array auxiliar donde van a ir las NO repetidas
+        
+            foreach ($moviesOnBillboard as $key => $val) 
+            {
+                if (is_object($val)) // Como la funcion "in_array" no deja usar objetos, lo convierto a un array
+                {
+                    $val = (array)$val;
+                }
+                if (!in_array($val, $aux)) // con in_array busco si un elemento esta en el array, en el primer caso obviamente no va a estar repetido
+                {
+                    $aux[] = $val; // lo meto en un array auxiliar de peliculas NO repetidas
+                }
+                else
+                {
+                    $duplicates[] = $key; // Luego si la proxima pelicula esta repetida, va a ir aca
+                }
+            }
+        
+            foreach ($duplicates as $key) // Recorro el array de duplicados y a cada valor, lo saco del array de peliculas
+            {
+                unset($moviesOnBillboard[$key]);
+            }   
+        
+            return $keep_key_assoc ? $moviesOnBillboard : array_values($moviesOnBillboard);
         }
     }
 ?>
