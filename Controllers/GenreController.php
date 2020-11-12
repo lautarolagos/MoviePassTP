@@ -52,7 +52,7 @@
                         $movieFilter->setAdult($movie->getAdult());
                         $movieFilter->setLanguage($movie->getLanguage());
                         $movieFilter->setTitle($movie->getTitle());
-                        $movieFilter->SetRuntime($this->APIDAO->SetRuntimeMovie($movie->getIdMovie()));
+                        $movieFilter->SetRuntimeConvert($this->APIDAO->SetRuntimeMovie($movie->getIdMovie()));
                         $movieFilter->setGenreIds($movie->getGenreIds());
                         $movieFilter->setOverview($movie->getOverview());
                         $movieFilter->setReleaseDate($movie->getReleaseDate());

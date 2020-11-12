@@ -13,10 +13,10 @@
 <body class="body-cont">
     <div class="contenedor">
         <figure>
-            <img src="https://i.pinimg.com/564x/b7/8d/07/b78d0768cc804c8be55ab2193469524f.jpg" alt="">
+            <img src="https://image.tmdb.org/t/p/w342/<?php echo $posterPath;?>">
             <div class="capa">
-                <h3>quimekzu no shaiba</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique, excepturi eligendi sunt autem officia quibusdam. Facilis eum voluptatum sunt quo, officia debitis fuga possimus impedit aut eaque optio repellat sapiente.?></p>
+                <h3><?php echo $title; ?></h3>
+                <p><?php echo $overview; ?></p>
             </div>
         </figure>
     </div>
@@ -31,10 +31,10 @@
             </thead>
             <tbody>
                     <tr class="tr-list-buy">
-                        <td class="td-list-buy">ambassador</td>
-                        <td class="td-list-buy">sala 1</td>
-                        <td class="td-list-buy">2020-11-11 23:00HS</td>
-                        <td class="td-list-buy">$200</td>
+                        <td class="td-list-buy">-</td>
+                        <td class="td-list-buy">-</td>
+                        <td class="td-list-buy">-</td>
+                        <td class="td-list-buy">-</td>
                         <td class="td-list-buy">
                             <form action="<?php echo FRONT_ROOT ?>Purchase/ShowStartPurchase" method="POST">
                             <button  style="margin-left: 0;" class="button-add" type="submit" name="" value="">BUY</button>
