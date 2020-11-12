@@ -111,24 +111,28 @@
 
     <div class="row">
     <?php 
-    if($activeProjections!=NULL)
-    {
-    foreach($activeProjections as $projections)
+    foreach($moviesOnBillboard as $movie)
     //for($i=0; $i<3; $i++)
     {?>  
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+            <form action="<?php echo FRONT_ROOT ?>Projection/ShowProjection" method="POST">
+            <button type="submit"><img src="https://image.tmdb.org/t/p/w342/<?php echo $movie->getPosterPath(); ?>" class="btnImgBillboard"></button>
             <div class="card-body">
-              <p class="card-text"><?php echo $projections->getMovie()->getName(); ?></p>
+              <p class="card-text"><?php echo $movie->getTitle(); ?></p>
               <div class="d-flex justify-content-between align-items-center">
                 <!-- BOTON COLAPSABLE -->
                 <div class="btn-group">
                     <div class="container">
-                    <button type="button" class="projections">Projections</button>
-                        <button type="button" class="collapsible">Details</button>
+                    <input type="hidden" name="posterPath" value="<?php echo $movie->getPosterPath(); ?>">
+                    <input type="hidden" name="title" value="<?php echo $movie->getTitle(); ?>">
+                    <input type="hidden" name="overview" value="<?php echo $movie->getOverview(); ?>">
+                    <button type="submit" class="projections">Projections</button>
+                    </form>
+                        <button type="button" class="collapsible">Description</button>
                         <div class="content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p><?php echo $movie->getOverview(); ?></p>
                         </div>
                     </div>
                 </div>
@@ -137,8 +141,7 @@
             </div>
           </div>
         </div>
-        <?php } }
-        else { echo "no hay nada pa mostrar"; }?>
+        <?php } ?>
       </div>
     </div>
   </div>

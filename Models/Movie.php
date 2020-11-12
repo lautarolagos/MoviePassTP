@@ -85,11 +85,16 @@
             $this->title = $title;
         }
 
-        function setRuntime($runtime){
+        function setRuntimeConvert($runtime){
             $hours = floor($runtime / 60);
             $minutes = $runtime % 60;
             $total = $hours.":".$minutes;
             $this->runtime = $total;
+        }
+
+        function setRuntime($runtime)
+        {
+            $this->runtime = $runtime;
         }
         
         function setGenreIds($genreIds){

@@ -63,7 +63,7 @@
 
             if($check == true)
             {
-                echo "Projection created succesfully";
+                echo "Proyection added succesfully";
             }
             else
             {
@@ -219,6 +219,11 @@
             $totalArray[1] = $totalArray[1] + TIME_AFTER_MOVIE;
             //Retornamos un array de enteros con las horas cargadas en la posicion 0 y los minutos cargados en la posicion 1
             return implode(":",$totalArray);
+        }
+
+        public function ShowProjection($posterPath, $title, $overview)
+        {
+            require_once(VIEWS_PATH."ShowProjection.php");
         }
     }
 ?>

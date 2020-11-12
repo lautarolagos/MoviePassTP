@@ -23,7 +23,7 @@
                     $movie->setAdult($movies['results'][$i]['adult']);
                     $movie->setLanguage($movies['results'][$i]['original_language']);
                     $movie->setTitle($movies['results'][$i]['title']);
-                    $movie->SetRuntime($this->SetRuntimeMovie($movie->getIdMovie()));
+                    $movie->SetRuntimeConvert($this->SetRuntimeMovie($movie->getIdMovie()));
                     $movie->setGenreIds($movies['results'][$i]['genre_ids']);
                     $movie->setOverview($movies['results'][$i]['overview']);
                     $movie->setReleaseDate($movies['results'][$i]['release_date']);
@@ -64,7 +64,7 @@
                         $newMovie->setAdult($movie['adult']);
                         $newMovie->setLanguage($movie['original_language']);
                         $newMovie->setTitle($movie['title']);
-                        $newMovie->setRuntime($this->SetRuntimeMovie($idMovie));
+                        $newMovie->setRuntimeConvert($this->SetRuntimeMovie($idMovie));
                         //$newMovie->setGenreIds($movie['genre_ids']);
                         $newMovie->setOverview($movie['overview']);
                         $newMovie->setReleaseDate($movie['release_date']);
