@@ -20,27 +20,34 @@
             </div>
         </figure>
     </div>
+    <center><label class="labelProjections">Available Projections</label></center>
     <div>
         <table class="table-list-buy">
             <thead class="thead-list-buy">
-                <th class="th-list-buy">Cinema</th>
-                <th class="th-list-buy">Auditorium</th>
                 <th class="th-list-buy">Date</th>
+                <th class="th-list-buy">Time</th>
                 <th class="th-list-buy">Ticket Price</th>
+                <th class="th-list-buy">Cinema</th>
+                <th class="th-list-buy">Adress</th>
+                <th class="th-list-buy">Auditorium</th>
                 <th class="th-list-buy"></th>
             </thead>
             <tbody>
+            <?php foreach($projections as $projection){?>
                     <tr class="tr-list-buy">
-                        <td class="td-list-buy">-</td>
-                        <td class="td-list-buy">-</td>
-                        <td class="td-list-buy">-</td>
-                        <td class="td-list-buy">-</td>
+                        <td class="td-list-buy"><?php echo $projection->getDate(); ?></td>
+                        <td class="td-list-buy"><?php echo $projection->getStartTime(); ?></td>
+                        <td class="td-list-buy"><?php echo $projection->getAuditorium()->getTicketPrice();?></td>
+                        <td class="td-list-buy"><?php echo $projection->getAuditorium()->getCinema()->getName(); ?></td>
+                        <td class="td-list-buy"><?php echo $projection->getAuditorium()->getCinema()->getAdress(); ?></td>
+                        <td class="td-list-buy"><?php echo $projection->getAuditorium()->getNameAuditorium();?></td>
                         <td class="td-list-buy">
                             <form action="<?php echo FRONT_ROOT ?>Purchase/ShowStartPurchase" method="POST">
                             <button  style="margin-left: 0;" class="button-add" type="submit" name="" value="">BUY</button>
                             </form>
                         </td>
                     </tr>
+            <?php }?>
             </tbody>
         </table>
     </div>

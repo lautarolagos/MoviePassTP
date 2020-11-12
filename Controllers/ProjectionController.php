@@ -226,8 +226,10 @@
             return implode(":",$totalArray);
         }
 
-        public function ShowProjection($posterPath, $title, $overview)
+        public function ShowProjection($posterPath, $title, $overview, $idMovie)
         {
+            $projections = $this->projectionDAO->GetByIdMovie($idMovie);
+
             require_once(VIEWS_PATH."ShowProjection.php");
         }
 

@@ -99,3 +99,22 @@ from movies
 JOIN projections
 ON movies.idMovie = projections.idMovie
 WHERE projections.isActive = 1;
+
+select idProjection, date, startTime, endTime, idAuditorium
+from projections
+where projections.idMovie = 671039 AND projections.isActive = 1;
+
+select * from projections where projections.idMovie = 671039 and projections.isActive = 1;
+
+select * from auditoriums;
+select * from cinemas;
+
+select 
+p.idProjection, p.date, p.startTime, p.endTime, p.idAuditorium, a.nameAuditorium, a.amountOfSeats, a.ticketPrice, a.idCinema, c.name, c.adress
+from projections as p
+join auditoriums as a
+on p.idAuditorium = a.idAuditorium
+join cinemas as c
+on a.idCinema = c.idCinema
+WHERE p.idMovie = 671039 AND p.isActive = 1;
+
