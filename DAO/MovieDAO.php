@@ -71,5 +71,46 @@
                 return false;
         }
 
+        public function GetMoviesBillboard() // Obtener las peliculas que estan en cartelera
+        {
+            $sql = "select movies.idMovie, movies.adult, movies.language, movies.title, movies.runtime, movies.overview, movies.releaseDate, movies.posterPath
+            from movies
+            JOIN projections
+            ON movies.idMovie = projections.idMovie
+            WHERE projections.isActive = 1;";
+            
+            $moviesOnBillboard = array();
+            
+            try
+            {
+                $this->connection = Connection::getInstance();
+                $resultSet = $this->connection->Execute($sql);
+
+                if(!empty($resultSet))
+                {
+                    foreach($resultSet as $row)
+                    {
+                        $movie = new Movie();
+                        $movie->setIdMovie($row['idMovie']);
+                        $movie->setAdult($row['adult']);
+                        $movie->setLanguage($row['language']);
+                        $movie->setTitle($row['title']);
+                        $movie->setRuntime($row['runtime']);
+                        $movie->setOverview($row['overview']);
+                        $movie->setReleaseDate($row['releaseDate']);
+                        $movie->setPosterPath($row['posterPath']);
+
+                        array_push($moviesOnBillboard, $movie);
+                    }
+                }
+            }
+            catch(Exception $ex)
+            {
+                throw $ex;
+            }
+            return $moviesOnBillboard;
+
+        }
+
     }
 ?>

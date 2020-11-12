@@ -102,14 +102,14 @@
     </a>
   </div>
     </main>
-
 <!-- CAROUSEL END -->
  
 <div class="album py-5 bg-light">
     <div class="container">
 
-
     <div class="row">
+    <?php if(isset($msg)){ ?><label for="msg" style="color:black; font-size: 20px;"><?php echo $msg; }?> </label>
+    <hr>
     <?php 
     foreach($moviesOnBillboard as $movie)
     //for($i=0; $i<3; $i++)

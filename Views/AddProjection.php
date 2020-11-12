@@ -22,6 +22,8 @@
             </div>
                 <div>
                     <div>
+
+
                         <label for="dateTimeId">Date-Time</label>
                         <input class="form-input" type="datetime-local" name="dateTime" id="dateTimeId" min="<?php echo date("Y-m-d")."T".date("H:i");?>" max="9999-12-31T23:59" required>
                     </div>
@@ -30,6 +32,7 @@
                         <input type="hidden" name="idMovie" value="<?php echo $movieId;?>">
                         <input type="hidden" name="idAuditorium" value="<?php echo $idAuditorium;?>">
                         <input type="hidden" name="movieRuntime" value="<?php echo $movieRuntime; ?>">
+                        <input type="hidden" name="posterImg" value="<?php echo $posterImg; ?>">
                     </div>
                 </div>
                 <div>
@@ -41,6 +44,8 @@
                     <button class="btn-submit" type="submit">Go Back</button>
             </form>
         </div>
+        <!-- HACER MAS ESTETICO EL MENSAJE, PERO BUENO, ES ALGO TEMPORAL -->
+        <?php if(isset($msg)){ ?> <center><label for="msg" style="color:white; font-size: 30px;"><?php echo $msg; ?> </label></center><?php }?>
     </section>
 </body>
 </html>
