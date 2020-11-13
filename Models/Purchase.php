@@ -79,7 +79,7 @@
         }
         public function setUser($user)
         {
-            $this->projection = $user;
+            $this->user = $user;
         }
     }
 ?> 

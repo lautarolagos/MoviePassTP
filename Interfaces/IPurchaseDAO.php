@@ -6,6 +6,7 @@
 
     interface IPurchaseDAO
     {
-        
+        function Add(Purchase $purchase);
+        function GetLastPurchaseUser($idUser);
     }
 ?>

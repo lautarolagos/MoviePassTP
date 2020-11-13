@@ -126,7 +126,6 @@ idPurchase int not null auto_increment,
 totalPrice varchar(30) not null,
 discount bool not null,
 datePurchase varchar(15) not null,
-ticketQuantity tinyint not null,
 idProjection int not null,
 idUser int not null,
 constraint `PK-idPurchase` primary key (idPurchase),
@@ -145,3 +144,10 @@ idPurchase int not null,
 constraint `PK-number` primary key (number),
 constraint `FK-idPurchase` foreign key (idPurchase) references purchases (idPurchase)
 );
+
+ 
+SELECT idPurchase, totalPrice, discount, datePurchase
+FROM purchases
+WHERE idUser = 1
+ORDER by idPurchase DESC
+LIMIT 1;
