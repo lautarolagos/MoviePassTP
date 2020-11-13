@@ -228,8 +228,8 @@
 
         public function ShowProjection($posterPath, $title, $overview, $idMovie)
         {
-            $projections = $this->projectionDAO->GetByIdMovie($idMovie);
-
+            $projections = $this->projectionDAO->GetProjectionsByIdMovie($idMovie); // Me trae todas las funciones de cierta pelicula
+            // el array de projections viene cargado con su obj movie, obj auditorium y adentro de auditorium un obj cine
             require_once(VIEWS_PATH."ShowProjection.php");
         }
 

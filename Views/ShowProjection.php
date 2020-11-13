@@ -43,7 +43,9 @@
                         <td class="td-list-buy"><?php echo $projection->getAuditorium()->getNameAuditorium();?></td>
                         <td class="td-list-buy">
                             <form action="<?php echo FRONT_ROOT ?>Purchase/ShowStartPurchase" method="POST">
-                            <button  style="margin-left: 0;" class="button-add" type="submit" name="" value="">BUY</button>
+                            <input type="hidden" name="idProjection" value="<?php echo $projection->getIdProjection(); ?>">
+                            <input type="hidden" name="movieTitle" value="<?php echo $projection->getMovie()->getTitle(); ?>">
+                            <button  style="margin-left: 0;" class="button-add" type="submit" name="" value="">BUY TICKETS</button>
                             </form>
                         </td>
                     </tr>
