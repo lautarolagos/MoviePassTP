@@ -22,11 +22,19 @@
         {
             require_once(VIEWS_PATH."BuyTicket.php");
         }
+
         public function ShowConfirmBuy($quantity, $movieTitle, $idProjection)
         {
             $projection = new Projection();
             $projection = $this->projectionDAO->GetProjection($idProjection);
             require_once(VIEWS_PATH."ConfirmBuy.php");
+        }
+
+        public function ProcessBuy($quantity, $idProjection)
+        {
+            $projection = new Projection();
+            $projection = $this->projectionDAO->GetProjection($idProjection);
+            
         }
     }
 ?>

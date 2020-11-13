@@ -27,10 +27,6 @@
         public function setSession($user)
         {
             $_SESSION['userLogedIn'] = $user;
-            $_SESSION['firstName'] = $user->getFirstName();
-            $_SESSION['isAdmin'] = $user->getIsAdmin();
-            $_SESSION['email'] = $user->getEmail();
-            $_SESSION['idUser'] = $user->getIdUser();
         }
 
         public function Check($email, $password)

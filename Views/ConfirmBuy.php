@@ -13,7 +13,7 @@
             <h1>M<span>OVIE</span> P<span>ASS</span></h1>
     </div>
     <div class="cont-form">
-            <form class="form" action="<?php echo FRONT_ROOT ?>Purchase/ProcessBuy" method="POST">
+            <form class="form">
                 <div>
                     <h2 class="form-title">Verify if everything is correct!</h2>
                 </div>
@@ -45,8 +45,12 @@
                 <label for="totalPrice">Total:</label> <?php // Aca pienso poner un mensaje diga si se aplico descuento o no ?>
                     <input class="form-input" type="text" id="totalPrice" name="totalPrice" class="" placeholder="Total Price $" readonly>
                 </div>
+                </form>
+                <form class="form" action="<?php echo FRONT_ROOT ?>Purchase/ProcessBuy">
+                <input type="hidden" name="quantity" value="<?php echo $quantity; ?>">
+                <input type="hidden" name="idProjection" value="<?php echo $projection->getIdProjection(); ?>">
                 <center><button class="btn-submit" type="submit">CONFIRM BUY</button></center>
-            </form>
+                </form>
             <form class="form" action="#" method="POST">
             <button class="btn-submit" type="submit">Go Back</button>
             </form>

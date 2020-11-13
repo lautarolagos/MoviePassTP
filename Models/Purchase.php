@@ -7,17 +7,17 @@
         private $totalPrice; // Precio total de la compra con descuento aplicado o no
         private $discount; // para saber si se aplico descuento o no
         private $datePurchase; // Fecha en que realizo la compra
-        private $ticketQuantity; // Cantidad de tickets que compro
+        private $tickets; // array de tickets
         private $projection; // Una projection tiene una pelicula, un auditorium que a su vez contiene un cine
         private $user;
 
-        function __construct($idPurchase = NULL, $totalPrice = NULL, $discount = NULL, $datePurchase = NULL, $ticketQuantity = NULL, $projection = NULL, $user = NULL)
+        function __construct($idPurchase = NULL, $totalPrice = NULL, $discount = NULL, $datePurchase = NULL, $tickets = NULL, $projection = NULL, $user = NULL)
         {
             $this->idPurchase = $idPurchase;
             $this->totalPrice = $totalPrice;
             $this->discount = $discount;
             $this->datePurchase = $datePurchase;
-            $this->ticketQuantity = $ticketQuantity;
+            $this->tickets = $tickets;
             $this->projection = $projection;
             $this->user = $user;
         }
@@ -39,9 +39,9 @@
         {
             return $this->datePurchase;
         }
-        public function getTicketQuantity()
+        public function getTickets()
         {
-            return $this->ticketQuantity;
+            return $this->tickets;
         }
         public function getProjection()
         {
@@ -69,9 +69,9 @@
         {
             $this->datePurchase = $datePurchase;
         }
-        public function setTicketQuantity($ticketQuantity)
+        public function setTickets($tickets)
         {
-            $this->ticketQuantity = $ticketQuantity;
+            $this->tickets = $tickets;
         }
         public function setProjection($projection)
         {

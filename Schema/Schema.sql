@@ -136,6 +136,7 @@ constraint `FK-idUser` foreign key (idUser) references users (idUser)
 
 select * from purchases;
 select * from tickets;
+
 #DROP TABLE TICKETS;
 create table if not exists tickets(
 number int not null auto_increment,
@@ -144,5 +145,3 @@ idPurchase int not null,
 constraint `PK-number` primary key (number),
 constraint `FK-idPurchase` foreign key (idPurchase) references purchases (idPurchase)
 );
-
-
