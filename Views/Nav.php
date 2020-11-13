@@ -29,7 +29,7 @@
                     <?php }?>
                     <?php if(isset($_SESSION['userLogedIn'])){?>
                     <li>
-                        <a href="<?php echo FRONT_ROOT ?>Session/ShowProfile"><i class="far fa-user"></i> Profile </a>
+                        <a href="<?php echo FRONT_ROOT ?>User/ShowProfile"><i class="far fa-user"></i> Profile </a>
                     </li>
                     <?php }?>
                     <li>

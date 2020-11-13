@@ -9,6 +9,8 @@
     use Models\Projection as Projection;
     use Models\User as User;
 
+    date_default_timezone_set('America/Argentina/Buenos_Aires');
+
     class PurchaseController
     {
         private $purchaseDAO;
@@ -31,10 +33,34 @@
         {
             $projection = new Projection();
             $projection = $this->projectionDAO->GetProjection($idProjection);
+            
+            if($quantity>=2) // Proceso de aplicar o no descuento
+            {
+                $day = date("w");
+                if($day==2 || $day==3) // Si es Martes o Miercoles (0 es domingo, 6 es sabado)
+                {
+                    $subtotal = $projection->getAuditorium()->getTicketPrice()*$quantity;
+                    $discount = $subtotal * 0.25; 
+                    $totalPrice = $subtotal - $discount; // Aplico el descuento
+                }
+                else
+                {   
+                    $subtotal = $projection->getAuditorium()->getTicketPrice()*$quantity;
+                    $discount = 0;
+                    $totalPrice = $subtotal; // No aplico ningun descuento
+                }
+            }
+            else
+            {
+                $subtotal = $projection->getAuditorium()->getTicketPrice()*$quantity;
+                $discount = 0;
+                $totalPrice = $subtotal; // No aplico ningun descuento
+            }
+
             require_once(VIEWS_PATH."ConfirmBuy.php");
         }
 
-        public function ProcessBuy($quantity, $idProjection)
+        public function ProcessBuy($quantity, $idProjection, $subtotal, $discount, $totalPrice)
         {
             $user = new User();
             $user = $_SESSION['userLogedIn']; // Lo paso a una variable de tipo user para mas comodidad
@@ -43,9 +69,10 @@
             $projection = $this->projectionDAO->GetProjection($idProjection); // Obtengo la projection que eligio el usuario
             
             $purchase = new Purchase(); // Creo el objeto de tipo compra
-            $purchase->setDiscount(0); // Falta hacer esto
-            $purchase->setTotalPrice($projection->getAuditorium()->getTicketPrice()*$quantity); // Y esto iria despues de saber si tiene descuento o no
-            $purchase->setDatePurchase(date("Y-m-d")); // Habria que agregar hora tambien?
+            $purchase->setDiscount($discount);
+            $purchase->setTotalPrice($totalPrice); // Y esto iria despues de saber si tiene descuento o no
+            $purchase->setSubtotal($subtotal);
+            $purchase->setDatePurchase(date("Y-m-d"));
             $purchase->setProjection($projection);
             $purchase->setUser($user);
 
@@ -60,14 +87,14 @@
                 $this->ticketDAO->Add($ticket);
             }
 
-            $msg = "COMPRA REALIZADA";
+            $msg = "COMPRA REALIZADA"; // hacer mas estetico esto despues
 
             $this->ShowCompraRealizada($msg);
         }
 
         public function ShowCompraRealizada($msg)
         {
-            echo $msg;
+            echo $msg; // hacer mas estetico esto despues
         }
     }
 ?>

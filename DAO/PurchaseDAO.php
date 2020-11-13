@@ -15,9 +15,10 @@
         {
             try
             {
-                $query = "INSERT INTO ".$this->tableName." (totalPrice, discount, datePurchase, idProjection, idUser) VALUES (:totalPrice, :discount, :datePurchase, :idProjection, :idUser);";
+                $query = "INSERT INTO ".$this->tableName." (totalPrice, discount, subtotal, datePurchase, idProjection, idUser) VALUES (:totalPrice, :discount, :subtotal, :datePurchase, :idProjection, :idUser);";
                 $parameters['totalPrice'] = $purchase->getTotalPrice();
                 $parameters['discount'] = $purchase->getDiscount();
+                $parameters['subtotal'] = $purchase->getSubtotal();
                 $parameters['datePurchase'] = $purchase->getDatePurchase();
                 $parameters['idProjection'] = $purchase->getProjection()->getIdProjection();
                 $parameters['idUser'] = $purchase->getUser()->getIdUser();
@@ -36,7 +37,7 @@
         {
             try
             {
-                $query = "SELECT idPurchase, totalPrice, discount, datePurchase
+                $query = "SELECT idPurchase, totalPrice, discount, subtotal, datePurchase
                 FROM purchases
                 WHERE idUser = :idUser
                 ORDER by idPurchase DESC
@@ -52,6 +53,7 @@
                     $purchase->setIdPurchase($row['idPurchase']);
                     $purchase->setTotalPrice($row['totalPrice']);
                     $purchase->setDiscount($row['discount']);
+                    $purchase->setSubtotal($row['subtotal']);
                     $purchase->setDatePurchase($row['datePurchase']);
                 }
                 return $purchase;

@@ -9,8 +9,9 @@
         private $email;
         private $password;
         private $isAdmin;
+        private $city;
         
-        function __construct($idUser = NULL, $firstName = NULL, $lastName = NULL, $email = NULL , $password = NULL, $isAdmin = NULL)
+        function __construct($idUser = NULL, $firstName = NULL, $lastName = NULL, $email = NULL , $password = NULL, $isAdmin = NULL, $city = NULL)
         {
             $this->idUser = $idUser;
             $this->firstName = $firstName;
@@ -18,6 +19,7 @@
             $this->email = $email;
             $this->password = $password;
             $this->isAdmin = $isAdmin; // 0 NO  es admin, 1 ES admin
+            $this->city = $city;
             
         }
 
@@ -45,6 +47,10 @@
         {
             return $this->isAdmin;
         }
+        public function getCity()
+        {
+            return $this->city;
+        }
         
 
         public function setIdUser($idUser)
@@ -70,6 +76,10 @@
         public function setIsAdmin($isAdmin)
         {
             $this->isAdmin = $isAdmin;
+        }
+        public function setCity($city)
+        {
+            $this->city = $city;
         }
     }
 ?>

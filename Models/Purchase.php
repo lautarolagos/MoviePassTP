@@ -6,16 +6,18 @@
         private $idPurchase;
         private $totalPrice; // Precio total de la compra con descuento aplicado o no
         private $discount; // para saber si se aplico descuento o no
+        private $subtotal; // esto dice el precio sin ningun tipo de descuento
         private $datePurchase; // Fecha en que realizo la compra
         private $tickets; // array de tickets
         private $projection; // Una projection tiene una pelicula, un auditorium que a su vez contiene un cine
         private $user;
 
-        function __construct($idPurchase = NULL, $totalPrice = NULL, $discount = NULL, $datePurchase = NULL, $tickets = NULL, $projection = NULL, $user = NULL)
+        function __construct($idPurchase = NULL, $totalPrice = NULL, $discount = NULL, $subtotal=NULL, $datePurchase = NULL, $tickets = NULL, $projection = NULL, $user = NULL)
         {
             $this->idPurchase = $idPurchase;
             $this->totalPrice = $totalPrice;
             $this->discount = $discount;
+            $this->subtotal = $subtotal;
             $this->datePurchase = $datePurchase;
             $this->tickets = $tickets;
             $this->projection = $projection;
@@ -34,6 +36,10 @@
         public function getDiscount()
         {
             return $this->discount;
+        }
+        public function getSubtotal()
+        {
+            return $this->subtotal;
         }
         public function getDatePurchase()
         {
@@ -64,6 +70,10 @@
         public function setDiscount($discount)
         {
             $this->discount = $discount;
+        }
+        public function setSubtotal($subtotal)
+        {
+            $this->subtotal = $subtotal;
         }
         public function setDatePurchase($datePurchase)
         {

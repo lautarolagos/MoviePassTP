@@ -12,6 +12,11 @@ isAdmin boolean default(0),
 constraint `PK-idUser` primary key (idUser)
 );
 
+select * from users;
+
+ALTER TABLE users
+ADD COLUMN city VARCHAR(15) AFTER isAdmin;
+
 #DROP TABLE cinemas;
 create table if not exists cinemas(
 name varchar(30) not null,
@@ -123,8 +128,9 @@ WHERE p.idProjection = 1;
 #DROP TABLE PURCHASES;
 create table if not exists purchases(
 idPurchase int not null auto_increment,
-totalPrice varchar(30) not null,
-discount bool not null,
+totalPrice int not null,
+discount int not null,
+subtotal int not null,
 datePurchase varchar(15) not null,
 idProjection int not null,
 idUser int not null,

@@ -23,11 +23,6 @@
         {
             require_once(VIEWS_PATH."Login.php");
         }
-
-        public function ShowProfile()
-        {
-            require_once(VIEWS_PATH."Profile.php");
-        }
     }
     
 ?>

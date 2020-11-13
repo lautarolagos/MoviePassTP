@@ -15,11 +15,12 @@
         {
             try
             {
-                $query = "INSERT INTO ".$this->tableName." (firstName, lastName, email, password) VALUES (:firstName, :lastName, :email, :password);";
+                $query = "INSERT INTO ".$this->tableName." (firstName, lastName, email, password, city) VALUES (:firstName, :lastName, :email, :password, :city);";
                 $parameters["firstName"] = $user->getFirstName();
                 $parameters["lastName"] = $user->getLastName();
                 $parameters["email"] = $user->getEmail();
                 $parameters['password'] = $user->getPassword();
+                $parameters['city'] = $user->getCity();
 
                 $this->connection = Connection::GetInstance();
 
@@ -52,6 +53,7 @@
                     $user->setEmail($row['email']);
                     $user->setPassword($row['password']);
                     $user->setIsAdmin($row['isAdmin']);
+                    $user->setCity($row['city']);
 
                     array_push($usersList, $user);
                 }
@@ -113,7 +115,7 @@
             $value = is_array($value) ? $value : [];
 
             $resp = array_map( function($p){
-                return new User($p['idUser'], $p['firstName'], $p['lastName'], $p['email'], $p['password'], $p['isAdmin']);
+                return new User($p['idUser'], $p['firstName'], $p['lastName'], $p['email'], $p['password'], $p['isAdmin'], $p['city']);
             }, $value);
             
             return count($resp) > 1 ? $resp : $resp['0'];
