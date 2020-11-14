@@ -24,12 +24,12 @@
             $this->ticketDAO = new TicketDAO();
         }
 
-        public function ShowStartPurchase($idProjection, $movieTitle)
+        public function ShowStartPurchase($idProjection, $movieTitle, $posterPath, $overview, $idMovie)
         {
             require_once(VIEWS_PATH."BuyTicket.php");
         }
 
-        public function ShowConfirmBuy($quantity, $movieTitle, $idProjection)
+        public function ShowConfirmBuy($quantity, $creditCard, $securityCode, $movieTitle, $idProjection)
         {
             $projection = new Projection();
             $projection = $this->projectionDAO->GetProjection($idProjection);
@@ -63,7 +63,7 @@
         public function ProcessBuy($quantity, $idProjection, $subtotal, $discount, $totalPrice)
         {
             $user = new User();
-            $user = $_SESSION['userLogedIn']; // Lo paso a una variable de tipo user para mas comodidad
+            $user = $_SESSION['userLogedIn']; // Lo paso a un obj de tipo user para mas comodidad
 
             $projection = new Projection();
             $projection = $this->projectionDAO->GetProjection($idProjection); // Obtengo la projection que eligio el usuario
@@ -87,14 +87,16 @@
                 $this->ticketDAO->Add($ticket);
             }
 
-            $msg = "COMPRA REALIZADA"; // hacer mas estetico esto despues
+            $arrayTickets = array();
+            $arrayTickets = $this->ticketDAO->GetTicketsPurchase($lastPurchase->getIdPurchase());
+            $idPurchase = $lastPurchase->getIdPurchase();
 
-            $this->ShowCompraRealizada($msg);
+            $this->ShowPurchaseDone($arrayTickets, $idPurchase);
         }
 
-        public function ShowCompraRealizada($msg)
+        public function ShowPurchaseDone($arrayTickets, $idPurchase)
         {
-            echo $msg; // hacer mas estetico esto despues
+            require_once(VIEWS_PATH."PurchaseCompleted.php");
         }
     }
 ?>

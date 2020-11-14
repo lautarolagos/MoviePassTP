@@ -15,11 +15,9 @@
 
 <div class="page-content page-container" id="page-content">
     <div class="padding">
-        <div class="row container d-flex justify-content-center">
-            <div class="col-xl-6 col-md-12">
-                <div class="card user-card-full">
+                <div class="card user-card-full" style="margin-right: 40rem;margin-top: 6rem;margin-left: 40rem;">
                     <div class="row m-l-0 m-r-0">
-                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                        <div class="bg-c-lite-green user-profile">
                             <div class="card-block text-center text-white">
                                 <div class="m-b-25"> <i class="far fa-user fa-7x"></i> </div>
                                 <h6 class="f-w-600"><?php echo $_SESSION['userLogedIn']->getFirstName(); echo " " .$_SESSION['userLogedIn']->getLastName();?></h6>
@@ -41,7 +39,7 @@
                                 </div>
                                 <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>
                                 <div class="row">
-                                    <form action="">
+                                    <form action="<?php echo FRONT_ROOT ?>User/ShowPurchases" method="POST">
                                     <div id="buttons">
                                     <button class="btnPurchases" style="margin-left: 20px;padding-bottom: 10px;padding-top: 10px;margin-top: 18px;">View Purchases</button>
                                     </div>

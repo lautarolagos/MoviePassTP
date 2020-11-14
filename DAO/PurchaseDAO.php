@@ -5,6 +5,8 @@
     use Interfaces\IPurchaseDAO as IPurchaseDAO;
     use Models\Purchase as Purchase;
     use Models\Ticket as Ticket;
+    use Models\Movie as Movie;
+    use Models\Projection as Projection;
 
     class PurchaseDAO implements IPurchaseDAO
     {
@@ -57,6 +59,48 @@
                     $purchase->setDatePurchase($row['datePurchase']);
                 }
                 return $purchase;
+
+            } catch (Exception $ex)
+            {
+                throw $ex;
+            }
+        }
+
+        public function GetPurchasesUser($idUser)
+        {
+            $arrayPurchases = array();
+            try
+            {
+                $query = "select p.idPurchase, p.totalPrice, p.discount, p.subtotal, p.datePurchase, f.idProjection, m.title
+                from purchases as p
+                join projections as f
+                on p.idProjection = f.idProjection
+                join movies as m
+                on f.idMovie = m.idMovie
+                where p.idUser = :idUser;";
+
+                $parameters['idUser'] = $idUser;
+
+                $this->connection = Connection::getInstance();
+                $resultSet = $this->connection->Execute($query, $parameters, QueryType::Query);
+                foreach($resultSet as $row)
+                {
+                    $purchase = new Purchase();
+                    $projection = new Projection();
+                    $movie = new Movie();
+                    $purchase->setIdPurchase($row['idPurchase']);
+                    $purchase->setTotalPrice($row['totalPrice']);
+                    $purchase->setDiscount($row['discount']);
+                    $purchase->setSubtotal($row['subtotal']);
+                    $purchase->setDatePurchase($row['datePurchase']);
+                    $projection->setIdProjection($row['idProjection']);
+                    $movie->setTitle($row['title']);
+                    $projection->setMovie($movie);
+                    $purchase->setProjection($projection);
+                    
+                    array_push($arrayPurchases, $purchase);
+                }
+                return $arrayPurchases;
 
             } catch (Exception $ex)
             {

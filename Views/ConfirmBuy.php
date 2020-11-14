@@ -9,9 +9,6 @@
     <title>Buy Tickets - MoviePass</title>
 </head>
 <body>
-    <div>
-            <h1>M<span>OVIE</span> P<span>ASS</span></h1>
-    </div>
     <div class="cont-form">
             <form class="form">
                 <div>
@@ -42,11 +39,19 @@
                     <input class="form-input" type="text" id="dateTime" name="dateTime" class="" placeholder="<?php echo $projection->getDate(); echo " at " .$projection->getStartTime();?>" readonly>
                 </div>
                 <div>
-                <label for="totalPrice">Total: </label> <?php // Aca pienso poner un mensaje diga si se aplico descuento o no ?>
+                <label for="totalPrice">Subtotal: <?php echo "$". $subtotal ?></label>
+                <div>
+                <?php if($discount!=0){
+                    ?>
+                    <label for="" style="padding-top:5px;">Discount applied! ($-<?php echo $discount; ?>)</label>
+                <?php }
+                ?> 
+                </div>
+                <label for="totalPrice">Total Price:</label>
                     <input class="form-input" type="text" id="totalPrice" name="totalPrice" class="" placeholder="<?php echo "$ $totalPrice";?>" readonly>
                 </div>
                 </form>
-                <form class="form" action="<?php echo FRONT_ROOT ?>Purchase/ProcessBuy">
+                <form class="form" action="<?php echo FRONT_ROOT ?>Purchase/ProcessBuy" method="POST">
                 <input type="hidden" name="quantity" value="<?php echo $quantity; ?>">
                 <input type="hidden" name="idProjection" value="<?php echo $projection->getIdProjection(); ?>">
                 <input type="hidden" name="subtotal" value="<?php echo $subtotal; ?>">
@@ -54,9 +59,6 @@
                 <input type="hidden" name="totalPrice" value="<?php echo $totalPrice; ?>">
                 <center><button class="btn-submit" type="submit">CONFIRM BUY</button></center>
                 </form>
-            <form class="form" action="#" method="POST">
-            <button class="btn-submit" type="submit">Go Back</button>
-            </form>
         </div>
     </body>
 </html>

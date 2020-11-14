@@ -157,3 +157,17 @@ FROM purchases
 WHERE idUser = 1
 ORDER by idPurchase DESC
 LIMIT 1;
+
+
+select * from tickets
+where idPurchase = 1;
+
+#idPurchase, totalPrice, discount, subtotal, datepurchase, purchase.idProjection, p.idProjection, p.idMovie, m.idMovie, m.title
+
+select p.idPurchase, p.totalPrice, p.discount, p.subtotal, p.datePurchase, f.idProjection, m.title
+from purchases as p
+join projections as f
+on p.idProjection = f.idProjection
+join movies as m
+on f.idMovie = m.idMovie
+where p.idUser = 2;

@@ -45,6 +45,9 @@
                             <form action="<?php echo FRONT_ROOT ?>Purchase/ShowStartPurchase" method="POST">
                             <input type="hidden" name="idProjection" value="<?php echo $projection->getIdProjection(); ?>">
                             <input type="hidden" name="movieTitle" value="<?php echo $projection->getMovie()->getTitle(); ?>">
+                            <input type="hidden" name="posterPath" value="<?php echo $posterPath; ?>">
+                            <input type="hidden" name="overview" value="<?php echo $overview; ?>">
+                            <input type="hidden" name="idMovie" value="<?php echo $idMovie; ?>">
                             <button  style="margin-left: 0;" class="button-add" type="submit" name="" value="">BUY TICKETS</button>
                             </form>
                         </td>
