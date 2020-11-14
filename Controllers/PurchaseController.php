@@ -24,9 +24,22 @@
             $this->ticketDAO = new TicketDAO();
         }
 
+        public function ShowLoginView($message)
+        {
+            require_once(VIEWS_PATH."Login.php");
+        }
+
         public function ShowStartPurchase($idProjection, $movieTitle, $posterPath, $overview, $idMovie)
         {
+            if(!isset($_SESSION['userLogedIn']))
+            {
+                $message = "You need to login or register to continue!";
+                $this->ShowLoginView($message);
+            }
+            else
+            {
             require_once(VIEWS_PATH."BuyTicket.php");
+            }
         }
 
         public function ShowConfirmBuy($quantity, $creditCard, $securityCode, $movieTitle, $idProjection)
