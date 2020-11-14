@@ -5,6 +5,8 @@
     use DAO\Connection as Connection;
     use Models\Projection as Projection;
     use Models\Movie as Movie;
+    use Models\Auditorium as Auditorium;
+    use Models\Cinema as Cinema;
     use Interfaces\IProjectionDAO as IProjectionDAO;
 
     class ProjectionDAO implements IProjectionDAO
@@ -121,5 +123,106 @@
             }
         }
 
+        public function GetProjectionsByIdMovie($idMovie) // Retorna todas las funciones donde este la pelicula seleccionada
+        {
+            try
+            {
+                $projections = array();
+                $query = "select 
+                p.idProjection, p.date, p.startTime, p.endTime, p.idAuditorium, a.nameAuditorium, a.amountOfSeats, a.ticketPrice, a.idCinema, c.name, c.adress, m.idMovie, m.title
+                from projections as p
+                join auditoriums as a
+                on p.idAuditorium = a.idAuditorium
+                join cinemas as c
+                on a.idCinema = c.idCinema
+                join movies as m
+                on p.idMovie = m.idMovie
+                WHERE p.idMovie = :idMovie AND p.isActive = 1;";
+
+                $parameters['idMovie'] = $idMovie;
+
+                $this->connection = Connection::getInstance();
+                $resultSet = $this->connection->Execute($query, $parameters, QueryType::Query);
+                foreach($resultSet as $row)
+                {
+                    $projection = new Projection();
+                    $projection->setIdProjection($row['idProjection']);
+                    $projection->setDate($row['date']);
+                    $projection->setStartTime($row['startTime']);
+                    $projection->setEndTime($row['endTime']);
+                    $auditorium = new Auditorium();
+                    $auditorium->setIdAuditorium($row['idAuditorium']);
+                    $auditorium->setNameAuditorium($row['nameAuditorium']);
+                    $auditorium->setAmountOfSeats($row['amountOfSeats']);
+                    $auditorium->setTicketPrice($row['ticketPrice']);
+                    $cinema = new Cinema();
+                    $cinema->setIdCinema($row['idCinema']);
+                    $cinema->setName($row['name']);
+                    $cinema->setAdress($row['adress']);
+                    $movie = new Movie();
+                    $movie->setIdMovie($row['idMovie']);
+                    $movie->setTitle($row['title']);
+                    $auditorium->setCinema($cinema);
+                    $projection->setAuditorium($auditorium);
+                    $projection->setMovie($movie);
+
+                    array_push($projections, $projection);
+                }
+                return $projections;
+            } catch (Exception $ex)
+            {
+                throw $ex;
+            }
+        }
+
+        public function GetProjection($idProjection) // Retorna todas las funciones donde este la pelicula seleccionada
+        {
+            try
+            {
+                $query = "select 
+                p.idProjection, p.date, p.startTime, p.endTime, p.idAuditorium, a.nameAuditorium, a.amountOfSeats, a.ticketPrice, a.idCinema, c.name, c.adress, m.idMovie, m.title
+                from projections as p
+                join auditoriums as a
+                on p.idAuditorium = a.idAuditorium
+                join cinemas as c
+                on a.idCinema = c.idCinema
+                join movies as m
+                on p.idMovie = m.idMovie
+                WHERE p.idProjection = :idProjection;";
+
+                $parameters['idProjection'] = $idProjection;
+
+                $this->connection = Connection::getInstance();
+                $resultSet = $this->connection->Execute($query, $parameters, QueryType::Query);
+                foreach($resultSet as $row)
+                {
+                    $projection = new Projection();
+                    $projection->setIdProjection($row['idProjection']);
+                    $projection->setDate($row['date']);
+                    $projection->setStartTime($row['startTime']);
+                    $projection->setEndTime($row['endTime']);
+                    $auditorium = new Auditorium();
+                    $auditorium->setIdAuditorium($row['idAuditorium']);
+                    $auditorium->setNameAuditorium($row['nameAuditorium']);
+                    $auditorium->setAmountOfSeats($row['amountOfSeats']);
+                    $auditorium->setTicketPrice($row['ticketPrice']);
+                    $cinema = new Cinema();
+                    $cinema->setIdCinema($row['idCinema']);
+                    $cinema->setName($row['name']);
+                    $cinema->setAdress($row['adress']);
+                    $movie = new Movie();
+                    $movie->setIdMovie($row['idMovie']);
+                    $movie->setTitle($row['title']);
+                    $auditorium->setCinema($cinema);
+                    $projection->setAuditorium($auditorium);
+                    $projection->setMovie($movie);
+                }
+                return $projection;
+
+            } catch (Exception $ex)
+            {
+                throw $ex;
+            }
+        }
     }
 ?>

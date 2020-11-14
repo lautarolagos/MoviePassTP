@@ -246,8 +246,16 @@
             return implode(":",$totalArray);
         }
 
+        public function ShowProjection($posterPath, $title, $overview, $idMovie)
+        {
+            $projections = $this->projectionDAO->GetProjectionsByIdMovie($idMovie); // Me trae todas las funciones de cierta pelicula
+            // el array de projections viene cargado con su obj movie, obj auditorium y adentro de auditorium un obj cine
+            require_once(VIEWS_PATH."ShowProjection.php");
+        
+        }
+      
         //Recorremos nuestro array de ids de generos de la pelicula, cuando uno no se encuentre cargado en la DB lo agregamos
-        public function genreCheck($genreIds)
+        public function genreCheck($genreIds) 
         {
             //Nos traemos todos los generos de la API para buscar el o los que coincidan con los ids de los generos de una pelicula
             $genresAPIArray = $this->APIDAO->GetGenres();

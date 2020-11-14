@@ -23,7 +23,7 @@
             require_once(VIEWS_PATH."Register.php");
         }
         
-        public function Add($firstName, $lastName, $email, $password)
+        public function Add($firstName, $lastName, $email, $password, $city)
         {
             $userDAO = new UserDAO();
 
@@ -36,6 +36,7 @@
                 $user->setLastName($lastName);
                 $user->setEmail($email);
                 $user->setPassword($password);
+                $user->setCity($city);
     
                 $this->userDAO->Add($user);
                 $message="Registration finished, please sign in to continue";

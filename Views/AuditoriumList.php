@@ -25,7 +25,7 @@
                     <h2 class="table-title">Auditorium List</h2>
                     
                     <!-- AGREGAR AUDITORIUM -->
-                    <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {
+                    <?php if((isset($_SESSION['userLogedIn'])) && $_SESSION['userLogedIn']->getIsAdmin()=="1") {
                     ?>
                     <form class="form" action="<?php echo FRONT_ROOT ?>Auditorium/AddView" method="post">
                     <center><button class="button-add" type="submit" name="idCinema" value="<?php echo $idCinema ?>" style="margin-bottom: 8px">Add Auditorium</button></center>
@@ -36,9 +36,9 @@
                               <th>Name</th>
                               <th>Total Seats</th>
                               <th>Ticket Price</th>
-                              <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {?><th></th> <?php } ?>
-                              <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {?><th>Options</th> <?php } ?>
-                              <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {?><th></th> <?php } ?>
+                              <?php if((isset($_SESSION['userLogedIn'])) && $_SESSION['userLogedIn']->getIsAdmin()=="1") {?><th></th> <?php } ?>
+                              <?php if((isset($_SESSION['userLogedIn'])) && $_SESSION['userLogedIn']->getIsAdmin()=="1") {?><th>Options</th> <?php } ?>
+                              <?php if((isset($_SESSION['userLogedIn'])) && $_SESSION['userLogedIn']->getIsAdmin()=="1") {?><th></th> <?php } ?>
                          </thead>
                          <tbody>
                          <?php
@@ -54,7 +54,7 @@
                                                   <td><?php echo $auditorium->getAmountOfSeats(); ?></td>
                                                   <td><?php echo $auditorium->getTicketPrice(); ?></td>
                                                   <!-- Boton de Edit -->
-                                                  <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {
+                                                  <?php if((isset($_SESSION['userLogedIn'])) && $_SESSION['userLogedIn']->getIsAdmin()=="1") {
                                                    ?>
                                                    <td>
                                                    <form action="<?php echo FRONT_ROOT ?>Auditorium/ShowEditView" method="POST">
@@ -64,7 +64,7 @@
                                                    </form>
                                                    </td>    
                                                   <!-- Boton de Delete -->
-                                                  <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {
+                                                  <?php if((isset($_SESSION['userLogedIn'])) && $_SESSION['userLogedIn']->getIsAdmin()=="1") {
                                                   ?>
                                                   <td>
                                                   <form action="<?php echo FRONT_ROOT ?>Auditorium/Delete" method="POST">
@@ -74,7 +74,7 @@
                                                   </form>
                                                   </td>
                                                   <!-- Boton de Ver Add Movie -->
-                                                  <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {
+                                                  <?php if((isset($_SESSION['userLogedIn'])) && $_SESSION['userLogedIn']->getIsAdmin()=="1") {
                                                   ?>
                                                   <td>
                                                   <form action="<?php echo FRONT_ROOT ?>API/ShowMovies" method="POST">
@@ -90,7 +90,7 @@
                          </tbody>
                     </table>
                     
-                    <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {
+                    <?php if((isset($_SESSION['userLogedIn'])) && $_SESSION['userLogedIn']->getIsAdmin()=="1") {
                     ?>
                     <form class="form" action="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaList" method="post">
                     <center><button class="button-add" type="submit" style="margin: 8px;">Go Back</button></center>
