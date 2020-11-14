@@ -65,7 +65,7 @@
                         $newMovie->setLanguage($movie['original_language']);
                         $newMovie->setTitle($movie['title']);
                         $newMovie->setRuntimeConvert($this->SetRuntimeMovie($idMovie));
-                        //$newMovie->setGenreIds($movie['genre_ids']);
+                        $newMovie->setGenreIds($movie['genre_ids']);
                         $newMovie->setOverview($movie['overview']);
                         $newMovie->setReleaseDate($movie['release_date']);
                         $newMovie->setPosterPath($movie['poster_path']);

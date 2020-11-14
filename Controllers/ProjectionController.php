@@ -5,9 +5,11 @@
     use DAO\AuditoriumDAO as AuditoriumDAO;
     use DAO\APIDAO as APIDAO;
     use DAO\MovieDAO as MovieDAO;
+    use DAO\GenreDAO as GenreDAO;
     use Models\Projection as Projection;
     use Models\Auditorium as Auditorium;
     use Models\Movie as Movie;
+    use Models\Genre as Genre;
 
     class ProjectionController
     {
@@ -15,6 +17,7 @@
         private $auditoriumDAO;
         private $APIDAO;
         private $MovieDAO;
+        private $GenreDAO;
 
         public function __construct()
         {
@@ -22,6 +25,7 @@
             $this->auditoriumDAO = new AuditoriumDAO();
             $this->APIDAO = new APIDAO();
             $this->MovieDAO = new MovieDAO();
+            $this->GenreDAO = new GenreDAO();
         }
 
         public function ShowAddProjection($movieId, $idAuditorium, $movieRuntime, $posterImg, $msg="")
@@ -29,27 +33,35 @@
             require_once(VIEWS_PATH."AddProjection.php");
         }
 
+        public function ShowProjection($posterPath, $title, $overview)
+        {
+            require_once(VIEWS_PATH."ShowProjection.php");
+        }
+
+        public function ShowBillboard($moviesOnBillboard)
+        {
+            require_once(VIEWS_PATH."Billboard.php");
+        }
+
         public function AddNewProjection($date, $startTime, $endTime, $idAuditorium, $idMovie)
         {
             //Si ya llegamos hasta aca quiere decir que se valido todo correctamente y podemos agregar esta projection
             $auditorium = new Auditorium();
             $auditorium = $this->auditoriumDAO->GetAuditoriumById($idAuditorium);
-
             $auditorium = $this->auditoriumDAO->SetCinemaForAuditorium($auditorium);
-            /*echo "<pre>";
-            var_dump($auditorium);
-            echo "</pre>";*/
 
-
-            $movie = new Movie();
+            $movie = new Movie(); 
             $movie = $this->APIDAO->ReturnMovieByIdFromAPI($idMovie);
-            //Añadimos la peícula a nuestra DB
-            $exists = $this->MovieDAO->Search($idMovie); // Verifico si ya esta agregada la peli para no duplicarla
+            $idGenres = $movie->getGenreIds();
+            $exists = $this->MovieDAO->Search($idMovie); //Verifico si ya esta agregada la peli para no duplicarla 
+
+            //Si la pelicula no existe la agregamos, junto con los generos (que se guardan en una tabla diferente) 
             if($exists == false)
             {
                 $this->MovieDAO->Add($movie);
+                $this->genreCheck($idGenres); //Hacemos lo mismo con los géneros, en el caso de que no este lo agregamos a la DB
+                $this->loadGenresXmovies($movie->getIdMovie(), $idGenres); //Cargamos la tabla intermedia entre las peliculas y los generos de las mismas
             }
-
 
             $projection = new Projection();
             $projection->setDate($date);
@@ -75,6 +87,7 @@
 
         public function projectionCheck($dateTime, $movieId, $idAuditorium, $movieRuntime, $posterImg)
         {
+            $validate = true;
             //Separamos la fecha de la hora (fecha en $dateTimeArray[0] y hora en $dateTimeArray[1])
             $dateTimeArray = explode("T", $dateTime);
             
@@ -94,7 +107,14 @@
                 {
                     if($auditoriums->getIdAuditorium() == $idAuditorium)
                     {
-                        $validate = $this->checkTime($auditoriums->getProjection(), $dateTimeArray[1], $endTimeNewProjection);
+                        foreach($auditoriums->getProjection() as $projection)
+                        {
+                            //Comprobamos que la fecha sea la misma ya que de otra manera no importa que se proyecten a la misma hora
+                            if(strcmp($projection->getDate(), $dateTimeArray[0]) == 0)
+                            {
+                                $validate = $this->timeCheck($auditoriums->getProjection(), $dateTimeArray[1], $endTimeNewProjection);
+                            }
+                        }
                     }
                 }
 
@@ -133,7 +153,7 @@
             return $auditoriumsList;
         }
 
-        public function checkTime($projections, $newStartTime, $newEndTime)
+        public function timeCheck($projections, $newStartTime, $newEndTime)
         {
             $flag = true;
             if($projections != NULL)
@@ -231,11 +251,43 @@
             $projections = $this->projectionDAO->GetProjectionsByIdMovie($idMovie); // Me trae todas las funciones de cierta pelicula
             // el array de projections viene cargado con su obj movie, obj auditorium y adentro de auditorium un obj cine
             require_once(VIEWS_PATH."ShowProjection.php");
+        
+        }
+      
+        //Recorremos nuestro array de ids de generos de la pelicula, cuando uno no se encuentre cargado en la DB lo agregamos
+        public function genreCheck($genreIds) 
+        {
+            //Nos traemos todos los generos de la API para buscar el o los que coincidan con los ids de los generos de una pelicula
+            $genresAPIArray = $this->APIDAO->GetGenres();
+            foreach($genreIds as $genre)
+            {
+                $exists = $this->GenreDAO->Search($genre);
+                if($exists == false)
+                {
+                    foreach($genresAPIArray as $genresAPI)
+                    {
+                        if($genresAPI->getIdGenre() == $genre)
+                        {
+                            $this->GenreDAO->Add($genresAPI->getIdGenre(), $genresAPI->getName());
+                        }
+                    }
+                }
+            }
         }
 
-        public function ShowBillboard($moviesOnBillboard)
+        public function loadGenresXmovies($idMovie, $idGenreArray)
         {
-            require_once(VIEWS_PATH."Billboard.php");
+            $genresAPIArray = $this->APIDAO->GetGenres();
+            foreach($idGenreArray as $idGenre)
+            {
+                foreach($genresAPIArray as $genresAPI)
+                {
+                    if($idGenre == $genresAPI->getIdGenre())
+                    {
+                        $this->GenreDAO->AddGenresXmovies($idMovie, $idGenre);
+                    }
+                }
+            }
         }
 
         public function LoadProjections($msg="")
