@@ -5,6 +5,8 @@
 
     interface IGenreDAO
     {
+        function Add($idGenre, $name);
         function GetAll();
+        function Search($idGenre);
     }
 ?>

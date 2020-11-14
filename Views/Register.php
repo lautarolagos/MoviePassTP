@@ -1,3 +1,6 @@
+<?php
+    include('Nav.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +28,9 @@
                </div>
                <div >
                     <input class="form-input"type="password" name="password" class="" placeholder="Password" required>
+               </div>
+               <div >
+                    <input class="form-input"type="text" name="city" class="" placeholder="City" required>
                </div>
                <button class="btn-submit" type="submit">Create Account</button>
           </form>

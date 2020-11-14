@@ -15,35 +15,40 @@
             <nav class="menu">
                 <ul>
                     <li style="background-color: red;">
-                        <?php if(isset($_SESSION['firstName'])){?>
-                        <a>Welcome, <strong><?php echo $_SESSION['firstName']?>!</strong></a> <?php  } else { ?>
+                        <?php if(isset($_SESSION['userLogedIn'])){?>
+                        <a>Welcome, <strong><?php echo $_SESSION['userLogedIn']->getFirstName();?>!</strong></a> <?php  } else { ?>
                         <a>Welcome, <strong> guest! </strong></a> <?php } ?>
                     </li>
                     <li>
-                        <a href="<?php echo FRONT_ROOT ?>Session/ShowHomePage">Home</a>
+                        <a href="<?php echo FRONT_ROOT ?>Session/ShowHomePage"><i class="fas fa-home"></i> Home </a>
                     </li>
                     <?php if(!isset($_SESSION['userLogedIn'])){?>
                     <li>
-                        <a href="<?php echo FRONT_ROOT ?>Session/ShowLoginView">Sign In</a>
+                        <a href="<?php echo FRONT_ROOT ?>Session/ShowLoginView"><i class="fas fa-sign-in-alt"></i> Sign In </a>
+                    </li>
+                    <?php }?>
+                    <?php if(isset($_SESSION['userLogedIn'])){?>
+                    <li>
+                        <a href="<?php echo FRONT_ROOT ?>User/ShowProfile"><i class="far fa-user"></i> Profile </a>
                     </li>
                     <?php }?>
                     <li>
-                        <a href="<?php echo FRONT_ROOT ?>Billboard/LoadProjections">Billboard</a>
+                        <a href="<?php echo FRONT_ROOT ?>Billboard/LoadProjections"><i class="fas fa-film"></i> Billboard </a>
                     </li>
-                    <?php if((isset($_SESSION['isAdmin'])) && $_SESSION['isAdmin']=="1") {
+                    <?php if((isset($_SESSION['userLogedIn'])) && $_SESSION['userLogedIn']->getIsAdmin()=="1") {
                     ?>
                     <li>
-                        <a href="<?php echo FRONT_ROOT ?>Cinema/ShowAddView">Add Cinema</a>
+                        <a href="<?php echo FRONT_ROOT ?>Cinema/ShowAddView"><i class="fas fa-plus"></i> Add Cinema </a>
                     </li>
                     <?php 
                     }
                     ?>
                     <li>
-                        <a href="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaList">Cinema Listings</a>
+                        <a href="<?php echo FRONT_ROOT ?>Cinema/ShowCinemaList"> <i class="fas fa-video"></i> Cinemas</a>
                     </li>
                     <?php if(isset($_SESSION['userLogedIn'])){?>
                     <li>
-                        <a href="<?php echo FRONT_ROOT ?>Session/Logout">Logout</a>
+                        <a href="<?php echo FRONT_ROOT ?>Session/Logout"><i class="fas fa-sign-out-alt"></i> Logout </a>
                     </li>
                     <?php }?>
                 </ul>

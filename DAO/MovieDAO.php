@@ -34,7 +34,7 @@
             }
         }
         
-        public function Search($idMovie) // Busca una pelicula en la BDD para saber si ya esta agregada y no duplicarla
+        public function Search($idMovie) // Busca una pelicula en la BDD
         {
             $sql = "SELECT * FROM ".$this->tableName . " WHERE (idMovie = :idMovie)";
 

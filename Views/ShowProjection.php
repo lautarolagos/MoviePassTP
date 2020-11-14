@@ -20,27 +20,39 @@
             </div>
         </figure>
     </div>
+    <center><label class="labelProjections">Available Projections</label></center>
     <div>
         <table class="table-list-buy">
             <thead class="thead-list-buy">
-                <th class="th-list-buy">Cinema</th>
-                <th class="th-list-buy">Auditorium</th>
                 <th class="th-list-buy">Date</th>
+                <th class="th-list-buy">Time</th>
                 <th class="th-list-buy">Ticket Price</th>
+                <th class="th-list-buy">Cinema</th>
+                <th class="th-list-buy">Adress</th>
+                <th class="th-list-buy">Auditorium</th>
                 <th class="th-list-buy"></th>
             </thead>
             <tbody>
+            <?php foreach($projections as $projection){?>
                     <tr class="tr-list-buy">
-                        <td class="td-list-buy">-</td>
-                        <td class="td-list-buy">-</td>
-                        <td class="td-list-buy">-</td>
-                        <td class="td-list-buy">-</td>
+                        <td class="td-list-buy"><?php echo $projection->getDate(); ?></td>
+                        <td class="td-list-buy"><?php echo $projection->getStartTime(); ?></td>
+                        <td class="td-list-buy"><?php echo $projection->getAuditorium()->getTicketPrice();?></td>
+                        <td class="td-list-buy"><?php echo $projection->getAuditorium()->getCinema()->getName(); ?></td>
+                        <td class="td-list-buy"><?php echo $projection->getAuditorium()->getCinema()->getAdress(); ?></td>
+                        <td class="td-list-buy"><?php echo $projection->getAuditorium()->getNameAuditorium();?></td>
                         <td class="td-list-buy">
                             <form action="<?php echo FRONT_ROOT ?>Purchase/ShowStartPurchase" method="POST">
-                            <button  style="margin-left: 0;" class="button-add" type="submit" name="" value="">BUY</button>
+                            <input type="hidden" name="idProjection" value="<?php echo $projection->getIdProjection(); ?>">
+                            <input type="hidden" name="movieTitle" value="<?php echo $projection->getMovie()->getTitle(); ?>">
+                            <input type="hidden" name="posterPath" value="<?php echo $posterPath; ?>">
+                            <input type="hidden" name="overview" value="<?php echo $overview; ?>">
+                            <input type="hidden" name="idMovie" value="<?php echo $idMovie; ?>">
+                            <button  style="margin-left: 0;" class="button-add" type="submit" name="" value="">BUY TICKETS</button>
                             </form>
                         </td>
                     </tr>
+            <?php }?>
             </tbody>
         </table>
     </div>

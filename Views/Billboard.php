@@ -128,6 +128,7 @@
                     <input type="hidden" name="posterPath" value="<?php echo $movie->getPosterPath(); ?>">
                     <input type="hidden" name="title" value="<?php echo $movie->getTitle(); ?>">
                     <input type="hidden" name="overview" value="<?php echo $movie->getOverview(); ?>">
+                    <input type="hidden" name="idMovie" value="<?php echo $movie->getIdMovie(); ?>">
                     <button type="submit" class="projections">Projections</button>
                     </form>
                         <button type="button" class="collapsible">Description</button>
