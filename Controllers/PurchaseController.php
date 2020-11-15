@@ -8,6 +8,7 @@
     use Models\Ticket as Ticket;
     use Models\Projection as Projection;
     use Models\User as User;
+    use PHPMailer\PHPMailerMP as PHPMailerMP;
 
     date_default_timezone_set('America/Argentina/Buenos_Aires');
 
@@ -16,12 +17,14 @@
         private $purchaseDAO;
         private $projectionDAO;
         private $ticketDAO;
+        private $PHPMailerMP;
 
         public function __construct()
         {
             $this->purchaseDAO = new PurchaseDAO();
             $this->projectionDAO = new ProjectionDAO();
             $this->ticketDAO = new TicketDAO();
+            $this->PHPMailerMP = new PHPMailerMP();
         }
 
         public function ShowLoginView($message)
@@ -104,12 +107,19 @@
             $arrayTickets = $this->ticketDAO->GetTicketsPurchase($lastPurchase->getIdPurchase());
             $idPurchase = $lastPurchase->getIdPurchase();
 
+            $this->SendEmail($user, $lastPurchase, $arrayTickets, $projection);
+
             $this->ShowPurchaseDone($arrayTickets, $idPurchase);
         }
 
         public function ShowPurchaseDone($arrayTickets, $idPurchase)
         {
             require_once(VIEWS_PATH."PurchaseCompleted.php");
+        }
+
+        public function SendEmail($user, $lastPurchase, $arrayTickets, $projection)
+        {
+            $this->PHPMailerMP->SendEmail($user, $lastPurchase, $arrayTickets, $projection);
         }
     }
 ?>
