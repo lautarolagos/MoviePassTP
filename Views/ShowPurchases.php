@@ -16,6 +16,7 @@
     <table>
     <thead>
     <th>Number #</th>
+    <th>Tickets</th>
     <th>Subtotal</th>
     <th>Discount</th>
     <th>Total Price</th>
@@ -26,6 +27,14 @@
         <?php foreach($arrayPurchases as $purchase){ ?>
         <tr>
         <td><?php echo $purchase->getIdPurchase(); ?></td>
+        <?php 
+        $arrayTickets = $purchase->getTickets(); // De cada compra, recorro el array de tickets para contar cuantos compro
+        $ticketCounter=0;
+        foreach($arrayTickets as $tickets){
+            $ticketCounter++;
+        }
+        ?>
+        <td><?php echo $ticketCounter; ?></td>
         <td><?php echo $purchase->getSubtotal(); ?></td>
         <td><?php echo $purchase->getDiscount(); ?></td>
         <td><?php echo $purchase->getTotalPrice(); ?></td>

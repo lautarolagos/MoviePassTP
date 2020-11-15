@@ -4,6 +4,8 @@
     use Interfaces\ICinemaDAO as ICinemaDAO;
     use Models\Cinema as Cinema;
     use DAO\Connection as Connection;
+    use Models\Purchase as Purchase;
+    use Models\Projection as Projection;
 
     class CinemaDAOMySQL implements ICinemaDAO
     {
@@ -151,6 +153,46 @@
                 return true;
             else
                 return false;
+        }
+
+        public function GetSales($idCinema) // Metodo que obtiene las ventas de un cine
+        {
+            $arraySales = array();
+            try
+            {
+                $query = "select p.idPurchase, p.totalPrice, p.discount, p.subtotal, p.datePurchase, p.idProjection
+                from purchases as p
+                join projections as f
+                on p.idProjection = f.idProjection
+                join auditoriums as a
+                on f.idAuditorium = a.idAuditorium
+                join cinemas as c
+                where a.idCinema = :idCinema AND c.idCinema = :idCinema;";
+
+                $parameters['idCinema'] = $idCinema;
+
+                $this->connection = Connection::getInstance();
+                $resultSet = $this->connection->Execute($query, $parameters, QueryType::Query);
+                foreach($resultSet as $row)
+                {
+                    $purchase = new Purchase();
+                    $projection = new Projection();
+                    $purchase->setIdPurchase($row['idPurchase']);
+                    $purchase->setTotalPrice($row['totalPrice']);
+                    $purchase->setDiscount($row['discount']);
+                    $purchase->setSubtotal($row['subtotal']);
+                    $purchase->setDatePurchase($row['datePurchase']);
+                    $projection->setIdProjection($row['idProjection']);
+                    $purchase->setProjection($projection);
+                    
+                    array_push($arraySales, $purchase);
+                }
+                return $arraySales;
+
+            } catch (Exception $ex)
+            {
+                throw $ex;
+            }
         }
     }
 ?>
