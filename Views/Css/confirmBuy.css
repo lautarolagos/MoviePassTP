@@ -1,0 +1,47 @@
+.cont-form-buy{
+    font-family: 'Staatliches', cursive;
+    background: #FFF;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 5px 35px;
+    margin-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 3px;
+    color: #202020;
+    padding: 20px;
+    display: block;
+    box-shadow: 0px 15px 25px rgba(0,0,0,.50);
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.cont-form-buy .form-buy .form-title-buy{
+    color: black;
+}
+.cont-form-buy .form-buy .title-buy{
+    font-family: 'Staatliches', cursive;
+    display: inline;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-bottom: solid 1px red;
+}
+.cont-form-buy .form-buy .btn-submit{
+    font-family: 'Staatliches', cursive;
+    width: 100%;
+    outline: none;
+    background: #e03131;
+    font-size: 16px;
+    border: none;
+    color: #FFF;
+    padding: 15px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cont-form-buy .form-buy .btn-submit:hover{
+    background: #fa5252; 
+ }
