@@ -107,7 +107,7 @@
             $arrayTickets = $this->ticketDAO->GetTicketsPurchase($lastPurchase->getIdPurchase());
             $idPurchase = $lastPurchase->getIdPurchase();
 
-            $this->SendEmail($user, $lastPurchase, $arrayTickets, $projection);
+            $this->PHPMailerMP->SendEmail($user, $lastPurchase, $arrayTickets, $projection);
 
             $this->ShowPurchaseDone($arrayTickets, $idPurchase);
         }
@@ -115,11 +115,6 @@
         public function ShowPurchaseDone($arrayTickets, $idPurchase)
         {
             require_once(VIEWS_PATH."PurchaseCompleted.php");
-        }
-
-        public function SendEmail($user, $lastPurchase, $arrayTickets, $projection)
-        {
-            $this->PHPMailerMP->SendEmail($user, $lastPurchase, $arrayTickets, $projection);
         }
     }
 ?>
