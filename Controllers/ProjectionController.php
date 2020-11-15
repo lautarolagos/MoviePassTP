@@ -33,11 +33,6 @@
             require_once(VIEWS_PATH."AddProjection.php");
         }
 
-        public function ShowProjection($posterPath, $title, $overview)
-        {
-            require_once(VIEWS_PATH."ShowProjection.php");
-        }
-
         public function ShowBillboard($moviesOnBillboard)
         {
             require_once(VIEWS_PATH."Billboard.php");
@@ -69,7 +64,6 @@
             $projection->setEndTime($endTime);
             $projection->setAuditorium($auditorium);
             $projection->setMovie($movie);
-            $projection->setTicket(NULL);
 
             $check = $this->projectionDAO->Add($projection);
 
