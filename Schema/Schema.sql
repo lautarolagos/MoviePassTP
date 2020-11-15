@@ -2,20 +2,17 @@
 create database if not exists moviepassdb;
 use moviepassdb;
 
+#DROP TABLE users;
 create table if not exists users(
 idUser int not null auto_increment,
 firstName varchar(30) not null,
 lastName varchar(30) not null,
 email varchar(30) not null,
 password varchar(30) not null,
+city varchar(30) not null,
 isAdmin boolean default(0),
 constraint `PK-idUser` primary key (idUser)
 );
-
-select * from users;
-
-ALTER TABLE users
-ADD COLUMN city VARCHAR(15) AFTER isAdmin;
 
 #DROP TABLE cinemas;
 create table if not exists cinemas(
@@ -53,8 +50,6 @@ isActive boolean default(1),
 constraint `PK-idMovie` primary key (idMovie)
 );
 
-#INSERT INTO movies (idMovie, adult, language, title, runtime, overview, releaseDate,posterPath) VALUES (635302, false, "ja", "Demon Slayer", 120, "Tanjirō Kamado, joined with Inosuke Hashibira, a boy raised by boars who wears a boar's head, and Zenitsu Agatsuma, a scared boy who reveals his true power when he sleeps, boards the Infinity Train on a new mission with the Fire Hashira, Kyōjurō Rengoku, to defeat a demon who has been tormenting the people and killing the demon slayers who oppose it!", "2020-10-16", "/h8Rb9gBr48ODIwYUttZNYeMWeUU.jpg");
-
 #DROP TABLE genres;
 create table if not exists genres(
 idGenre int not null,
@@ -85,6 +80,50 @@ constraint `PK-idProjection` primary key (idProjection),
 constraint `FK-idAuditorium` foreign key (idAuditorium) references auditoriums (idAuditorium),
 constraint `FK-projection-idMovie` foreign key (idMovie) references movies (idMovie)
 ); 
+
+#DROP TABLE PURCHASES;
+create table if not exists purchases(
+idPurchase int not null auto_increment,
+totalPrice int not null,
+discount int not null,
+subtotal int not null,
+datePurchase varchar(15) not null,
+idProjection int not null,
+idUser int not null,
+constraint `PK-idPurchase` primary key (idPurchase),
+constraint `FK-idProjection` foreign key (idProjection) references projections (idProjection),
+constraint `FK-idUser` foreign key (idUser) references users (idUser)
+);
+
+#DROP TABLE TICKETS;
+create table if not exists tickets(
+number int not null auto_increment,
+qrCode int not null,
+idPurchase int not null,
+constraint `PK-number` primary key (number),
+constraint `FK-idPurchase` foreign key (idPurchase) references purchases (idPurchase)
+);
+
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+ 
+SELECT idPurchase, totalPrice, discount, datePurchase
+FROM purchases
+WHERE idUser = 1
+ORDER by idPurchase DESC
+LIMIT 1;
+
+select * from tickets
+where idPurchase = 1;
+
+#idPurchase, totalPrice, discount, subtotal, datepurchase, purchase.idProjection, p.idProjection, p.idMovie, m.idMovie, m.title
+
+select p.idPurchase, p.totalPrice, p.discount, p.subtotal, p.datePurchase, f.idProjection, m.title
+from purchases as p
+join projections as f
+on p.idProjection = f.idProjection
+join movies as m
+on f.idMovie = m.idMovie
+where p.idUser = 2;
 
 #INSERT INTO projections (date, startTime, endTime, idAuditorium, idMovie) VALUES ("2020-10-16", "16:00", "18:00", 1, 635302);
  
@@ -124,50 +163,3 @@ on a.idCinema = c.idCinema
 join movies as m
 on p.idMovie = m.idMovie
 WHERE p.idProjection = 1;
-
-#DROP TABLE PURCHASES;
-create table if not exists purchases(
-idPurchase int not null auto_increment,
-totalPrice int not null,
-discount int not null,
-subtotal int not null,
-datePurchase varchar(15) not null,
-idProjection int not null,
-idUser int not null,
-constraint `PK-idPurchase` primary key (idPurchase),
-constraint `FK-idProjection` foreign key (idProjection) references projections (idProjection),
-constraint `FK-idUser` foreign key (idUser) references users (idUser)
-);
-
-select * from purchases;
-select * from tickets;
-
-#DROP TABLE TICKETS;
-create table if not exists tickets(
-number int not null auto_increment,
-qrCode int not null,
-idPurchase int not null,
-constraint `PK-number` primary key (number),
-constraint `FK-idPurchase` foreign key (idPurchase) references purchases (idPurchase)
-);
-
- 
-SELECT idPurchase, totalPrice, discount, datePurchase
-FROM purchases
-WHERE idUser = 1
-ORDER by idPurchase DESC
-LIMIT 1;
-
-
-select * from tickets
-where idPurchase = 1;
-
-#idPurchase, totalPrice, discount, subtotal, datepurchase, purchase.idProjection, p.idProjection, p.idMovie, m.idMovie, m.title
-
-select p.idPurchase, p.totalPrice, p.discount, p.subtotal, p.datePurchase, f.idProjection, m.title
-from purchases as p
-join projections as f
-on p.idProjection = f.idProjection
-join movies as m
-on f.idMovie = m.idMovie
-where p.idUser = 2;
