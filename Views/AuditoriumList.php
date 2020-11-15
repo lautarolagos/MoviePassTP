@@ -11,17 +11,39 @@
           <title>Auditorium List</title>
      </head>
      <body>
-          <div class="table-list"> 
-               <title>Auditorium Listings - MoviePass</title>
-                    <?php foreach($cinemasList as $cinemaName)
+
+     <!-- NOMBRE DEL CINE AL QUE PERTENECE -->
+     <?php foreach($cinemasList as $cinemaName)
                     {
                          if($cinemaName->getIdCinema() == $idCinema)
                          {
                     ?>
-                    <h2 class="table-title"><?php echo $cinemaName->getName();?></h2>
+                    <h2 class="table-title" style="margin-top: 3.5rem;"><?php echo $cinemaName->getName();?></h2>
                     <?php     break;
                          } 
                     } ?>
+     <!-- VENTAS DEL CINE -->
+     <section  class="">
+     <h2 class="table-title">SALES</h2>
+         <div class="cont-form">
+                   <form  class="form">
+                    <div>
+                         <div>
+                         <label for="aproxEarnings">Estimate earnings:</label>
+                              <input class="form-input" type="Text" name="aproxEarnings" value="" placeholder="<?php echo "$" .$estimateEarnings; ?>" readonly>
+                         </div>
+                    </div>
+                    <div>
+                         <div>
+                              <label for="discounts">Discounts applied:</label>
+                              <input class="form-input" type="Text" name="discounts" value="" placeholder="<?php echo $discountsApplied; ?>" readonly>
+                         </div>
+                    </div>
+               </form>
+          </div>
+     </section>
+          <!-- TABLA DE AUDITORIUMS -->
+          <div class="table-list" style="margin-top: 30px;"> 
                     <h2 class="table-title">Auditorium List</h2>
                     
                     <!-- AGREGAR AUDITORIUM -->
