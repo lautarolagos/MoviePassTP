@@ -150,6 +150,7 @@ join cinemas as c
 where a.idCinema = 1 AND c.idCinema = 1;
 
 
+
 select movies.idMovie, movies.adult, movies.language, movies.title, movies.runtime, movies.overview, movies.releaseDate, movies.posterPath
 from movies
 JOIN projections
