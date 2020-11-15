@@ -30,6 +30,18 @@
         {
             $cinemasList = $this->cinemaDAO->GetAll(); 
             $cinemasList = $this->AssignAuditoriums($cinemasList);
+            $arraySales = $this->cinemaDAO->GetSales($idCinema); // array de las ventas realizadas por este cine
+            $estimateEarnings = 0;
+            $discountsApplied = 0;
+            foreach($arraySales as $purchase)
+            {
+                $estimateEarnings = $estimateEarnings + $purchase->getTotalPrice(); // hago toda la suma de las ventas totales
+                if($purchase->getDiscount()!=0)
+                {
+                    $discountsApplied++; // cuento cuantos descuentos han sido aplicados
+                }
+            }
+
             $message="";
             require_once(VIEWS_PATH."AuditoriumList.php");
         }

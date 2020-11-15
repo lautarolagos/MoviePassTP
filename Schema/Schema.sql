@@ -136,6 +136,19 @@ WHERE auditoriums.idAuditorium = 1;
 select * from movies;
 select * from projections;
 select * from auditoriums;
+select * from purchases;
+select * from cinemas;
+select * from tickets;
+
+select p.idPurchase, p.totalPrice, f.idProjection, f.idAuditorium, a.idAuditorium, a.idCinema, c.idCinema
+from purchases as p
+join projections as f
+on p.idProjection = f.idProjection
+join auditoriums as a
+on f.idAuditorium = a.idAuditorium
+join cinemas as c
+where a.idCinema = 1 AND c.idCinema = 1;
+
 
 
 select movies.idMovie, movies.adult, movies.language, movies.title, movies.runtime, movies.overview, movies.releaseDate, movies.posterPath

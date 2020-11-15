@@ -6,59 +6,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<?php echo CSS_PATH;?>confirmBuy.css" rel="stylesheet" type="text/css" media="all">
     <title>Buy Tickets - MoviePass</title>
 </head>
 <body>
-    <div class="cont-form">
-            <form class="form">
+    <div class="cont-form-buy">
+            <form class="form-buy">
                 <div>
-                    <h2 class="form-title">Verify if everything is correct!</h2>
+                    <h2 class="form-title-buy">Verify if everything is correct!</h2>
                 </div>
                 <div>
-                <label for="movie">Movie:</label>
-                    <input class="form-input" type="text" id="movie" name="movie" class="" placeholder="<?php echo $movieTitle ?>" readonly>
+                <label class="title-buy"for="movie">Movie:</label>
+                    <label class="form-label-buy" type="text" id="movie" name="movie" class="" placeholder=""><?php echo $movieTitle ?></label>
                 </div>
                 <div>
-                <label for="ticketQuantity">Tickets:</label>
-                    <input class="form-input" type="text" id="ticketQuantity" name="ticketQuantity" class="" placeholder="<?php echo $quantity; ?>" readonly>
+                <label class="title-buy"for="ticketQuantity">Tickets:</label>
+                    <label class="form-label-buy" type="text" id="ticketQuantity" name="ticketQuantity" class="" placeholder=""><?php echo $quantity; ?></label>
                 </div>
                 <div>
                 <div>
-                <label for="adress">Adress:</label>
-                    <input class="form-input" type="text" id="adress" name="adress" class="" placeholder="<?php echo $projection->getAuditorium()->getCinema()->getAdress(); ?>" readonly>
+                <label class="title-buy"for="adress">Adress:</label>
+                    <label class="form-label-buy" type="text" id="adress" name="adress" class="" placeholder=""><?php echo $projection->getAuditorium()->getCinema()->getAdress(); ?></label>
                 </div>
-                <label for="cinema">Cinema:</label>
-                    <input class="form-input" type="text" id="cinema" name="cinema" class="" placeholder="<?php echo $projection->getAuditorium()->getCinema()->getName(); ?>" readonly>
-                </div>
-                <div>
-                <label for="auditorium">Auditorium:</label>
-                    <input class="form-input" type="text" id="auditorium" name="auditorium" class="" placeholder="<?php echo $projection->getAuditorium()->getNameAuditorium(); ?>" readonly>
+                <label class="title-buy"for="cinema">Cinema:</label>
+                    <label class="form-label-buy" type="text" id="cinema" name="cinema" class="" placeholder=""><?php echo $projection->getAuditorium()->getCinema()->getName();?></label>
                 </div>
                 <div>
-                <label for="dateTime">Date and Time:</label>
-                    <input class="form-input" type="text" id="dateTime" name="dateTime" class="" placeholder="<?php echo $projection->getDate(); echo " at " .$projection->getStartTime();?>" readonly>
+                <label class="title-buy"for="auditorium">Auditorium:</label>
+                    <label class="form-label-buy" type="text" id="auditorium" name="auditorium" class="" placeholder=""><?php echo $projection->getAuditorium()->getNameAuditorium(); ?></label>
                 </div>
                 <div>
-                <label for="totalPrice">Subtotal: <?php echo "$". $subtotal ?></label>
+                <label class="title-buy"for="dateTime">Date and Time:</label>
+                    <label class="form-label-buy" type="text" id="dateTime" name="dateTime" class="" placeholder=""><?php echo $projection->getDate(); echo " at " .$projection->getStartTime();?></label>
+                </div>
                 <div>
-                <?php if($discount!=0){
-                    ?>
-                    <label for="" style="padding-top:5px;">Discount applied! ($-<?php echo $discount; ?>)</label>
-                <?php }
-                ?> 
+                <label class="title-buy"for="subtotal">Subtotal:</label>
+                <label class="form-label-buy" for="subtotal" name="subtotal"><?php echo "$" .$subtotal; ?></label>
                 </div>
-                <label for="totalPrice">Total Price:</label>
-                    <input class="form-input" type="text" id="totalPrice" name="totalPrice" class="" placeholder="<?php echo "$ $totalPrice";?>" readonly>
+                <div>
+                <label class="title-buy"for="discount">Discount:</label>
+                <label class="form-label-buy" for="discount" name="discount"><?php echo "$" .$discount; ?></label>
                 </div>
-                </form>
-                <form class="form" action="<?php echo FRONT_ROOT ?>Purchase/ProcessBuy" method="POST">
+                <div>
+                <label class="title-buy"for="totalPrice">Total Price:</label>
+                <label class="form-label-buy" for="totalPrice" name="totalPrice"><?php echo "$" .$totalPrice; ?></label>
+                </div>
+            </form>   
+            <form class="form-buy" action="<?php echo FRONT_ROOT ?>Purchase/ProcessBuy" method="POST">
                 <input type="hidden" name="quantity" value="<?php echo $quantity; ?>">
                 <input type="hidden" name="idProjection" value="<?php echo $projection->getIdProjection(); ?>">
                 <input type="hidden" name="subtotal" value="<?php echo $subtotal; ?>">
                 <input type="hidden" name="discount" value="<?php echo $discount; ?>">
                 <input type="hidden" name="totalPrice" value="<?php echo $totalPrice; ?>">
                 <center><button class="btn-submit" type="submit">CONFIRM BUY</button></center>
-                </form>
+            </form>
         </div>
+    </div>    
     </body>
 </html>

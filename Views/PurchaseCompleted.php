@@ -12,6 +12,7 @@
 <body>
     <section style="margin-top: 3rem;">
         <h2 class="form-title">Purchase Done!</h2>
+        <h2 class="form-title" style="font-size: 24px; color:#0097ff;">We sent you an email with the purchase info!</h2>
         <h2 class="form-title" style="font-size: 23px;">Purchase Code: #<?php echo $idPurchase; ?></h2>
         <?php foreach($arrayTickets as $ticket)
         {
